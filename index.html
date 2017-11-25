@@ -4,10 +4,13 @@
     <meta charset="UTF-8">
     <title>Our first raw html</title>
     <style>
-        header {color:red;}
+        header {color:#A42F09;}
     </style>
     <script>
-        window.onload = function () {
+        // window.onload function () instead of function insert() would have no mention
+        // of the function in the body, however then the picture appears at the end of the
+        // file which was chosen to be changed to look better, easier to understand
+        function insert() {
             var image = document.createElement("img");
             image.src="https://tinyurl.com/yd4jsdce";
             image.height="200"
@@ -19,26 +22,43 @@
 <body>
 <header>
     <h1>
-        Migle and Antonio rules
+        Assignment 1
     </h1>
+    <h2>
+        Migle Survilaite and Antonio Ortega Jimenez
+    </h2>
 </header>
-<img src="https://tinyurl.com/ybuphymt" alt="Mount Teide in the Canary Islands" height="200"/>
+<div>The first picture:</div>
 <br>
+<img src="https://tinyurl.com/ybuphymt" alt="Mount Teide in the Canary Islands" height="200"/>
+
+<div>The second picture added by using JavaScript:</div>
+<br>
+<script type="text/javascript">
+    insert()
+</script>
 
 <div>The list with links to interactive visualizations:</div>
 <ol>
     
     <li> <h2><a href="https://www.meteorshowers.org/view/all">Meteor showers visualization</a></h2>
-   <p> <span style="color:green">Good:</span>Very intuitive and easy to interact with. The fact that the visualization reflects how the data looks like by mirroring or simulating reality, instead of resorting to abstract plots representations, makes grabbing its insights straightforward.</p>
+   <p> <span style="color:green">Good:</span>Very intuitive and easy to interact with.
+       The fact that the visualization reflects how the data looks like by mirroring
+       or simulating reality, instead of resorting to abstract plots representations,
+       makes grabbing its insights straightforward.</p>
    <p> <span style="color:red">Improvable:</span>The view mode "Watch from Earth" is a bit confusing to the eye.</p>
      
     <li> <h2><a href="https://www.gapminder.org/tools/#_chart-type=bubbles">The Gapminder project</a></h2>
-   <p> <span style="color:green">Good:</span>Extremely comprehensive visualizations on several human development indicators for all countries in the world for more than a hundred years in some cases. The visualizations are also very intuitive to understand and fun to watch. The data displayed on them can be easily filtered. For example, one can select a specific set of countries</p>
-   <p> <span style="color:red">Improvable:</span>Contrary to the first visualization, it is very plot based and there are no visualizations where one can actually look at the data in such a direct way.</p>
+   <p> <span style="color:green">Good:</span>Extremely comprehensive visualizations on several human
+       development indicators for all countries in the world for more than a hundred years in some cases.
+       The visualizations are also very intuitive to understand and fun to watch. The data displayed on
+       them can be easily filtered. For example, one can select a specific set of countries</p>
+   <p> <span style="color:red">Improvable:</span>Contrary to the first visualization, it is very plot
+       based and there are no visualizations where one can actually look at the data in such a direct way.</p>
 </ol>
 
-<h1>Miglė</h1>
+<h3>Miglė</h3>
 
-<h1>Antonio</h1>
+<h3>Antonio</h3>
 </body>
 </html>
