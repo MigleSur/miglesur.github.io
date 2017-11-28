@@ -4,10 +4,13 @@
     <meta charset="UTF-8">
     <title>Our first raw html</title>
     <style>
-        header {color:red;}
+        header {color:#A42F09;}
     </style>
     <script>
-        window.onload = function () {
+        // window.onload function () instead of function insert() would have no mention
+        // of the function in the body, however then the picture appears at the end of the
+        // file which was chosen to be changed to look better, easier to understand
+        function insert() {
             var image = document.createElement("img");
             image.src="https://tinyurl.com/yd4jsdce";
             image.height="200"
@@ -19,33 +22,60 @@
 <body>
 <header>
     <h1>
-        Migle and Antonio rules
+        Assignment 1
     </h1>
+    <h2>
+        Miglė Survilaitė and Antonio Ortega Jiménez
+    </h2>
 </header>
-<img src="https://tinyurl.com/ybuphymt" alt="Mount Teide in the Canary Islands" height="200"/>
+<div>The first picture:</div>
 <br>
+<img src="https://tinyurl.com/ybuphymt" alt="Mount Teide in the Canary Islands" height="200"/>
+
+<div>The second picture added by using JavaScript:</div>
+<br>
+<script type="text/javascript">
+    insert()
+</script>
 
 <div>The list with links to interactive visualizations:</div>
 <ol>
     
     <li> <h2><a href="https://www.meteorshowers.org/view/all">Meteor showers visualization</a></h2>
-   <p> <span style="color:green">Good:</span>Very intuitive and easy to interact with. The fact that the visualization reflects how the data looks like by mirroring or simulating reality, instead of resorting to abstract plots representations, makes grabbing its insights straightforward.</p>
-   <p> <span style="color:red">Improvable:</span>The view mode "Watch from Earth" is a bit confusing to the eye.</p>
+   <p> <span style="color:green">Good:</span>Very intuitive and easy to interact with.
+       The fact that the visualization reflects how the data looks like by mirroring
+       or simulating reality, instead of resorting to abstract plots representations,
+       makes grabbing its insights straightforward.</p>
+   <p> <span style="color:red">Improvable:</span>The view modes "Watch from Earth" and
+       "Follow the Earth" are a bit confusing to the eye.</p>
      
     <li> <h2><a href="https://www.gapminder.org/tools/#_chart-type=bubbles">The Gapminder project</a></h2>
-   <p> <span style="color:green">Good:</span>Extremely comprehensive visualizations on several human development indicators for all countries in the world for more than a hundred years in some cases. The visualizations are also very intuitive to understand and fun to watch. The data displayed on them can be easily filtered. For example, one can select a specific set of countries</p>
-   <p> <span style="color:red">Improvable:</span>Contrary to the first visualization, it is very plot based and there are no visualizations where one can actually look at the data in such a direct way.</p>
+   <p> <span style="color:green">Good:</span>Extremely comprehensive visualizations on several human
+       development indicators for all countries in the world for more than a hundred years in some cases.
+       The visualizations are also very intuitive to understand and fun to watch. The data displayed on
+       them can be easily filtered. For example, one can select a specific set of countries or pause the
+       plot to analyze it more deeply.</p>
+   <p> <span style="color:red">Improvable:</span>Contrary to the first visualization, it is very plot
+       based and there are no visualizations where one can actually look at the data in such a direct way.</p>
 </ol>
 
-<h1>Miglė</h1>
+<h3>Miglė</h3>
 
-<h1>Antonio</h1>
+    I would like to be able visualize the sequencing data and make it look easy to understand.
+    It becomes extremely challenging when there is a need to nicely visualize the whole human genome,
+    or even more complicated - many genomes. I would get access to the data which is freely accessible.
+    I would like to show the differences between the genomes and their relationship with each other.
+    Scientists would be the main audience, but not necessarily specialized in that specific area.
+    A sketch/mockup of the visualization: <a href="migle_sketch.jpg">Sketch</a>
 
-<ul>
-<li>I would like to improve my data scraping skills from the internet and learn how to generate amazing datasets such as those published by Hadley Wickham in his GitHub account.</li>
-<li></li>
-<li></li>
-</ul>
+<h3>Antonio</h3>
+
+    I would like to be able to visualize protein structure and sequence data for my Masther Thesis in Novozymes.
+    They have several databases which can be further analyzed to provide useful insights through visualizations.
+    The current workflow requires a lot of manual work that could be automated by means of such a tool.
+    For example, generating a document for a specific analysis report requires accessing several databases by hand.
+    All of this could be automated and standardized. The intended audience of this tool would be Novozymes technicians.
+    A sketch/mockup of the visualization: <a href="antonio_sketch.pdf">Sketch</a>
 
 </body>
 </html>
