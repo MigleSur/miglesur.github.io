@@ -1,7 +1,5 @@
-// Set up on-load initialization
 d3.select(window).on('load', init);
 
-// Initialiation function. Called after body has loaded
 function init() {
 
     var svg = d3.select("svg"),
