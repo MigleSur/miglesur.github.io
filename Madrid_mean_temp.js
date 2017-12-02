@@ -66,7 +66,8 @@ function init() {
             .attr("x", (width / 2))
             .attr("y", 0 - (margin.bottom / 4 ))
             .attr("text-anchor", "middle")
-            .style("font-size", "16px")
+            .style("font-size", "14px")
+            .style('text-decoration','underline')
             .text("Plot of mean temperature of each year in Madrid");
 
         g.append("path")
