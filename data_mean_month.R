@@ -1,13 +1,23 @@
-data <- read.table("station_Kaunas.txt", h=T)
-data <- data[-1,] # removing the first year which is not measured properly
-only_months <- data[,1:13]
+kun <- read.table("station_Kaunas.txt", h=T)
 
-only_months <- only_months[-1,] # removing the first year which is not measured properly
-only_months <- only_months[-nrow(only_months),] # removing the last year because it's not finished yet
+kun <- kun[-1,]
+kun <- kun[-(nrow(kun)),]
+kun <- kun[which(kun$YEAR > 1952),]
 
-x <-colMeans(only_months[,-1])
-y <- cbind(colnames(only_months[,-1]), x)
-colnames(y) <- c("month", "mean_temp")
-write.table(y, "data_hist.tsv", sep="\t", row.names = F, quote = F)
+kun_months <- kun[,2:13]
+
+kun_mean <- colMeans(kun_months)
+
+mad <- read.table("station_Madrid.txt", h=T)
+
+mad <- mad[-1,]
+mad[,2:13][mad[,2:13] == 999.9] <- NA
+
+mad_months <- mad[,2:13]
+mad_mean <- colMeans(mad_months, na.rm = T)
+
+final <- cbind(colnames(kun_months),mad_mean, kun_mean)
+colnames(final) <- c("month", "madrid", "kaunas")
 
 
+write.table(final, "data_hist_full.tsv", sep="\t", row.names = F, quote = F)

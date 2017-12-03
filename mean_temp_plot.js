@@ -16,8 +16,6 @@ function init_plot1() {
         z = d3.scaleOrdinal(d3.schemeCategory10);
 
     var line = d3.line()
-        // .curve(d3.curveBasis) // For smoothed lines
-
         .x(function (d) { return x(d.date); })
         .y(function (d) { return y(d.temperature); });
 
@@ -60,8 +58,6 @@ function init_plot1() {
             .attr("x", 650)
             .attr("text-anchor", "end")
             .text("Year")
-            //.select(".domain")
-            //.remove()
             ;
 
         // Y axis
@@ -71,7 +67,6 @@ function init_plot1() {
             .attr("fill", "#000")
             .attr("transform", "rotate(-90)")
             .attr("y", 12)
-            //.attr("dy", "0.71em")
             .attr("text-anchor", "end")
             .text("Temp (°C)");
 
@@ -82,7 +77,7 @@ function init_plot1() {
             .attr("text-anchor", "middle")
             .style("font-size", "14px")
             .style('text-decoration','underline')
-            .text("Yearly mean temperature in Kaunas");
+            .text("Yearly mean temperature in Kaunas and Madrid");
 
         var city = g.selectAll(".city")
             .data(cities)
