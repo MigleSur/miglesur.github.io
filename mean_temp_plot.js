@@ -4,11 +4,11 @@ var parseTime = d3.timeParse("%Y");
 
 function init() {
 
-    var svg = d3.select("svg"),
+    var plot1 = d3.select("#plot1"),
         margin = {top: 20, right: 40, bottom: 30, left: 50},
-        width = +svg.attr("width") - margin.left - margin.right,
-        height = +svg.attr("height") - margin.top - margin.bottom,
-        g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+        width = +plot1.attr("width") - margin.left - margin.right,
+        height = +plot1.attr("height") - margin.top - margin.bottom,
+        g = plot1.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 
     var x = d3.scaleTime().range([0, width]);
@@ -32,10 +32,6 @@ function init() {
                 })
             };
         });
-
-        console.log(cities)
-        console.log(cities[0].values[0].temperature)
-        console.log(cities[0].values[1].temperature)
 
         x.domain(d3.extent(data, function (d) {
             return d.date;
@@ -106,17 +102,6 @@ function init() {
             .style("font", "10px sans-serif")
             .text(function(d) { return d.id; });
     });
-    
-    
-//        // We dont know yet
-//        g.append("path")
-//            .datum(data)
-//            .attr("fill", "none")
-//            .attr("stroke", "steelblue")
-//            .attr("stroke-linejoin", "round")
-//            .attr("stroke-linecap", "round")
-//            .attr("stroke-width", 1.5)
-//            .attr("d", line);
 
 }
 
