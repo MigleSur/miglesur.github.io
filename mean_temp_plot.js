@@ -1,8 +1,8 @@
-d3.select(window).on('load', init);
+
 
 var parseTime = d3.timeParse("%Y");
 
-function init() {
+function init_plot1() {
 
     var plot1 = d3.select("#plot1"),
         margin = {top: 20, right: 40, bottom: 30, left: 50},

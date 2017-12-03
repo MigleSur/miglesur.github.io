@@ -1,8 +1,5 @@
-// Set up on-load initialization
-d3.select(window).on('load', init);
-
 // Initialiation function. Called after body has loaded
-function init() {
+function init_plot2() {
 
     var plot2 = d3.select('#plot2')
     var margin = {top: 50, right: 20, bottom: 20, left: 20};
