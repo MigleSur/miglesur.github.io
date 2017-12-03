@@ -12,15 +12,16 @@ function init_plot2() {
     var x = d3.scaleBand().range([0, width]).padding(0.05),
         y = d3.scaleLinear().range([height, 0]);
 
-    d3.tsv("data_hist.tsv", function(da) {
-        da.mean_temp = +da.mean_temp;
+    d3.tsv("data_hist_full.tsv", function(da) {
+        da.madrid = +da.madrid;
+        da.kaunas = +da.kaunas;
         return da;
     }, function(error, data){
         if (error) throw error;
 
         x.domain(data.map(function(da) { return da.month; }));
 
-        y.domain([d3.min(data, function(da) { return da.mean_temp; })-5, d3.max(data, function(da) { return da.mean_temp; })]);
+        y.domain([-9, d3.max(data, function(da) { return da.madrid; })]);
 
     h.append("g")
         .attr("class", "axis x")
@@ -40,10 +41,21 @@ function init_plot2() {
         .data(data)
         .enter().append("rect")
         .attr("x", function(da) { return x(da.month); })
-        .attr("y", function(da) { return y(da.mean_temp); })
-        .attr("fill", "#000168")
-        .attr("width", 50)
-        .attr("height", function(da) { return height - y(da.mean_temp);
+        .attr("y", function(da) { return y(da.madrid); })
+        .attr("fill", "#f48a00")
+        .attr("width", 25)
+        .attr("transform", "translate("+25+")")
+        .attr("height", function(da) { return height - y(da.madrid);
+        });
+
+    h.selectAll(".bar")
+        .data(data)
+        .enter().append("rect")
+        .attr("x", function(da) { return x(da.month); })
+        .attr("y", function(da) { return y(da.kaunas); })
+        .attr("fill", "#4a99fb")
+        .attr("width", 25)
+        .attr("height", function(da) { return height - y(da.kaunas);
         });
 
     h.append("text")
@@ -52,7 +64,39 @@ function init_plot2() {
         .attr("text-anchor", "middle")
         .style("font-size", "14px")
         .style('text-decoration','underline')
-        .text("Mean monthly temperature in Kaunas");
+        .text("Mean monthly temperature in Kaunas and Madrid");
+
+    h.append("text")
+        .attr("x", 80)
+        .attr("y", 20)
+        .attr("text-anchor", "middle")
+        .style("font-size", "12px")
+        .text("Madrid");
+
+    h.append("text")
+        .attr("x", 80)
+        .attr("y", 35)
+        .attr("text-anchor", "middle")
+        .style("font-size", "12px")
+        .text("Kaunas");
+
+    h.append("rect")
+        .attr("rx", 3)
+        .attr("ry", 3)
+        .attr("x", 47)
+        .attr("y", 25)
+        .attr("width", 12.5)
+        .attr("height", 12.5)
+        .attr("fill", "#4a99fb");
+
+    h.append("rect")
+        .attr("rx", 3)
+        .attr("ry", 3)
+        .attr("x", 47)
+        .attr("y", 10)
+        .attr("width", 12.5)
+        .attr("height", 12.5)
+        .attr("fill", "#f48a00")
 
     });
 
