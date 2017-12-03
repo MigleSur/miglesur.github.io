@@ -20,7 +20,7 @@ mean_data <- mean_data[-nrow(mean_data),] # removing the last year because it's 
 kaunas_data <- mean_data
 
 dat <- full_join(as.data.frame(kaunas_data), as.data.frame(madrid_data), by = "date")
-colnames(dat)[2:3] <- c("kaunas", "madrid")
+colnames(dat)[2:3] <- c("Kaunas", "Madrid")
 
 dat <- dat[complete.cases(dat),]
 write.table(dat, "data.tsv", sep="\t", row.names = F, quote = F)
