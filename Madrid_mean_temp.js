@@ -44,19 +44,20 @@ function init() {
             .append("text")
             .attr("fill", "#000")
             .attr("y", -4)
-            .attr("dx", "88.92em")
+            .attr("x", 650)
             .attr("text-anchor", "end")
             .text("Year")
-            .select(".domain")
-            .remove();
+            //.select(".domain")
+            //.remove()
+            ;
 
         g.append("g")
             .call(d3.axisLeft(y))
             .append("text")
             .attr("fill", "#000")
             .attr("transform", "rotate(-90)")
-            .attr("y", 6)
-            .attr("dy", "0.71em")
+            .attr("y", 12)
+            //.attr("dy", "0.71em")
             .attr("text-anchor", "end")
             .text("Temp (°C)");
 
@@ -66,7 +67,7 @@ function init() {
             .attr("text-anchor", "middle")
             .style("font-size", "14px")
             .style('text-decoration','underline')
-            .text("Plot of mean temperature of each year in Madrid");
+            .text("Yearly mean temperature in Kaunas");
 
         g.append("path")
             .datum(data)
