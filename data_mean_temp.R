@@ -24,3 +24,8 @@ colnames(dat)[2:3] <- c("Kaunas", "Madrid")
 dat <- dat[complete.cases(dat),]
 write.table(dat, "data.tsv", sep="\t", row.names = F, quote = F)
 
+install.packages("trend")
+library(trend)
+
+mk.test(dat[,2], alternative = "greater")
+mk.test(dat[,3], alternative = "greater")

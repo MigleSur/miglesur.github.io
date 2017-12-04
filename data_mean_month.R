@@ -1,7 +1,7 @@
 kun <- read.table("station_Kaunas.txt", h=T)
 
 kun <- kun[-1,]
-kun <- kun[-(nrow(kun)),]
+kun <- kun[-((nrow(kun)-1):nrow(kun)),]
 kun <- kun[which(kun$YEAR > 1952),]
 
 kun_months <- kun[,2:13]

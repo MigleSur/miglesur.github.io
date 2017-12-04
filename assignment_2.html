@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="assignment_2.css">
     <title>Assignment 2</title>
+    <style> p {width:720px; word-wrap:break-word; text-indent: 30pt;} </style>
     <script src="https://d3js.org/d3.v4.min.js"></script>
     <script src="mean_temp_plot.js"></script>
     <script src="barplot.js"></script>
@@ -17,11 +18,60 @@
 </head>
 <body>
     <svg width="720" height="400" id="plot1"></svg>
-    <div>The plot shows mean yearly temperature in Madrid.
-        The plot was made by using the template provided by
+    <div>The plot shows mean yearly temperature in two cities: Kaunas (Lithuania) and Madrid (Spain).
+        <br>The plot was made by adapting the template provided by
         <a href="https://bl.ocks.org/mbostock/3883245">bl.ocks.org</a>. </div>
-    <div>The data was prepared with R, the script which was used is <a href="data_mean_temp.R">here</a>. </div>
+    <div>The data was prepared with R, the script which was used is <a href="data_mean_temp.R">here</a>.</div>
+    <p>
+        Two data sets were used for visualizations with the same time interval (1953-2015) for both cities.
+        For the first plot the last column of the data sets was used as it shows the mean yearly temperature.
+        The line plot shows how the mean yearly temperature changed since 1953 in Madrid and Kaunas. The global
+        average is shown by the horizontal red lines.
+    </p>
+    <p>
+        One could hypothesize that the mean yearly temperature is increasing because of the global warming in both cities.
+        However the conclusion can not be drawn without a statistical test. After performing a Mann-Kendall non-parametric
+        test (code is present in R script) for positive changes over time, in both cases we got p-values lower than 0.05
+        (for Kaunas < 10e-6, for Madrid < 10e-3) and so we can conclude that the mean yearly temperature in both cities
+        is increasing over time.
+    </p>
+
+    <p>It is remarkable to notice that the coldest city (Kaunas) is the one showing the strongest increasing trend.</p>
 
     <svg width="720" height="400" id="plot2"></svg>
+    <div> The plot shows the mean temperature for each month in two cities: Kaunas (Lithuania) and Madrid (Spain).</div>
+    <div> The data was prepared with R, the script which was used is <a href="data_mean_month.R">here</a>. </div>
+
+    <!--<p>-->
+        <!--As in the first plot it is obvious that the temperature is always lower in Lithuania compared with Spain.-->
+        <!--This information can be useful for people looking for holiday destinations.-->
+    <!--</p>-->
+    <p>
+        Both cities follow the same trend: winter time is colder than the summer time. Also, it is interesting that
+        the temperature difference between Kaunas and Madrid is highest in the winter but is way smaller in spring.
+        This reveals that Kaunas temperature increase through the year is bigger than in Madrid, and thus explains the finding from the line plot:
+        colder cities are more sensitive to global warming.
+
+    </p>
+
+    <h3>Individual part:</h3>
+    <ul>
+        <li>
+            Which data set (that is realistically possible for you to obtain) and visualization would you include to give
+            a more confident answer to the articles main question?
+        </li>
+        <ul>
+            <li>Miglė:</li>
+        </ul>
+
+        <li>
+            So far we've only taught static visualizations. Which dynamic elements or interactions could improve your article?
+        </li>
+        <ul>
+            <li>Antonio:</li>
+        </ul>
+
+
+    </ul>
 </body>
 </html>
