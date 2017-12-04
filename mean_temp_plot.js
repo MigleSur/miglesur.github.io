@@ -79,6 +79,24 @@ function init_plot1() {
             .style('text-decoration','underline')
             .text("Yearly mean temperature in Kaunas and Madrid");
 
+        g.append("line")          // attach a line
+            .style("stroke", "red")  // colour the line
+            .attr("id", "meanline")
+            .attr("x1", x(parseTime(1953)))       // x position of the first end of the line
+            .attr("y1", y(6.6))        // y position of the first end of the line
+            .attr("x2", x(parseTime(2015)))       // x position of the second end of the line
+            .attr("y2", y(6.6));       // y position of the second end of the line
+
+
+        g.append("line")          // attach a line
+            .style("stroke", "red")  // colour the line
+            .attr("id", "meanline")
+            .attr("x1", x(parseTime(1953)))       // x position of the first end of the line
+            .attr("y1", y(15.3))        // y position of the first end of the line
+            .attr("x2", x(parseTime(2015)))       // x position of the second end of the line
+            .attr("y2", y(15.3));       // y position of the second end of the line
+
+
         var city = g.selectAll(".city")
             .data(cities)
             .enter().append("g")
