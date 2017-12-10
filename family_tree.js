@@ -87,6 +87,13 @@ function init() {
         .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
+    var avatar = d3.select('#avatar')
+        .attr({
+        width: 300,
+        height: 300,
+        border: '1px solid #ccc'
+    });
+
     root = treeData[0];
 
     update(root);
@@ -170,7 +177,9 @@ function init() {
 
         // Declare the nodes
         var node = svg.selectAll("g.node")
-            .data(nodes, function(d) { return d.id || (d.id = ++i); });
+            .data(nodes, function(d) {
+                // console.log(d);
+                return d.id || (d.id = ++i); });
 
         // Enter the nodes.
         var nodeEnter = node.enter().append("g")
@@ -215,6 +224,36 @@ function init() {
             })
             .attr("color", function(d) {return d.edge_color})
             .attr("d", diagonal);
+
+
+        // Interactivity
+        var node = node
+            .on('mousemove',function(d){
+
+                avatar_url =  "https://pmctvline2.files.wordpress.com/2016/08/the-simpsons-donald-trump-episode.jpg?w=620"
+                if (d.name == "Donald Trump") {
+                    avatar_url = 'https://media.vanityfair.com/photos/573b095fff97be4071975537/master/pass/Donald-Trump.jpg'
+                } else if (d.name == "Ivana Trump") {
+                    avatar_url = 'http://cdn1.theweek.co.uk/sites/theweek/files/2016/11/161114_ivana_trump.jpg'
+                } else if (d.name == "Marla Trump") {
+                    avatar_url = 'http://assets.nydailynews.com/polopoly_fs/1.1531757.1385619480!/img/httpImage/image.jpg_gen/derivatives/article_750/project-children-benefit.jpg'
+                } else if (d.name == "Melanie Trump") {
+                    avatar_url = 'http://www.telegraph.co.uk/content/dam/fashion/2017/03/09/JS122853520_EPA_US-First-Lady-Melania-Trump-hosts-a-luncheon-in-honor-of-International-Women27s-Day_trans_NvBQzQNjv4Bqg3gGNyDav2oYwmZEB-RnOcpY0-7aBlNMN1-Ad8kbcbQ.jpg'
+                }
+
+                console.log(d)
+                d3.select('#event-text')
+                .text(d.name);
+                d3.select('#avatar')
+                    .attr('src', avatar_url);
+            })
+
+            .on('mouseout',function(d){
+                d3.select('#event-text')
+                    .text("Nothing");
+                d3.select('#avatar')
+                    .attr('src', "https://pmctvline2.files.wordpress.com/2016/08/the-simpsons-donald-trump-episode.jpg?w=620")
+            });
 
     }
 
