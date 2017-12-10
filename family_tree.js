@@ -203,7 +203,7 @@ function init() {
             .attr("transform", function(d) {
                 return "translate(" + d.y + "," + d.x + ")"; });
 
-        sex=["M","F","M","F","F","F","M","M","M","F","F","M","M","F","F","F","M","F"]
+        sex=["M","F","M","F","M","F","M","M","M","F","F","M","M","F","F","F","M","F"]
         //add the circle for each node
         nodeEnter.append("circle")
             .filter(function(d) {d.sex=sex[d.id-1]; return d.sex=="F"})
