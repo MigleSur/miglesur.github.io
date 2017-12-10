@@ -85,7 +85,7 @@ function init() {
         }
     ];
 
-    var margin = {top: 20, right: 120, bottom: 20, left: 120},
+    var margin = {top: 20, right: 120, bottom: 20, left: 140},
         width = 960 - margin.right - margin.left,
         height = 500 - margin.top - margin.bottom;
 
@@ -176,8 +176,8 @@ function init() {
 
     function update(source) {
 
+        //assign different colors for different depths
         var colors = ["#740909", "#1A25BA", "#c62526", "#ff6969"];
-        // var edge_colors = Array(12).fill("blue").concat(Array(2).fill("red").concat(Array(2).fill("green")));
         var edge_styles = Array(12).fill("20").concat(Array(2).fill("10").concat(Array(2).fill("5")));
 
 
@@ -203,13 +203,27 @@ function init() {
             .attr("transform", function(d) {
                 return "translate(" + d.y + "," + d.x + ")"; });
 
+        sex=["M","F","M","F","F","F","M","M","M","F","F","M","M","F","F","F","M","F"]
+        //add the circle for each node
         nodeEnter.append("circle")
+            .filter(function(d) {d.sex=sex[d.id-1]; return d.sex=="F"})
             .attr("r", 10)
             .attr("id", function(d) {return d.name.replace(/\s/g, '');})
             .attr("stroke", function(d) {return d.color})
             .attr("fill", "#fff")
             .attr("stroke-width", 3);
 
+        nodeEnter.append("rect")
+            .filter(function(d) {d.sex=sex[d.id-1]; return d.sex=="M"})
+            .attr("width", 18)
+            .attr("height", 18)
+            .attr("transform", "translate(-9,-9)")
+            .attr("id", function(d) {return d.name.replace(/\s/g, '');})
+            .attr("stroke", function(d) {return d.color})
+            .attr("fill", "#fff")
+            .attr("stroke-width", 3);
+
+        //add the text for each node
         nodeEnter.append("text")
             .attr("x", function(d) {
                 return d.children || d._children ? -13 : 13; })
@@ -219,6 +233,7 @@ function init() {
             .text(function(d) { return d.name; });
 
 
+        //add style for each edge
         links.forEach(function(d) {
             // d.edge_color = edge_colors[d.target.id - 2];
             d.edge_style = edge_styles[d.target.id - 2];
@@ -250,15 +265,15 @@ function init() {
             .on('mousemove',function(d){
                 document.querySelector('circle').style.fill= 'white';
 
-                avatar_url =  "https://pmctvline2.files.wordpress.com/2016/08/the-simpsons-donald-trump-episode.jpg?w=620"
+                avatar_url =  "http://digitalspyuk.cdnds.net/16/45/320x320/square-1478690065-donald-trump-president-the-simpsons.jpg"
                 if (d.name == "Donald Trump") {
-                    avatar_url = 'https://media.vanityfair.com/photos/573b095fff97be4071975537/master/pass/Donald-Trump.jpg'
+                    avatar_url = 'https://i.pinimg.com/236x/88/cd/0f/88cd0f0f5867f6678de156a3a4ea9315--donald-trump-donald-oconnor.jpg'
                 } else if (d.name == "Ivana Trump") {
-                    avatar_url = 'http://cdn1.theweek.co.uk/sites/theweek/files/2016/11/161114_ivana_trump.jpg'
+                    avatar_url = 'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/gettyimages-846566836-1508108688.jpg?crop=1xw:1xh;center,top&resize=480:*'
                 } else if (d.name == "Marla Trump") {
                     avatar_url = 'http://assets.nydailynews.com/polopoly_fs/1.1531757.1385619480!/img/httpImage/image.jpg_gen/derivatives/article_750/project-children-benefit.jpg'
                 } else if (d.name == "Melanie Trump") {
-                    avatar_url = 'http://www.telegraph.co.uk/content/dam/fashion/2017/03/09/JS122853520_EPA_US-First-Lady-Melania-Trump-hosts-a-luncheon-in-honor-of-International-Women27s-Day_trans_NvBQzQNjv4Bqg3gGNyDav2oYwmZEB-RnOcpY0-7aBlNMN1-Ad8kbcbQ.jpg'
+                    avatar_url = 'https://upload.wikimedia.org/wikipedia/commons/b/b4/Melania_Trump_at_the_Inauguration.jpg'
                 }
 
                 d3.select('#event-text')
@@ -274,7 +289,7 @@ function init() {
                 d3.select('#event-text')
                     .text("Nothing");
                 d3.select('#avatar')
-                    .attr('src', "https://pmctvline2.files.wordpress.com/2016/08/the-simpsons-donald-trump-episode.jpg?w=620");
+                    .attr('src', "http://digitalspyuk.cdnds.net/16/45/320x320/square-1478690065-donald-trump-president-the-simpsons.jpg");
                 document.querySelector('[id^="'+d.name.replace(/\s/g, '') +'"]').style.fill = 'white';
 
 

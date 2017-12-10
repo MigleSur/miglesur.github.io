@@ -10,13 +10,12 @@ ul > p {
 
 ul {
     width:800px;
-
 }
 
 
 img {
-    width: 300px;
-    height: 300px;
+    width: 240px;
+    height: 330px;
     border: 5px solid #000;
 }
 
@@ -31,12 +30,12 @@ img {
     text-align: center;
     margin: auto;
     height = 500px;
-    width = 1040px;
+    width = 960px;
 }
 
 body {
     /*background: #f47c1b;*/
-    background: #fdff50;
+    /*background: #fdff50;*/
 }
 
 li {
@@ -44,9 +43,6 @@ li {
     margin-top: 5px;
 }
 
-ul {
-    border: 5px solid #f47c1b;
-}
 
 input {
     font-family: Quicksand;
