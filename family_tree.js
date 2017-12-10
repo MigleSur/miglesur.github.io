@@ -91,9 +91,71 @@ function init() {
 
     update(root);
 
+
+    svg.append("circle")
+        .attr("r", 5)
+        .attr("cx", -90)
+        .attr("cy", 40)
+        .attr("stroke", "#740909")
+        .attr("fill", "#fff")
+        .attr("stroke-width", 2);
+
+    svg.append("circle")
+        .attr("r", 5)
+        .attr("cx", -90)
+        .attr("cy", 60)
+        .attr("stroke", "#1A25BA")
+        .attr("fill", "#fff")
+        .attr("stroke-width", 2);
+
+    svg.append("circle")
+        .attr("r", 5)
+        .attr("cx", -90)
+        .attr("cy", 80)
+        .attr("stroke", "#c62526")
+        .attr("fill", "#fff")
+        .attr("stroke-width", 2);
+
+    svg.append("circle")
+        .attr("r", 5)
+        .attr("cx", -90)
+        .attr("cy", 100)
+        .attr("stroke", "#ff6969")
+        .attr("fill", "#fff")
+        .attr("stroke-width", 2);
+
+    svg.append("text")
+        .attr("x", -80)
+        .attr("y", 44)
+        .attr("text-anchor", "start")
+        .style("font-size", "12px")
+        .text("Donald Trump");
+
+    svg.append("text")
+        .attr("x", -80)
+        .attr("y", 64)
+        .attr("text-anchor", "start")
+        .style("font-size", "12px")
+        .text("Donald Trump's wifes");
+
+    svg.append("text")
+        .attr("x", -80)
+        .attr("y", 84)
+        .attr("text-anchor", "start")
+        .style("font-size", "12px")
+        .text("Donald Trump's children");
+
+    svg.append("text")
+        .attr("x", -80)
+        .attr("y", 104)
+        .attr("text-anchor", "start")
+        .style("font-size", "12px")
+        .text("Donald Trump's grandchildren");
+
+
     function update(source) {
 
-        var colors = ["#5a0303", "#1A25BA", "#c62526", "#ffa8a3"];
+        var colors = ["#740909", "#1A25BA", "#c62526", "#ff6969"];
 
         // Compute the new tree layout.
         var nodes = tree.nodes(root),
@@ -101,7 +163,7 @@ function init() {
 
         // Normalize for fixed-depth.
         nodes.forEach(function(d) { d.y = d.depth * 180; });
-        nodes.forEach(function(d) { d.color = colors[d.depth]; console.log(d.color)});
+        nodes.forEach(function(d) { d.color = colors[d.depth];});
 
         // Declare the nodes
         var node = svg.selectAll("g.node")
@@ -139,5 +201,6 @@ function init() {
             .attr("d", diagonal);
 
     }
+
 }
 
