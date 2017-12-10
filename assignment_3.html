@@ -5,38 +5,25 @@
     <title>Assignment 3</title>
     <style>
 
-        .node {
-            cursor: pointer;
-        }
 
-        .node circle {
-            fill: #fff;
-            stroke: steelblue;
-            stroke-width: 1.5px;
-        }
 
-        .node text {
-            font: 10px sans-serif;
-        }
+        .node text { font: 12px sans-serif; }
 
         .link {
             fill: none;
             stroke: #ccc;
-            stroke-width: 1.5px;
+            stroke-width: 2px;
         }
 
     </style>
-    <script src="//d3js.org/d3.v3.min.js"></script>
-    <script>
-        function start() {
-            init_plot1();
-        }
-        d3.select(window).on('load', start);
-    </script>
+    <script src="https://d3js.org/d3.v3.min.js"></script>
+    <script src="family_tree.js"></script>
+
 </head>
 <body>
     <h3>Trump family tree</h3>
-    <svg width="720" height="400"></svg>
+    <svg width="1040" height="500"></svg>
+
 
 </body>
 </html>

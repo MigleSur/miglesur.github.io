@@ -1,65 +1,51 @@
 {
   "name": "Donald Trump",
-  "partners": [
+  "children": [
     {
       "name": "Ivana Trump",
       "children": [
         {
           "name": "Donald Trump Jr.",
-          "partners": [
+          "children": [
             {
-              "name": "Vanessa Trump",
-              "children": [
-                {
-                  "name": "Kai Madison"
-                },
-                {
-                  "name": "Donald III"
-                },
-                {
-                  "name": "Chloe Sophia"
-                },
-                {
-                  "name": "Tristan Milos"
-                },
-                {
-                  "name": "Spencer Frederick"
-                }
-              ]
+              "name": "Kai Madison"
+            },
+            {
+              "name": "Donald III"
+            },
+            {
+              "name": "Chloe Sophia"
+            },
+            {
+              "name": "Tristan Milos"
+            },
+            {
+              "name": "Spencer Frederick"
             }
           ]
+
+        },
+        {
+          "name": "Eric Trump"
         },
         {
           "name": "Ivanka Trump",
-          "partners": [
+          "children":[
             {
-              "name": "Jared Kushner",
-              "children": [
-                {
-                  "name": "Arabella Rose"
-                },
-                {
-                  "name": "Joseph Frederick"
-                },
-                {
-                  "name": "Theodore James"
-                }
-              ]
+              "name": "Arabella Rose"
+            },
+            {
+              "name": "Joseph Frederick"
+            },
+            {
+              "name": "Theodore James"
             }
           ]
-        },          
-        {
-          "name": "Eric Trump",
-          "partners": [
-            {
-              "name": "Lara Yunaska"
-            }
-          ]
-        }          
+        }
       ]
     },
     {
-      "name": "Marla Maples",
+      "name": "Marla Trump",
       "children": [
         {
           "name": "Tiffany Trump"
@@ -73,6 +59,6 @@
           "name": "Baron Trump"
         }
       ]
-    }    
+    }
   ]
 }
