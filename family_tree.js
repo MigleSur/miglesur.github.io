@@ -136,7 +136,7 @@ function init() {
         .attr("y", 64)
         .attr("text-anchor", "start")
         .style("font-size", "12px")
-        .text("Donald Trump's wifes");
+        .text("Donald Trump's wives");
 
     svg.append("text")
         .attr("x", -80)
