@@ -94,6 +94,9 @@ function init() {
     function update(source) {
 
         var colors = ["#5a0303", "#1A25BA", "#c62526", "#ffa8a3"];
+        // var edge_colors = Array(12).fill("blue").concat(Array(2).fill("red").concat(Array(2).fill("green")));
+        var edge_styles = Array(12).fill("20").concat(Array(2).fill("10").concat(Array(2).fill("5")));
+
 
         // Compute the new tree layout.
         var nodes = tree.nodes(root),
@@ -101,7 +104,7 @@ function init() {
 
         // Normalize for fixed-depth.
         nodes.forEach(function(d) { d.y = d.depth * 180; });
-        nodes.forEach(function(d) { d.color = colors[d.depth]; console.log(d.color)});
+        nodes.forEach(function(d) { d.color = colors[d.depth];});
 
         // Declare the nodes
         var node = svg.selectAll("g.node")
@@ -128,14 +131,27 @@ function init() {
             .text(function(d) { return d.name; });
 
 
+        links.forEach(function(d) {
+            // d.edge_color = edge_colors[d.target.id - 2];
+            d.edge_style = edge_styles[d.target.id - 2];
+        });
+
         // Declare the links
         var link = svg.selectAll("path.link")
-            .data(links, function(d) {return d.target.id; });
+            .data(links,
+                function(d) {return d.target.id; });
 
 
         // Enter the links.
         link.enter().insert("path", "g")
             .attr("class", "link")
+            // .attr("stroke", function(d) {
+            //     return d.edge_color;
+            // })
+            .attr("stroke-dasharray", function(d) {
+                return d.edge_style;
+            })
+            .attr("color", function(d) {return d.edge_color})
             .attr("d", diagonal);
 
     }
