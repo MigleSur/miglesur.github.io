@@ -3,37 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <title>Assignment 3</title>
-    <style> ul {width:800px; word-wrap:break-word;} </style>
-    <style>
-        .link {
-            fill: none;
-            stroke: #ccc;
-            stroke-width: 4px;
-        }
-
-    </style>
     <script src="https://d3js.org/d3.v3.min.js"></script>
     <script src="family_tree.js"></script>
+    <link rel="stylesheet" type="text/css" href="assignment_3.css">
+    <link href="https://fonts.googleapis.com/css?family=Bungee|Quicksand|Roboto+Mono" rel="stylesheet">
 
 </head>
 <body>
     <h3>Trump family tree</h3>
-    <div id="content" style="width: 100%; overflow=hidden">
-        <div style="float:left;">
-           <svg width="1040" height="500"></svg>
+    <div style="height:500px;">
+        <div id = "tree" style="float:left;">
+            <svg></svg>
         </div>
-        <div style="margin-left: 550px;">
+        <div id = "interactive_tree" style="width: 300px; float: left;">
+            <form>
+                <input type="text" name="person" id="input_person" placeholder="Write a member name" value = "Donald Trump"><br>
+                <button type="button" id="clickme">
+                    Light me up!
+                </button>
+            </form>
+
+            <p>Enter a family member name and the corresponding node will become black after pressing the above button.</p>
+
+        </div>
+
+        <div id = "interactive_image" style="width: 300px; float: left;">
             <p>Pointing at: <span id="event-text">Nothing</span></p>
-            <img id="avatar" src="https://pmctvline2.files.wordpress.com/2016/08/the-simpsons-donald-trump-episode.jpg?w=620" width="500" height="500"></img>
+            <img id="avatar" src="https://pmctvline2.files.wordpress.com/2016/08/the-simpsons-donald-trump-episode.jpg?w=620"></img>
         </div>
     </div>
-    <ul>
-        <li> It was chosen to simplify the tree and not include the partners of Trump's children. </li>
-        <li> The colors were chosen to show how much of Donald Trump's blood the person has.
-        This results in Donald Trump shown as very dark red, all his wives as blue (i.e. no genetic relation to Donald Trump),
-        His children are lighter red as they have only 50% of Donald's genes and grandchildren pink - 25% of
-        Donald's genes. </li>
-        <li> Style of edges is different for each marriage of Donald Trump. Different styles of
+
+
+
+    <div style="position: relative;">
+        <div>
+            <ul>
+                <li> It was chosen to simplify the tree and not include the partners of Trump's children. </li>
+                <li> The colors were chosen to show how much of Donald Trump's blood the person has.
+                    This results in Donald Trump shown as very dark red, all his wives as blue (i.e. no genetic relation to Donald Trump),
+                    His children are lighter red as they have only 50% of Donald's genes and grandchildren pink - 25% of
+                    Donald's genes. </li>
+                <li> Style of edges is different for each marriage of Donald Trump. Different styles of
         edges make it very easy to see how many children and grandchildren Donald Trump has from each marriage. </li>
         <li> In genetics it is accepted to mark males as squares and females as circles. In order to make it easier to
         understand how many sons/grandsons and daughters/granddaughters Donald Trump has all the individuals in the family
@@ -41,7 +51,12 @@
         <li> Interactivity in this plot is limited to showing the pictures of Donald Trump and his wives when the mouse is
         pointing at them. It could be expanded to all the family members. Also, it would be useful to be able to click on
         the chosen family member and get a short description about him/her. </li>
-    </ul>
+             </ul>
+        </div>
+        <div>
+            <p>Done by Miglė Sur and Antonio Ortega</p>
+        </div>
+    </div>
 
 </body>
 </html>

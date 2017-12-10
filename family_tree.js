@@ -1,5 +1,22 @@
 d3.select(window).on('load', init);
 
+function lightUp() {
+    if(typeof personId !== 'undefined')
+    // document.getElementById(personId).style.fill = 'white';
+        document.querySelector('[id^="'+personId+'"]').style.fill = 'white';
+    personId = document.getElementById("input_person").value.replace(/\s/g, '');
+    // document.getElementById(personId).style.fill = 'black';
+    document.querySelector('[id^="'+personId+'"]').style.fill = 'black';
+
+
+    console.log("Selected name:");
+    console.log(personId);
+    console.log(document.getElementById(personId));
+
+
+};
+
+
 function init() {
     var treeData = [
         {
@@ -87,13 +104,6 @@ function init() {
         .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-    var avatar = d3.select('#avatar')
-        .attr({
-        width: 300,
-        height: 300,
-        border: '1px solid #ccc'
-    });
-
     root = treeData[0];
 
     update(root);
@@ -160,6 +170,10 @@ function init() {
         .text("Donald Trump's grandchildren");
 
 
+
+
+
+
     function update(source) {
 
         var colors = ["#740909", "#1A25BA", "#c62526", "#ff6969"];
@@ -172,8 +186,10 @@ function init() {
             links = tree.links(nodes);
 
         // Normalize for fixed-depth.
-        nodes.forEach(function(d) { d.y = d.depth * 180; });
-        nodes.forEach(function(d) { d.color = colors[d.depth];});
+        nodes.forEach(function(d) {
+            d.y = d.depth * 180;
+            d.color = colors[d.depth];
+        });
 
         // Declare the nodes
         var node = svg.selectAll("g.node")
@@ -189,6 +205,7 @@ function init() {
 
         nodeEnter.append("circle")
             .attr("r", 10)
+            .attr("id", function(d) {return d.name.replace(/\s/g, '');})
             .attr("stroke", function(d) {return d.color})
             .attr("fill", "#fff")
             .attr("stroke-width", 3);
@@ -227,8 +244,11 @@ function init() {
 
 
         // Interactivity
+
+
         var node = node
             .on('mousemove',function(d){
+                document.querySelector('circle').style.fill= 'white';
 
                 avatar_url =  "https://pmctvline2.files.wordpress.com/2016/08/the-simpsons-donald-trump-episode.jpg?w=620"
                 if (d.name == "Donald Trump") {
@@ -241,21 +261,31 @@ function init() {
                     avatar_url = 'http://www.telegraph.co.uk/content/dam/fashion/2017/03/09/JS122853520_EPA_US-First-Lady-Melania-Trump-hosts-a-luncheon-in-honor-of-International-Women27s-Day_trans_NvBQzQNjv4Bqg3gGNyDav2oYwmZEB-RnOcpY0-7aBlNMN1-Ad8kbcbQ.jpg'
                 }
 
-                console.log(d)
                 d3.select('#event-text')
                 .text(d.name);
                 d3.select('#avatar')
                     .attr('src', avatar_url);
+                document.querySelector('[id^="'+d.name.replace(/\s/g, '') +'"]').style.fill = 'black';
+
+
             })
 
             .on('mouseout',function(d){
                 d3.select('#event-text')
                     .text("Nothing");
                 d3.select('#avatar')
-                    .attr('src', "https://pmctvline2.files.wordpress.com/2016/08/the-simpsons-donald-trump-episode.jpg?w=620")
+                    .attr('src', "https://pmctvline2.files.wordpress.com/2016/08/the-simpsons-donald-trump-episode.jpg?w=620");
+                document.querySelector('[id^="'+d.name.replace(/\s/g, '') +'"]').style.fill = 'white';
+
+
             });
+
 
     }
 
+
+    document.getElementById("clickme")
+        .addEventListener("click", lightUp, false);
 }
+
 
