@@ -78,6 +78,12 @@ function init_plot1() {
 
 function init_plot2(){
 
+    function pad(n, width, z) {
+        z = z || '0';
+        n = n + '';
+        return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
+    }
+
     var svg = d3.select('#plot2'),
         margin = {top: 20, right: 40, bottom: 30, left: 50},
         width = +svg.attr("width") - margin.left - margin.right,
@@ -90,10 +96,21 @@ function init_plot2(){
     var y = d3.scaleLinear()
         .range([height,0]);
 
-    d3.csv("hands.csv", function(error, data){
-        if (error) throw error;
-        var hands = d3.map(data)
-        hands.each(function(d){console.log(d)})
+    d3.csv("hands.csv",
+        function(d) {
+        var i;
+        for (i=1; i<=57; i++) {
+            d["X"+pad(i, 2)] = +d["X"+pad(i, 2)];
+            d["Y"+pad(i, 2)] = +d["Y"+pad(i, 2)];
+        }
+        return d},
+
+        function(error, data){
+            console.log(data);
+
+            if (error) throw error;
+        var hands = d3.map(data);
+        // hands.each(function(d){console.log(d)})
     })
 
 
