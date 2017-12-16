@@ -8,7 +8,7 @@
     <script>
         function start() {
             init_plot1();
-            init_plot2();
+            init_plot2("0");
         }
         d3.select(window).on('load', start);
     </script>
@@ -16,6 +16,6 @@
 </head>
 <body>
     <svg width="720" height="400" id="plot1"></svg>
-    <svg width="720" height="400" id="plot2"></svg>
+    <svg width="380" height="400" id="plot2"></svg>
 </body>
 </html>
