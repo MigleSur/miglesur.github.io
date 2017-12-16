@@ -112,19 +112,23 @@ function init_plot2(){
         var xval = d3.map(hand).values().slice(0,56);
         var yval = d3.map(hand).values().slice(56,112);
 
+        var final = d3.zip(xval,yval);
 
-        svg.selectAll("circle.datapoint")
-            .data(d3.zip(xval,yval))
+        var line = d3.line()
+            .x(function(d){return x(d[0]);})
+            .y(function(d){return y(d[1]);})
+            .curve(d3.curveCatmullRom)
+
+        g.append('path')
+            .attr('d', line(final))
+            .attr("stroke", "#0f1564")
+            .attr("stroke-width", 2)
+            .attr("fill", "none");
+
+        g.selectAll("circle")
+            .data(final)
             .enter()
             .append("circle")
-            .attr("class", "datapoint")
-            .attr("cx", function(d){
-                return x(d[0]);
-            })
-            .attr("cy", function(d){
-                return y(d[1]);
-            })
-            .attr("r", 2);
 
         })
 }
