@@ -9,10 +9,10 @@ function init_plot1() {
 
     // Create scales
     var x = d3.scaleLinear()
-        .range([0,width]);
+        .range([20,width]);
 
     var y = d3.scaleLinear()
-        .range([height,0]);
+        .range([height-20,0]);
 
     var valueline = d3.line()
         .x(function(d){return x(d.PC001);})
@@ -26,31 +26,24 @@ function init_plot1() {
             d.PC002 = +d.PC002;
         });
 
-        /*
-        d3.text("hands_pca.csv", function(text) {
-        var hand_pca_data = d3.csvParse(text).map(function (col, i) {
-            return d3.csvParse(text).map(function (row) {
-                return +row[i]
-            });
-        });
-    });
-    */
         x.domain(d3.extent(data, function(d){return d.PC001;}));
         y.domain(d3.extent(data, function(d){return d.PC002;}));
 
+        //X axis
         g.append("g")
-            .attr("transform", "translate(0," + height + ")")
+            .attr("transform", "translate(-20," + height + ")")
             .call(d3.axisBottom(x))
             .append("text")
             .attr("fill", "#000")
             .attr("y", -4)
-            .attr("x", 650)
-            .attr("text-anchor", "end")
+            .attr("x", 610)
+            .attr("text-anchor", "start")
             .text("PC1")
         ;
 
         // Y axis
         g.append("g")
+            .attr("transform", "translate(0,20)")
             .call(d3.axisLeft(y))
             .append("text")
             .attr("fill", "#000")
@@ -72,11 +65,11 @@ function init_plot1() {
             .attr('r', 5)
             .attr('fill', 'black')
             .append("svg:title")
-            .text(function(d, i){return i;})
+            .text(function(d, i){i = +i; return "Hand: "+(i+1);})
     })
 }
 
-function init_plot2(){
+function init_plot2(num){
 
     function pad(n, width, z) {
         z = z || '0';
@@ -85,7 +78,7 @@ function init_plot2(){
     }
 
     var svg = d3.select('#plot2'),
-        margin = {top: 20, right: 40, bottom: 30, left: 50},
+        margin = {top: 60, right: 20, bottom: 70, left: 20},
         width = +svg.attr("width") - margin.left - margin.right,
         height = +svg.attr("height") - margin.top - margin.bottom,
         g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
@@ -108,11 +101,13 @@ function init_plot2(){
         function(error, data){
             if (error) throw error;
         var hands = d3.map(data);
-        var hand = hands.get("0");
+        var hand = hands.get(num);
         var xval = d3.map(hand).values().slice(0,56);
         var yval = d3.map(hand).values().slice(56,112);
 
+        //create an array of arrays
         var final = d3.zip(xval,yval);
+
 
         var line = d3.line()
             .x(function(d){return x(d[0]);})
@@ -121,14 +116,11 @@ function init_plot2(){
 
         g.append('path')
             .attr('d', line(final))
-            .attr("stroke", "#0f1564")
-            .attr("stroke-width", 2)
-            .attr("fill", "none");
+            .attr("stroke", "none")
+            .attr("fill", "#4c2200");
 
-        g.selectAll("circle")
+        g.selectAll("line")
             .data(final)
             .enter()
-            .append("circle")
-
-        })
+        });
 }
