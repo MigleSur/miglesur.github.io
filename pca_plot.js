@@ -15,19 +15,28 @@ function init_plot1() {
         .range([height,0]);
 
     var valueline = d3.line()
-        .x(function(d){return x(d.PC1);})
-        .y(function(d){return y(d.PC2);});
+        .x(function(d){return x(d.PC001);})
+        .y(function(d){return y(d.PC002);});
 
     d3.csv("hands_pca.csv", function (error, data) {
         if (error) throw error;
 
         data.forEach(function(d){
-            d.PC1 = +d.PC1;
-            d.PC2 = +d.PC2;
+            d.PC001 = +d.PC001;
+            d.PC002 = +d.PC002;
         });
 
-        x.domain(d3.extent(data, function(d){return d.PC1;}));
-        y.domain(d3.extent(data, function(d){return d.PC2;}));
+        /*
+        d3.text("hands_pca.csv", function(text) {
+        var hand_pca_data = d3.csvParse(text).map(function (col, i) {
+            return d3.csvParse(text).map(function (row) {
+                return +row[i]
+            });
+        });
+    });
+    */
+        x.domain(d3.extent(data, function(d){return d.PC001;}));
+        y.domain(d3.extent(data, function(d){return d.PC002;}));
 
         g.append("g")
             .attr("transform", "translate(0," + height + ")")
@@ -55,10 +64,10 @@ function init_plot1() {
             .data(data)
             .enter().append("circle")
             .attr('cx', function (d) {
-                return x(d.PC1);
+                return x(d.PC001);
             })
             .attr('cy', function (d) {
-                return y(d.PC2);
+                return y(d.PC002);
             })
             .attr('r', 5)
             .attr('fill', 'black')
@@ -81,8 +90,11 @@ function init_plot2(){
     var y = d3.scaleLinear()
         .range([height,0]);
 
-    d3.text("hands.csv", function(text) {
-        console.log(d3.csv.parseRows(text));
-    });
+    d3.csv("hands.csv", function(error, data){
+        if (error) throw error;
+        var hands = d3.map(data)
+        hands.each(function(d){console.log(d)})
+    })
+
 
 }
