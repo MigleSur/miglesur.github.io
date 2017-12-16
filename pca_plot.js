@@ -106,12 +106,25 @@ function init_plot2(){
         return d},
 
         function(error, data){
-            console.log(data);
-
             if (error) throw error;
         var hands = d3.map(data);
-        // hands.each(function(d){console.log(d)})
-    })
+        var hand = hands.get("0");
+        var xval = d3.map(hand).values().slice(0,56);
+        var yval = d3.map(hand).values().slice(56,112);
 
 
+        svg.selectAll("circle.datapoint")
+            .data(d3.zip(xval,yval))
+            .enter()
+            .append("circle")
+            .attr("class", "datapoint")
+            .attr("cx", function(d){
+                return x(d[0]);
+            })
+            .attr("cy", function(d){
+                return y(d[1]);
+            })
+            .attr("r", 2);
+
+        })
 }
