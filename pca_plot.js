@@ -1,8 +1,6 @@
-d3.select(window).on('load', init);
+function init_plot1() {
 
-function init() {
-
-    var svg = d3.select("svg"),
+    var svg = d3.select("#plot1"),
         margin = {top: 20, right: 40, bottom: 30, left: 50},
         width = +svg.attr("width") - margin.left - margin.right,
         height = +svg.attr("height") - margin.top - margin.bottom,
@@ -65,6 +63,26 @@ function init() {
             .attr('r', 5)
             .attr('fill', 'black')
             .append("svg:title")
-            .text(function(d, i){return d.PC1;})
+            .text(function(d, i){return i;})
     })
+}
+
+function init_plot2(){
+
+    var svg = d3.select('#plot2'),
+        margin = {top: 20, right: 40, bottom: 30, left: 50},
+        width = +svg.attr("width") - margin.left - margin.right,
+        height = +svg.attr("height") - margin.top - margin.bottom,
+        g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+    var x = d3.scaleLinear()
+        .range([0,width]);
+
+    var y = d3.scaleLinear()
+        .range([height,0]);
+
+    d3.text("hands.csv", function(text) {
+        console.log(d3.csv.parseRows(text));
+    });
+
 }
