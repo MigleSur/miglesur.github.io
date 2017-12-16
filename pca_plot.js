@@ -9,14 +9,10 @@ function init_plot1() {
 
     // Create scales
     var x = d3.scaleLinear()
-        .range([0,width]);
+        .range([20,width]);
 
     var y = d3.scaleLinear()
-        .range([height,0]);
-
-    var valueline = d3.line()
-        .x(function(d){return x(d.PC001);})
-        .y(function(d){return y(d.PC002);});
+        .range([height-20,0]);
 
     d3.csv("hands_pca.csv", function (error, data) {
         if (error) throw error;
@@ -26,15 +22,6 @@ function init_plot1() {
             d.PC002 = +d.PC002;
         });
 
-        /*
-        d3.text("hands_pca.csv", function(text) {
-        var hand_pca_data = d3.csvParse(text).map(function (col, i) {
-            return d3.csvParse(text).map(function (row) {
-                return +row[i]
-            });
-        });
-    });
-    */
         x.domain(d3.extent(data, function(d){return d.PC001;}));
         y.domain(d3.extent(data, function(d){return d.PC002;}));
 
@@ -72,7 +59,7 @@ function init_plot1() {
             .attr('r', 5)
             .attr('fill', 'black')
             .append("svg:title")
-            .text(function(d, i){return i;})
+            .text(function(d, i){i = +i; return "Hand: "+(i+1);})
     })
 }
 
@@ -85,7 +72,7 @@ function init_plot2(){
     }
 
     var svg = d3.select('#plot2'),
-        margin = {top: 20, right: 40, bottom: 30, left: 50},
+        margin = {top: 70, right: 30, bottom: 70, left: 30},
         width = +svg.attr("width") - margin.left - margin.right,
         height = +svg.attr("height") - margin.top - margin.bottom,
         g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
@@ -121,14 +108,11 @@ function init_plot2(){
 
         g.append('path')
             .attr('d', line(final))
-            .attr("stroke", "#0f1564")
-            .attr("stroke-width", 2)
-            .attr("fill", "none");
+            .attr("fill", "#3c0500");
 
-        g.selectAll("circle")
+        g.selectAll("line")
             .data(final)
             .enter()
-            .append("circle")
 
         })
 }
