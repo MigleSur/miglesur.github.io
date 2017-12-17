@@ -89,7 +89,7 @@ function plot_pca(plotted_pca) {
                 i = +i;
                 return "Hand: " + (i + 1);
             })
-    })
+    });
     return true;
 }
 
@@ -99,7 +99,8 @@ function init_plot1() {
     plot_pca(plotted_pca);
 }
 
-function draw_hand(k, hands, g, x, y) {
+
+function draw_hand(k, hands, g, x, y, slow) {
 
     console.log("Started drawing " + k + "th hand");
 
@@ -118,9 +119,13 @@ function draw_hand(k, hands, g, x, y) {
         })
         .curve(d3.curveCatmullRom);
 
-    console.log(final);
-    g.select('path').transition().duration(500)
-        .attr('d', line(final))
+    if(slow) {
+        g.select('path').transition().duration(500)
+            .attr('d', line(final))
+    } else {
+        g.select('path').transition().duration(100).
+        attr('d', line(final))
+    }
 
 }
 
@@ -134,14 +139,61 @@ function init_plot2(){
         width = +svg.attr("width") - margin.left - margin.right,
         height = +svg.attr("height") - margin.top - margin.bottom;
 
+    console.log(width);
+
     var x = d3.scaleLinear()
         .range([0,width]);
 
     var y = d3.scaleLinear()
         .range([height,0]);
 
+    if(document.querySelector("#slider > svg")) {
+        var svg2 = d3.select("#slider").select("svg")
+    } else {
+        var svg2 = d3.select('#slider').append("svg").attr("width", 1000).attr("height", 100),
+            margin_slider = {top: 70, right: 100, bottom: 70, left: 100},
+            width_slider = +svg2.attr("width") - margin.left - margin.right,
+            height_slider = +svg2.attr("height") - margin.top - margin.bottom;
+    }
+
+    console.log(width_slider);
+
+    var xslider = d3.scaleLinear()
+        .range([0,width_slider])
+        .clamp(true);
 
 
+    var yslider = d3.scaleLinear()
+        .range([height_slider,0]);
+
+    var slider = svg2.append("g")
+        .attr("class", "slider")
+        .attr("transform", "translate(" + margin.left + "," + margin.height + ")");
+
+    slider.append("line")
+        .attr("class", "track")
+        .attr("x1", xslider.range()[0])
+        .attr("x2", xslider.range()[1])
+        .select(function() { return this.parentNode.appendChild(this.cloneNode(true)); })
+        .attr("class", "track-inset")
+        .select(function() { return this.parentNode.appendChild(this.cloneNode(true)); })
+        .attr("class", "track-overlay");
+
+
+    slider.insert("g", ".track-overlay")
+        .attr("class", "ticks")
+        .attr("transform", "translate(0," + 18 + ")")
+        .selectAll("text")
+        .data(x.ticks(10))
+        .enter().append("text")
+        .attr("x", xslider)
+        .attr("text-anchor", "middle")
+        .text(function(d) { return d; });
+
+    var handle = slider.insert("circle", ".track-overlay")
+        .attr("class", "handle")
+        .attr("r", 9)
+        .attr("cx", 0);
 
     d3.csv("hands.csv",
         function(d) {
@@ -152,13 +204,82 @@ function init_plot2(){
         }
         return d},
 
+
         function(error, data) {
             if (error) throw error;
 
             var hands = d3.map(data);
+            d3.csv("hands_pca.csv", function (error, pca_data) {
+                if (error) throw error;
+                var PCX = "PC"+pad(document.getElementById("PCX").value, 3);
+                var PCY = "PC"+pad(document.getElementById("PCY").value, 3);
+                pca_data.forEach(function (d) {
+                        d[PCX] = +d[PCX];
+                        d[PCY] = +d[PCY];
+                        });
+
+                var pc_values = [];
+                for(i=0; i<40; i++) {
+                    pc_values.push(pca_data[i][PCX])
+                }
+
+                console.log(pc_values);
+
+                var pc_values_with_index = [];
+                for (var i in pc_values) {
+                    pc_values_with_index.push([pc_values[i], i]);
+                }
+
+                console.log(pc_values_with_index);
+
+                pc_values_with_index.sort(function(left, right) {
+                    return left[0] < right[0] ? -1 : 1;
+                });
+
+                indices = [];
+                for (i=0; i < pc_values_with_index.length; i++){
+                    // console.log(pc_values_with_index[i][1]);
+                    indices.push(pc_values_with_index[i][1]);
+                }
+
+                // var hands_id = Array.apply(null, {length: 40}).map(Number.call, Number)
+                // console.log(hands_id);
+                console.log(indices);
+
+                // indices2 = []
+                // for(i=0; i < indices.length; i++) {
+                //     var j = +indices[i]
+                //     indices2.push(hands_id[j])
+                // }
 
 
-            if(!document.querySelector(".hand")) {
+                // console.log(indices2);
+
+                // console.log(pca_data);
+                // console.log(typeof pca_data);
+
+                // console.log(hands);
+
+            function hue(h) {
+                handle.attr("cx", xslider(h));
+                var k = indices[Math.floor(xslider(h) / width_slider * 39)].toString();
+                console.log(k);
+                draw_hand(k, hands, g, x, y, false);
+                d3.select("#plot1").selectAll("circle").classed("highlight", false);
+                d3.select("#plot1").selectAll("circle").filter(function(d, i) {return i == +k}).classed("highlight", true);
+            };
+
+            slider.call(d3.drag()
+                .on("start.interrupt", function () {
+                    slider.interrupt();
+                })
+                .on("start drag", function () {
+                    hue(xslider.invert(d3.event.x));
+                })
+            );
+
+
+            if (!document.querySelector(".hand")) {
                 console.log("Solo me ejecuto al principio");
                 g = svg.append("g");
                 g.append("circle")
@@ -178,17 +299,17 @@ function init_plot2(){
                     .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
                     .attr("class", "hand");
 
-                draw_hand("0", hands, g,x, y);
+                draw_hand("0", hands, g, x, y, false);
             }
 
-            
+
             d3.select("#plot1")
                 .selectAll("circle")
                 .on('click', function (d, i) {
                     console.log("Click event received :)");
                     k = i.toString();
                     console.log("Drawing " + i + "th hand");
-                    draw_hand(k, hands, g, x, y);
+                    draw_hand(k, hands, g, x, y, true);
                 })
                 .on('mouseover', function (d, i) {
                     document.querySelectorAll(".dot")[i].setAttribute("r", 10);
@@ -201,6 +322,6 @@ function init_plot2(){
                     document.querySelectorAll(".dot")[i].setAttribute("r", 5);
                 });
 
-
+        });
         });
 }

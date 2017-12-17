@@ -8,6 +8,7 @@
     <link rel="stylesheet" type="text/css" href="assets/bootstrap.css">
     <link href="https://fonts.googleapis.com/css?family=Barlow" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="assets/theme.css">
+    <script src="simpleD3Slider.js"></script>
     <script src="pca_plot.js"></script>
     <script>
         function start() {
@@ -22,7 +23,7 @@
 
     <h2>Assignment 4: A show of hands</h2>
 
-  <div id="full_chart" class="container float-left col-lg-7">
+  <div id="full_chart" class="container float-left col-lg-9">
     <!--<div class="container">-->
           <svg width="720" height="400" id="plot1" class="rounded float-left"></svg>
     <!--</div>-->
@@ -43,6 +44,9 @@
     </div>
     <input type="button" id="update_pca" value="Update PCA" onclick="plot_pca(true), init_plot2()">
     </div>
+
+<div id="slider" class="container float-left col-lg-10">
+</div>
 
 </body>
 </html>
