@@ -162,7 +162,7 @@ function init_plot2(){
 
     slider.append("line")
         .attr("class", "track")
-        .attr("x1", xslider.range()[0])
+        .attr("x", xslider.range()[0])
         .attr("x2", xslider.range()[1])
         .select(function() { return this.parentNode.appendChild(this.cloneNode(true)); })
         .attr("class", "track-inset")
