@@ -5,7 +5,6 @@ function pad(n, width, z) {
 }
 
 function plot_pca(plotted_pca) {
-    console.log(plotted_pca)
 
     if(plotted_pca) {
         d3.select("#plot1").selectAll("*").remove()
@@ -104,8 +103,6 @@ function init_plot1() {
 
 function draw_hand(k, hands, g, x, y, slow) {
 
-    console.log("Started drawing " + k + "th hand");
-
     var hand = hands.get(k);
     var xval = d3.map(hand).values().slice(0, 56);
     var yval = d3.map(hand).values().slice(56, 112);
@@ -150,21 +147,14 @@ function init_plot2(){
     if(document.querySelector("#slider > svg")) {
         var svg2 = d3.select("#slider").select("svg")
     } else {
-        var svg2 = d3.select('#slider').append("svg").attr("width", 1000).attr("height", 100),
-            margin_slider = {top: 70, right: 100, bottom: 70, left: 100},
-            width_slider = +svg2.attr("width") - margin.left - margin.right,
-            height_slider = +svg2.attr("height") - margin.top - margin.bottom;
+        var svg2 = d3.select('#slider').append("svg").attr("width", 760).attr("height", 50),
+            margin_slider = {top: 120, right: 100, bottom: 0, left: 100},
+            width_slider = +svg2.attr("width") - margin_slider.left - margin_slider.right
     }
 
-    console.log(width_slider);
-
     var xslider = d3.scaleLinear()
-        .range([0,width_slider])
+        .range([30,width_slider])
         .clamp(true);
-
-
-    var yslider = d3.scaleLinear()
-        .range([height_slider,0]);
 
     var slider = svg2.append("g")
         .attr("class", "slider")
@@ -193,7 +183,7 @@ function init_plot2(){
     var handle = slider.insert("circle", ".track-overlay")
         .attr("class", "handle")
         .attr("r", 9)
-        .attr("cx", 0);
+        .attr("cx", 30);
 
     d3.csv("hands.csv",
         function(d) {
@@ -222,14 +212,11 @@ function init_plot2(){
                     pc_values.push(pca_data[i][PCX])
                 }
 
-                console.log(pc_values);
 
                 var pc_values_with_index = [];
                 for (var i in pc_values) {
                     pc_values_with_index.push([pc_values[i], i]);
                 }
-
-                console.log(pc_values_with_index);
 
                 pc_values_with_index.sort(function(left, right) {
                     return left[0] < right[0] ? -1 : 1;
@@ -237,13 +224,10 @@ function init_plot2(){
 
                 indices = [];
                 for (i=0; i < pc_values_with_index.length; i++){
-                    // console.log(pc_values_with_index[i][1]);
                     indices.push(pc_values_with_index[i][1]);
                 }
 
                 // var hands_id = Array.apply(null, {length: 40}).map(Number.call, Number)
-                // console.log(hands_id);
-                console.log(indices);
 
                 // indices2 = []
                 // for(i=0; i < indices.length; i++) {
@@ -251,18 +235,9 @@ function init_plot2(){
                 //     indices2.push(hands_id[j])
                 // }
 
-
-                // console.log(indices2);
-
-                // console.log(pca_data);
-                // console.log(typeof pca_data);
-
-                // console.log(hands);
-
             function hue(h) {
                 handle.attr("cx", xslider(h));
                 var k = indices[Math.floor(xslider(h) / width_slider * 39)].toString();
-                console.log(k);
                 draw_hand(k, hands, g, x, y, false);
                 d3.select("#plot1").selectAll("circle").classed("highlight", false);
                 d3.select("#plot1").selectAll("circle").filter(function(d, i) {return i == +k}).classed("highlight", true);
@@ -279,7 +254,6 @@ function init_plot2(){
 
 
             if (!document.querySelector(".hand")) {
-                console.log("Solo me ejecuto al principio");
                 g = svg.append("g");
 
                 g.append('path')
@@ -294,7 +268,6 @@ function init_plot2(){
                 .selectAll("circle")
                 .on('click', function (d, i) {
                     k = i.toString();
-                    console.log("Drawing " + i + "th hand");
                     draw_hand(k, hands, g, x, y, true);
                 })
                 .on('mouseover', function (d, i) {
@@ -310,4 +283,5 @@ function init_plot2(){
 
 
         });
-}
+});
+};
