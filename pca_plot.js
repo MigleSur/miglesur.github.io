@@ -145,14 +145,14 @@ function init_plot2(){
         .range([height,0]);
 
     if(document.querySelector("#slider > svg")) {
-        var svg2 = d3.select("#slider").select("svg"),
-            margin_slider = {top: 30, right: 100, bottom: 0, left: 0},
-            width_slider = +svg2.attr("width") - margin_slider.left - margin_slider.right;
+        var svg2 = d3.select("#slider").select("svg");
     } else {
-        var svg2 = d3.select('#slider').append("svg").attr("width", 760).attr("height", 50),
-            margin_slider = {top: 30, right: 100, bottom: 0, left: 0},
-            width_slider = +svg2.attr("width") - margin_slider.left - margin_slider.right;
+        var svg2 = d3.select('#slider').append("svg").attr("width", 760).attr("height", 50);
     }
+
+    var margin_slider = {top: 30, right: 100, bottom: 0, left: 30};
+    var width_slider = +svg2.attr("width") - margin_slider.left - margin_slider.right;
+
 
     var xslider = d3.scaleLinear()
         .range([0,width_slider])
@@ -180,10 +180,16 @@ function init_plot2(){
         .attr("text-anchor", "middle")
         .text(function(d) { return d; });
 
+    if(document.querySelector("#slider > svg > g > circle")) {
+        document.querySelector("#slider > svg > g > circle").remove();
+    }
+
+
+
     var handle = slider.insert("circle", ".track-overlay")
-        .attr("class", "handle")
-        .attr("r", 9)
-        .attr("cx", 30);
+            .attr("class", "handle")
+            .attr("r", 9)
+            .attr("cx", 30);
 
     d3.csv("hands.csv",
         function(d) {
