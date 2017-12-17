@@ -144,52 +144,55 @@ function init_plot2(){
     var y = d3.scaleLinear()
         .range([height,0]);
 
-    if(document.querySelector("#slider > svg")) {
-        var svg2 = d3.select("#slider").select("svg");
-    } else {
+    if(!document.querySelector("#slider > svg")) {
         var svg2 = d3.select('#slider').append("svg").attr("width", 760).attr("height", 50);
-    }
 
-    var margin_slider = {top: 30, right: 100, bottom: 0, left: 30};
-    var width_slider = +svg2.attr("width") - margin_slider.left - margin_slider.right;
-
-
-    var xslider = d3.scaleLinear()
-        .range([0,width_slider])
-        .clamp(true);
-
-    var slider = svg2.append("g")
-        .attr("class", "slider")
-        .attr("transform", "translate(" + margin_slider.left + "," + margin_slider.top + ")");
-
-    slider.append("line")
-        .attr("class", "track")
-        .attr("x1", xslider.range()[0])
-        .attr("x2", xslider.range()[1])
-        .select(function() { return this.parentNode.appendChild(this.cloneNode(true)); })
-        .attr("class", "track-inset")
-        .select(function() { return this.parentNode.appendChild(this.cloneNode(true)); })
-        .attr("class", "track-overlay");
+        var margin_slider = {top: 30, right: 100, bottom: 0, left: 30};
+        var width_slider = +svg2.attr("width") - margin_slider.left - margin_slider.right;
 
 
-    slider.insert("g", ".track-overlay")
-        .attr("transform", "translate(0," + 18 + ")")
-        .selectAll("text")
-        .enter().append("text")
-        .attr("x", xslider)
-        .attr("text-anchor", "middle")
-        .text(function(d) { return d; });
+        var xslider = d3.scaleLinear()
+            .range([0,width_slider])
+            .clamp(true);
 
-    if(document.querySelector("#slider > svg > g > circle")) {
-        document.querySelector("#slider > svg > g > circle").remove();
-    }
+        var slider = svg2.append("g")
+            .attr("class", "slider")
+            .attr("transform", "translate(" + margin_slider.left + "," + margin_slider.top + ")");
+
+        slider.append("line")
+            .attr("class", "track")
+            .attr("x1", xslider.range()[0])
+            .attr("x2", xslider.range()[1])
+            .select(function() { return this.parentNode.appendChild(this.cloneNode(true)); })
+            .attr("class", "track-inset")
+            .select(function() { return this.parentNode.appendChild(this.cloneNode(true)); })
+            .attr("class", "track-overlay");
 
 
+        slider.insert("g", ".track-overlay")
+            .attr("transform", "translate(0," + 18 + ")")
+            .selectAll("text")
+            .enter().append("text")
+            .attr("x", xslider)
+            .attr("text-anchor", "middle")
+            .text(function(d) { return d; });
 
-    var handle = slider.insert("circle", ".track-overlay")
+        var handle = slider.insert("circle", ".track-overlay")
             .attr("class", "handle")
             .attr("r", 9)
-            .attr("cx", 30);
+            .attr("cx", 0);
+
+    }
+
+
+
+
+    // if(document.querySelector("#slider > svg > g > circle")) {
+    //     document.querySelector("#slider > svg > g > circle").remove();
+    // }
+
+
+
 
     d3.csv("hands.csv",
         function(d) {
