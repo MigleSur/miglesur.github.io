@@ -12,7 +12,7 @@ function plot_pca(plotted_pca) {
     }
 
     var svg = d3.select("#plot1"),
-        margin = {top: 20, right: 40, bottom: 30, left: 50},
+        margin = {top: 20, right: 20, bottom: 30, left: 50},
         width = +svg.attr("width") - margin.left - margin.right,
         height = +svg.attr("height") - margin.top - margin.bottom,
         g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
@@ -27,7 +27,9 @@ function plot_pca(plotted_pca) {
 
 
     var PCX = "PC"+pad(document.getElementById("PCX").value, 3);
+    var PCX_text = "PC"+pad(document.getElementById("PCX").value, 1);
     var PCY = "PC"+pad(document.getElementById("PCY").value, 3);
+    var PCY_text = "PC"+pad(document.getElementById("PCY").value, 1);
 
 
     d3.csv("hands_pca.csv", function (error, data) {
@@ -52,9 +54,9 @@ function plot_pca(plotted_pca) {
             .append("text")
             .attr("fill", "#000")
             .attr("y", -4)
-            .attr("x", 650)
+            .attr("x", 580)
             .attr("text-anchor", "end")
-            .text("PC1")
+            .text(PCX_text)
         ;
 
         // Y axis
@@ -65,7 +67,7 @@ function plot_pca(plotted_pca) {
             .attr("transform", "rotate(-90)")
             .attr("y", 12)
             .attr("text-anchor", "end")
-            .text("PC2");
+            .text(PCY_text);
 
         // For reference, add points as well
         g.selectAll('dot')
@@ -135,7 +137,7 @@ function init_plot2(){
 
 
     var svg = d3.select('#plot2'),
-        margin = {top: 70, right: 100, bottom: 70, left: 100},
+        margin = {top: 80, right: 10, bottom: 60, left: 10},
         width = +svg.attr("width") - margin.left - margin.right,
         height = +svg.attr("height") - margin.top - margin.bottom;
 
@@ -198,7 +200,7 @@ function init_plot2(){
     d3.csv("hands.csv",
         function(d) {
         var i;
-        for (i=0; i<=56; i++) {
+        for (i=1; i<=56; i++) {
             d["X"+pad(i, 2)] = +d["X"+pad(i, 2)];
             d["Y"+pad(i, 2)] = +d["Y"+pad(i, 2)];
         }
@@ -282,18 +284,6 @@ function init_plot2(){
             if (!document.querySelector(".hand")) {
                 console.log("Solo me ejecuto al principio");
                 g = svg.append("g");
-                g.append("circle")
-                    .attr("transform", "translate(" + (30 + margin.left) + "," + margin.top + ")")
-                    .attr("width", width)
-                    .attr("height", height)
-                    .attr("class", "outer_circle")
-                    .attr("cx", width / 2)
-                    .attr("cy", height / 2)
-                    .attr("r", width / 1.2)
-                    .attr("stroke", "black")
-                    .attr("stroke-width", 2)
-                    .attr("fill", "transparent");
-
 
                 g.append('path')
                     .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
@@ -306,7 +296,6 @@ function init_plot2(){
             d3.select("#plot1")
                 .selectAll("circle")
                 .on('click', function (d, i) {
-                    console.log("Click event received :)");
                     k = i.toString();
                     console.log("Drawing " + i + "th hand");
                     draw_hand(k, hands, g, x, y, true);
