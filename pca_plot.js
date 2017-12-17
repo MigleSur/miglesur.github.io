@@ -99,6 +99,32 @@ function init_plot1() {
     plot_pca(plotted_pca);
 }
 
+function draw_hand(k, hands, g, x, y) {
+
+    console.log("Started drawing " + k + "th hand");
+
+    var hand = hands.get(k);
+    var xval = d3.map(hand).values().slice(0, 56);
+    var yval = d3.map(hand).values().slice(56, 112);
+
+    var final = d3.zip(xval, yval);
+
+    var line = d3.line()
+        .x(function (d) {
+            return x(d[0]);
+        })
+        .y(function (d) {
+            return y(d[1]);
+        })
+        .curve(d3.curveCatmullRom);
+
+    console.log(final);
+    g.select('path').transition().duration(500)
+        .attr('d', line(final))
+
+}
+
+
 function init_plot2(){
 
 
@@ -106,8 +132,7 @@ function init_plot2(){
     var svg = d3.select('#plot2'),
         margin = {top: 70, right: 100, bottom: 70, left: 100},
         width = +svg.attr("width") - margin.left - margin.right,
-        height = +svg.attr("height") - margin.top - margin.bottom,
-        g = svg.append("g");
+        height = +svg.attr("height") - margin.top - margin.bottom;
 
     var x = d3.scaleLinear()
         .range([0,width]);
@@ -118,7 +143,6 @@ function init_plot2(){
 
 
 
-    var hands;
     d3.csv("hands.csv",
         function(d) {
         var i;
@@ -133,69 +157,47 @@ function init_plot2(){
 
             var hands = d3.map(data);
 
-            g.append("circle")
-                .attr("transform", "translate(" + (30 + margin.left) + "," + margin.top + ")")
-                .attr("width", width)
-                .attr("height", height)
-                .attr("class", "outer_circle")
-                .attr("cx", width / 2)
-                .attr("cy", height / 2)
-                .attr("r", width / 1.2)
-                .attr("stroke", "black")
-                .attr("stroke-width", 2)
-                .attr("fill", "transparent");
+
+            if(!document.querySelector(".hand")) {
+                console.log("Solo me ejecuto al principio");
+                g = svg.append("g");
+                g.append("circle")
+                    .attr("transform", "translate(" + (30 + margin.left) + "," + margin.top + ")")
+                    .attr("width", width)
+                    .attr("height", height)
+                    .attr("class", "outer_circle")
+                    .attr("cx", width / 2)
+                    .attr("cy", height / 2)
+                    .attr("r", width / 1.2)
+                    .attr("stroke", "black")
+                    .attr("stroke-width", 2)
+                    .attr("fill", "transparent");
 
 
-            g.append('path')
-                .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
-                .attr("class", "hand");
+                g.append('path')
+                    .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+                    .attr("class", "hand");
 
-
-            function draw_hand(k) {
-
-                var hand = hands.get(k);
-                var xval = d3.map(hand).values().slice(0, 56);
-                var yval = d3.map(hand).values().slice(56, 112);
-
-                var final = d3.zip(xval, yval);
-
-                var line = d3.line()
-                    .x(function (d) {
-                        return x(d[0]);
-                    })
-                    .y(function (d) {
-                        return y(d[1]);
-                    })
-                    .curve(d3.curveCatmullRom);
-
-                g.select('path').transition().duration(500)
-                    .attr('d', line(final))
-
+                draw_hand("0", hands, g,x, y);
             }
 
-            draw_hand("0");
-
-
-            console.log("Hands");
-            console.log(hands);
+            
             d3.select("#plot1")
                 .selectAll("circle")
                 .on('click', function (d, i) {
+                    console.log("Click event received :)");
                     k = i.toString();
-                    // console.log(k);
-                    draw_hand(k);
+                    console.log("Drawing " + i + "th hand");
+                    draw_hand(k, hands, g, x, y);
                 })
                 .on('mouseover', function (d, i) {
-                    console.log(i);
                     document.querySelectorAll(".dot")[i].setAttribute("r", 10);
                 })
                 .on('mousemove', function (d, i) {
-                    console.log(i);
                     document.querySelectorAll(".dot")[i].setAttribute("r", 10);
                 })
 
                 .on('mouseout', function (d, i) {
-                    console.log(i);
                     document.querySelectorAll(".dot")[i].setAttribute("r", 5);
                 });
 
