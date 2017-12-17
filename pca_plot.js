@@ -173,11 +173,11 @@ function init_plot2(){
 
             }
 
-            draw_hand("0");
+            if(!document.querySelector(".hand").getAttribute("d")) {
+                draw_hand("0");
+            }
 
-
-            console.log("Hands");
-            console.log(hands);
+            
             d3.select("#plot1")
                 .selectAll("circle")
                 .on('click', function (d, i) {
