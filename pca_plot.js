@@ -1,4 +1,15 @@
-function init_plot1() {
+function pad(n, width, z) {
+    z = z || '0';
+    n = n + '';
+    return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
+}
+
+function plot_pca(plotted_pca) {
+    console.log(plotted_pca)
+
+    if(plotted_pca) {
+        d3.select("#plot1").selectAll("*").remove()
+    }
 
     var svg = d3.select("#plot1"),
         margin = {top: 20, right: 40, bottom: 30, left: 50},
@@ -14,16 +25,26 @@ function init_plot1() {
     var y = d3.scaleLinear()
         .range([height-20,0]);
 
+
+    var PCX = "PC"+pad(document.getElementById("PCX").value, 3);
+    var PCY = "PC"+pad(document.getElementById("PCY").value, 3);
+
+
     d3.csv("hands_pca.csv", function (error, data) {
         if (error) throw error;
 
-        data.forEach(function(d){
-            d.PC001 = +d.PC001;
-            d.PC002 = +d.PC002;
+        data.forEach(function (d) {
+            d[PCX] = +d[PCX];
+            d[PCY] = +d[PCY];
+
         });
 
-        x.domain(d3.extent(data, function(d){return d.PC001;}));
-        y.domain(d3.extent(data, function(d){return d.PC002;}));
+        x.domain(d3.extent(data, function (d) {
+            return d[PCX];
+        }));
+        y.domain(d3.extent(data, function (d) {
+            return d[PCY];
+        }));
 
         g.append("g")
             .attr("transform", "translate(0," + height + ")")
@@ -51,30 +72,36 @@ function init_plot1() {
             .data(data)
             .enter().append("circle")
             .attr('cx', function (d) {
-                return x(d.PC001);
+                return x(d[PCX]);
             })
             .attr('cy', function (d) {
-                return y(d.PC002);
+                return y(d[PCY]);
             })
             .attr('r', 5)
             .attr('fill', 'black')
             .attr("class", "dot")
-            .attr("id", function(d, i) {
+            .attr("id", function (d, i) {
                 return i;
             })
 
             .append("svg:title")
-            .text(function(d, i){i = +i; return "Hand: "+(i+1);})
+            .text(function (d, i) {
+                i = +i;
+                return "Hand: " + (i + 1);
+            })
     })
+    return true;
+}
+
+
+function init_plot1() {
+    var plotted_pca = false;
+    plot_pca(plotted_pca);
 }
 
 function init_plot2(){
 
-    function pad(n, width, z) {
-        z = z || '0';
-        n = n + '';
-        return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
-    }
+
 
     var svg = d3.select('#plot2'),
         margin = {top: 70, right: 100, bottom: 70, left: 100},

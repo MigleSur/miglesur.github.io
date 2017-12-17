@@ -18,6 +18,14 @@ div.tooltip {
 }
 
 #full_chart {
-  border: 5px solid black;
   float:left;
+  border: 5px solid black;
+}
+
+h2 {
+  font-family: Barlow;
+}
+
+body {
+  margin: 30px;
 }

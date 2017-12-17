@@ -4,22 +4,45 @@
     <meta charset="UTF-8">
     <title>Assignment 4</title>
     <script src="https://d3js.org/d3.v4.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="theme.css">
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="assets/bootstrap.css">
+    <link href="https://fonts.googleapis.com/css?family=Barlow" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="assets/theme.css">
     <script src="pca_plot.js"></script>
     <script>
         function start() {
             init_plot1();
-            init_plot2("0");
+            init_plot2();
         }
         d3.select(window).on('load', start);
     </script>
 
 </head>
 <body>
-<div id="full_chart">
-    <svg width="720" height="400" id="plot1"></svg>
-    <svg width="380" height="400" id="plot2"></svg>
-</div>
+
+    <h2>Assignment 4: A show of hands</h2>
+
+  <div id="full_chart" class="container float-left col-lg-7">
+    <!--<div class="container">-->
+          <svg width="720" height="400" id="plot1" class="rounded float-left"></svg>
+    <!--</div>-->
+    <!--<div class="container">-->
+
+
+          <svg width="380" height="400" id="plot2" class="rounded float-right"></svg>
+    <!--</div>-->
+  </div>
+    <div class="container float-right col-lg-2">
+    <div class="form-group">
+        <label for="PCX">PC</label>
+        <input type="text" name="PCX" id="PCX" value=1>
+    </div>
+    <div class="form-group">
+        <label for="PCY">PC</label>
+        <input type="text" name="PCY" id="PCY" value=2>
+    </div>
+    <input type="button" id="update_pca" value="Update PCA" onclick="plot_pca(true)">
+    </div>
+
 </body>
 </html>
