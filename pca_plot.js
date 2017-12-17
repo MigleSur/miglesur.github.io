@@ -145,20 +145,22 @@ function init_plot2(){
         .range([height,0]);
 
     if(document.querySelector("#slider > svg")) {
-        var svg2 = d3.select("#slider").select("svg")
+        var svg2 = d3.select("#slider").select("svg"),
+            margin_slider = {top: 30, right: 100, bottom: 0, left: 0},
+            width_slider = +svg2.attr("width") - margin_slider.left - margin_slider.right;
     } else {
         var svg2 = d3.select('#slider').append("svg").attr("width", 760).attr("height", 50),
-            margin_slider = {top: 120, right: 100, bottom: 0, left: 100},
-            width_slider = +svg2.attr("width") - margin_slider.left - margin_slider.right
+            margin_slider = {top: 30, right: 100, bottom: 0, left: 0},
+            width_slider = +svg2.attr("width") - margin_slider.left - margin_slider.right;
     }
 
     var xslider = d3.scaleLinear()
-        .range([30,width_slider])
+        .range([0,width_slider])
         .clamp(true);
 
     var slider = svg2.append("g")
         .attr("class", "slider")
-        .attr("transform", "translate(" + margin.left + "," + margin.height + ")");
+        .attr("transform", "translate(" + margin_slider.left + "," + margin_slider.top + ")");
 
     slider.append("line")
         .attr("class", "track")
