@@ -44,12 +44,38 @@
     <input type="button" id="update_pca" value="Update PCA" onclick="plot_pca(true), init_plot2()">
     </div>
 
+
+    <h3>Introduction</h3>
     <p>
-        Introduction
-        Methods
-        Results
-        Conclusion
-        Contributors
+        Principal component analysis (PCA) is a very popular way of dimensionality reduction.
+        It is extremely useful for visualizing high dimensionality data in 2 dimensions while keeping
+        as much variance as possible. After performing PCA number of principal components (PC) is equal to
+        number of dimensions. As first PCs usually capture most of the variance in the data set, mostly only first
+        2 or 4 PCs are used. PCA is done by singular value decomposition (SVD) of the data matrix or by eigenvalue
+        decomposition of covariance matrix. More information about PCA can be found
+        <a href="https://en.wikipedia.org/wiki/Principal_component_analysis">here</a>.
     </p>
+    <p>
+        The given data set consists of 56 pairs of x,y coordinates of hand contours. As it is very impractical to
+        plot all 40 hands in order to analyze them and draw conclusions, we are going to use PCA analysis for data
+        analysis. As mentioned before, most variance is captured in the first PCs, we are going to concentrate only
+        on them.
+    </p>
+    <h3>Methods</h3>
+    <p>
+        In the visualization above, a number of interactivity is introduced to make the analysis of the given data set
+        easier. When the mouse hovers on the chosen data point in PCA plot, a text label shows which hand in the data set it
+        is (row number). Also, after clicking the interesting point in the PCA plot, the corresponding hand is drawn.
+        Furthermore, it is possible to choose which principal components are going to be plotted in the PCA plot, so not only
+        PC1 and PC2 can be investigated.
+        <!--Clustering makes easier to identify the main hand contour clusters and draw conclusions from that.  -->
+    </p>
+    <h3>Results</h3>
+    <p>
+        
+    </p>
+    <h3>Conclusions</h3>
+    <h3>Individual part</h3>
+
 </body>
 </html>

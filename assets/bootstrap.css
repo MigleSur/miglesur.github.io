@@ -70,10 +70,6 @@
     orphans: 3;
     widows: 3;
   }
-  h2,
-  h3 {
-    page-break-after: avoid;
-  }
   .navbar {
     display: none;
   }
@@ -100,7 +96,6 @@
 }
 
 html {
-  font-family: sans-serif;
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
@@ -138,13 +133,15 @@ hr {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  margin-top: 0;
+  margin-top: 0.5;
   margin-bottom: 0.5rem;
 }
 
 p {
-  margin-top: 0;
-  margin-bottom: 1rem;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    word-wrap:break-word;
+    text-indent: 30pt;
 }
 
 abbr[title],

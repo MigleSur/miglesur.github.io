@@ -142,9 +142,6 @@ function init_plot2(){
     var y = d3.scaleLinear()
         .range([height,0]);
 
-
-
-
     d3.csv("hands.csv",
         function(d) {
         var i;
