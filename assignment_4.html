@@ -56,36 +56,33 @@
     <p>
         Principal component analysis (PCA) is a very popular technique for dimensionality reduction.
         It is extremely useful for visualizing high dimensionality data in 2 dimensions while keeping
-        as much variance as possible. After performing PCA, number of principal components (PC) is equal to
-        number of dimensions. As first PCs capture most of the variance in the data set, mostly only first
-        2 or 4 PCs are used. PCA is done by singular value decomposition (SVD) of the data matrix or by eigenvalue
-        decomposition of covariance matrix. More information about PCA can be found
+        as much variance (information) as possible. Performing PCA essentially brings the data to a new set of dimensions (principal components, PC)
+        each capturing as much variance as possible. Therefore, the first PCs capture most of the variance in the data set.
+        PCA can be carried out by running singular value decomposition (SVD) of the data matrix or by eigenvalue
+        decomposition of the covariance matrix. More information about PCA can be found
         <a href="https://en.wikipedia.org/wiki/Principal_component_analysis">here</a>.
     </p>
     <p>
-        The given data set consists of 56 pairs of x,y coordinates of hand contours. As it is very impractical to
-        plot all 40 hands in order to analyze them and draw conclusions, we are going to use PCA analysis for data
-        analysis. As mentioned before, most variance is captured in the first PCs, we are going to concentrate only
-        on them.
+        The given data set consists of 56 pairs of x,y coordinates of hand points making up a detailed contour of their shape.
+        As it is very impractical to plot all 40 hands in order to analyze them and draw conclusions, a PCA comes very handy in this
+        high dimensional (56*2 total dimensions) dataset. Most variance is captured in the first PCs, and thus we will focus on them in the following discussion.
     </p>
     <h3>Methods</h3>
     <p>
-        In the visualization above, a number of interactivity is introduced to make the analysis of the given data set
-        easier. When the mouse hovers on the chosen data point in PCA plot, a text label shows which hand in the data set it
-        is (row number). Also, after clicking the interesting point in the PCA plot, the corresponding hand is drawn.
-        Furthermore, it is possible to choose which principal components are going to be plotted in the PCA plot, so not only
-        PC1 and PC2 can be investigated. Slider under the plot makes it easier to investigate which information each principal
-        component captures.
+        In the visualization above, a number of interactive elements are introduced to improve the quality of the visualization.
+        Hovering on a chosen data point in the PCA plot, a text label shows which hand in the data set it
+        is (hand id or row number). Furthermore, clicking the same point in the PCA plot triggers the representation of the corresponding hand.
+        Furthermore, it is possible to choose which principal components are plotted, so not only
+        PC1 and PC2 can be investigated. Unsurprisingly, the PC span is greatest in the first, and becomes smaller as the PC id grows.
+        The slider under the plot makes it easier to investigate what trend each principal component captures.
         <!--Clustering makes easier to identify the main hand contour clusters and draw conclusions from that.  -->
     </p>
     <h3>Results and discussion</h3>
     <p>
         From the PCA plot of PC1 and PC2 it is easy to see (especially by using a slider to investigate PCs) that PC1 shows
         how spread the fingers are and PC2 shows which fingers are closer to each other (the little finger or the index finger is
-        closer to the ring finger and the middle finger). In order to investigate it a little bit more see the difference between
-        hand 31 with hand 36 for PC1 and hand 38 with hand 40 for PC2.
-        Hands are more spread throughout PC1 compared with PC2 (not considering some outliers (hand 38, hand 40)). That shows
-        that PC1 most probably captures most of the total variance.
+        closer to the ring finger and the middle finger). In order to investigate it a little bit more see the difference
+        between the most extreme datapoints in each PC.
         <!--Clustering lets us investigate which hands are most similar to each other especially using high k values it is easy to -->
         <!--see the most similar hands.-->
     </p>
