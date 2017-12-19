@@ -182,6 +182,21 @@ function init_plot2(){
             .attr("r", 9)
             .attr("cx", 0);
 
+    } else {
+
+        var svg2 = d3.select('#slider').select("svg");
+
+        var margin_slider = {top: 30, right: 100, bottom: 0, left: 30};
+        var width_slider = +svg2.attr("width") - margin_slider.left - margin_slider.right;
+
+
+        var xslider = d3.scaleLinear()
+            .range([0,width_slider])
+            .clamp(true);
+
+        var slider = svg2.select("g");
+
+        var handle = slider.select(".handle");
     }
 
 
@@ -216,9 +231,12 @@ function init_plot2(){
                         d[PCY] = +d[PCY];
                         });
 
+                var slider_PC = "PC"+pad(document.getElementById("slider_pc").value, 3);
+
+
                 var pc_values = [];
                 for(i=0; i<40; i++) {
-                    pc_values.push(pca_data[i][PCX])
+                    pc_values.push(pca_data[i][slider_PC])
                 }
 
 
