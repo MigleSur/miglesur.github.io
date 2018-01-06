@@ -4,6 +4,7 @@ function bar_plot(column_list, annotation_list, color_list, plotted_barplot) {
 
     if(plotted_barplot) {
         d3.select("#barplot").selectAll("*").remove()
+
     }
 
     var barpl = d3.select("#barplot")
