@@ -7,7 +7,7 @@ function bar_plot(column_list, annotation_list, color_list, plotted_barplot) {
     }
 
     var barpl = d3.select("#barplot")
-    var margin = {top: 100, right: 20, bottom: 80, left: 20};
+    var margin = {top: 100, right: 50, bottom: 100, left: 70};
     var width = +barpl.node().getBoundingClientRect().width - margin.left - margin.right;
     var height = +barpl.node().getBoundingClientRect().height - margin.top - margin.bottom;
 
@@ -40,7 +40,8 @@ function bar_plot(column_list, annotation_list, color_list, plotted_barplot) {
                 .style("text-anchor", "end")
                 .attr("dx", "-.8em")
                 .attr("dy", ".15em")
-                .attr("transform", "rotate(-35)");
+                .attr("transform", "rotate(-25)")
+                .attr("font-size", "16px");
 
         g.append("g")
             .attr("class", "axis y")
@@ -123,7 +124,7 @@ function bar_plot(column_list, annotation_list, color_list, plotted_barplot) {
                 .attr("x", 65)
                 .attr("y", -80 + (15) * item)
                 .attr("text-anchor", "start")
-                .style("font-size", "12px")
+                .style("font-size", "14px")
                 .text(annotation_list[item]);
 
             // g.append("text")
@@ -151,7 +152,7 @@ function bar_plot(column_list, annotation_list, color_list, plotted_barplot) {
                 .attr("rx", 3)
                 .attr("ry", 3)
                 .attr("x", 47)
-                .attr("y", -90 + (15) * item)
+                .attr("y", -91 + (15) * item)
                 .attr("width", 12)
                 .attr("height", 12)
                 .attr("fill", color_list[item])
