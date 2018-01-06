@@ -3,6 +3,18 @@ body, html {
     height: 100%;
     line-height: 1.8;
 }
+
+#discrimination-button {
+    background-color: white;
+    color: black;
+    border: 2px solid #6b5baf; /* Green */
+}
+
+#discrimination-button:hover {
+    background-color: #6b5baf; /* Green */
+    color: white;
+}
+
 /* Full height image header */
 .bgimg-1 {
     background-position: center;
@@ -13,3 +25,4 @@ body, html {
 .w3-bar .w3-button {
     padding: 16px;
 }
+
