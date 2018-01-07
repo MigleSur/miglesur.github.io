@@ -193,4 +193,25 @@ function bar_plot(column_list, annotation_list, color_list, plotted_barplot) {
 
 }
 
+function radar_chart(jsonfile){
 
+    var width = 450;
+    var height = width
+
+    console.log(width)
+    console.log(height)
+// Config for the Radar chart
+    var config = {
+        w: width,
+        h: height,
+        maxValue: 100,
+        levels: 5,
+        ExtraWidthX: 300
+    };
+
+//Call function to draw the Radar chart
+    d3.json(jsonfile, function(error, data) {
+        if (error) throw error;
+        RadarChart.draw("#chart", data, config);
+    });
+}

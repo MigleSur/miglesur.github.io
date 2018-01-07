@@ -6,6 +6,7 @@
     <link rel="stylesheet" type="text/css" href="final_project.css">
     <script src="https://d3js.org/d3.v4.min.js"></script>
     <script src="final_project.js"></script>
+    <script src="RadarChart.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
@@ -80,17 +81,17 @@
                 <div class="w3-container">
                     <svg  width="100%" height="500" id="barplot"><script>bar_plot(["widespread", "rare", "nonexistent", "dk"],
                         ["Widespread", "Rare", "Non-existent", "Don't know"],
-                        ["#ffe17e","#d29015","#c1000b","#9ba2c9"],
+                        ["#ffae4e","#ff682c","#c1000b","#9ba2c9"],
                         false)</script>
                     </svg>
                     <div class="w3-center">
-                        <input type="button" id="discrimination-button" value="Widespread" onclick='bar_plot(["widespread"], ["Widespread"], ["#ffe17e"], true)'>
-                        <input type="button" id="discrimination-button" value="Rare" onclick='bar_plot(["rare"], ["Rare"], ["#d29015"], true)'>
-                        <input type="button" id="discrimination-button" value="Non-existent" onclick='bar_plot(["nonexistent"], ["Non-existent"],["#7b0009"], true)'>
+                        <input type="button" id="discrimination-button" value="Widespread" onclick='bar_plot(["widespread"], ["Widespread"], ["#ffae4e"], true)'>
+                        <input type="button" id="discrimination-button" value="Rare" onclick='bar_plot(["rare"], ["Rare"], ["#ff682c"], true)'>
+                        <input type="button" id="discrimination-button" value="Non-existent" onclick='bar_plot(["nonexistent"], ["Non-existent"],["#c1000b"], true)'>
                         <input type="button" id="discrimination-button" value="Don't know" onclick='bar_plot(["dk"], ["Don&#39;t know"],["#9ba2c9"], true)'>
                         <input type="button" id="discrimination-button" value="All values" onclick='bar_plot(["widespread", "rare", "nonexistent", "dk"],
                             ["Widespread", "Rare", "Non-existent", "Don&#39;t know"],
-                            ["#ffe17e","#d29015","#c1000b","#9ba2c9"],
+                            ["#ffae4e","#ff682c","#c1000b","#9ba2c9"],
                             true)'>
 
                     </div>
@@ -125,12 +126,13 @@
 </div>
 
 <!-- Visualization 3 Section -->
-<div class="w3-container w3-center w3-dark-grey" style="padding:128px 16px" id="visualization3">
-    <h3>Visualization 3</h3>
+<div class="w3-container w3-center" style="padding:128px 16px" id="visualization3">
+    <h3>Gender equality index and its domains in 2015</h3>
     <p class="w3-large">The main idea of the visualization</p>
     <div class="w3-row-padding" style="margin-top:64px">
         <div class="w3-half w3-section">
-            Visualization
+            <svg width="600" height="600" id="chart"> <script>radar_chart("gei2015overall.json")</script>  </svg>
+            <script>radar_chart()</script>
         </div>
         <div class="w3-half w3-section">
             Some more text
