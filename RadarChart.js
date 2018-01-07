@@ -15,7 +15,7 @@ var RadarChart = {
             TranslateY: 30,
             ExtraWidthX: 100,
             ExtraWidthY: 100,
-            color: d3.scaleOrdinal().range(["#b75b16", "#CA0D59"])
+            color: d3.scaleOrdinal().range(["#b75b16"])
         };
 
         if('undefined' !== typeof options){
@@ -131,22 +131,8 @@ var RadarChart = {
                     }
                     return str;
                 })
-                .style("fill", function(j, i){return cfg.color(series)})
-                .style("fill-opacity", cfg.opacityArea)
-                .on('mouseover', function (d){
-                    z = "polygon."+d3.select(this).attr("class");
-                    g.selectAll("polygon")
-                        .transition(200)
-                        .style("fill-opacity", 0.1);
-                    g.selectAll(z)
-                        .transition(200)
-                        .style("fill-opacity", .7);
-                })
-                .on('mouseout', function(){
-                    g.selectAll("polygon")
-                        .transition(200)
-                        .style("fill-opacity", cfg.opacityArea);
-                });
+                .style("fill", "none")
+
             series++;
         });
         series=0;
