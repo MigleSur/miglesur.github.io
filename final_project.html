@@ -131,8 +131,15 @@
     <p class="w3-large">The main idea of the visualization</p>
     <div class="w3-row-padding" style="margin-top:64px">
         <div class="w3-half w3-section">
-            <svg width="600" height="600" id="chart"> <script>radar_chart("gei2015overall.json")</script>  </svg>
-            <script>radar_chart()</script>
+            <svg width="600" height="550" id="chart"> <script>radar_chart("gei2015overall.json")</script>  </svg>
+            <input type="button" id="discrimination-button" value="Overall" onclick='radar_chart("gei2015overall.json")'>
+            <input type="button" id="discrimination-button" value="Work" onclick='radar_chart("gei2015work.json")'>
+            <input type="button" id="discrimination-button" value="Money" onclick='radar_chart("gei2015money.json")'>
+            <input type="button" id="discrimination-button" value="Knowledge" onclick='radar_chart("gei2015knowledge.json")'>
+            <input type="button" id="discrimination-button" value="Time" onclick='radar_chart("gei2015time.json")'>
+            <input type="button" id="discrimination-button" value="Power" onclick='radar_chart("gei2015power.json")'>
+            <input type="button" id="discrimination-button" value="Health" onclick='radar_chart("gei2015health.json")'>
+
         </div>
         <div class="w3-half w3-section">
             Some more text

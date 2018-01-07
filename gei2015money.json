@@ -1,0 +1,120 @@
+[
+  [
+    {
+      "Country": "EU28",
+      "value": 79.6
+    },
+    {
+      "Country": "BE",
+      "value": 87.5
+    },
+    {
+      "Country": "BG",
+      "value": 61.9
+    },
+    {
+      "Country": "CZ",
+      "value": 75.9
+    },
+    {
+      "Country": "DK",
+      "value": 86.6
+    },
+    {
+      "Country": "DE",
+      "value": 84.2
+    },
+    {
+      "Country": "EE",
+      "value": 66.7
+    },
+    {
+      "Country": "IE",
+      "value": 84.7
+    },
+    {
+      "Country": "EL",
+      "value": 70.7
+    },
+    {
+      "Country": "ES",
+      "value": 75.9
+    },
+    {
+      "Country": "FR",
+      "value": 86.1
+    },
+    {
+      "Country": "HR",
+      "value": 69.9
+    },
+    {
+      "Country": "IT",
+      "value": 78.6
+    },
+    {
+      "Country": "CY",
+      "value": 79.2
+    },
+    {
+      "Country": "LV",
+      "value": 64.3
+    },
+    {
+      "Country": "LT",
+      "value": 65.6
+    },
+    {
+      "Country": "LU",
+      "value": 94.4
+    },
+    {
+      "Country": "HU",
+      "value": 70.7
+    },
+    {
+      "Country": "MT",
+      "value": 82.4
+    },
+    {
+      "Country": "NL",
+      "value": 86.8
+    },
+    {
+      "Country": "AT",
+      "value": 85.9
+    },
+    {
+      "Country": "PL",
+      "value": 73.3
+    },
+    {
+      "Country": "PT",
+      "value": 70.9
+    },
+    {
+      "Country": "RO",
+      "value": 59.4
+    },
+    {
+      "Country": "SI",
+      "value": 81.6
+    },
+    {
+      "Country": "SK",
+      "value": 74
+    },
+    {
+      "Country": "FI",
+      "value": 86.4
+    },
+    {
+      "Country": "SE",
+      "value": 87.5
+    },
+    {
+      "Country": "UK",
+      "value": 81.2
+    }
+  ]
+]

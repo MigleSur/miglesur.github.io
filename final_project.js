@@ -195,12 +195,9 @@ function bar_plot(column_list, annotation_list, color_list, plotted_barplot) {
 
 function radar_chart(jsonfile){
 
-
     var width = 450;
     var height = width
 
-    console.log(width)
-    console.log(height)
 // Config for the Radar chart
     var config = {
         w: width,
