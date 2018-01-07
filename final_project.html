@@ -132,13 +132,15 @@
     <div class="w3-row-padding" style="margin-top:64px">
         <div class="w3-half w3-section">
             <svg width="600" height="550" id="chart"> <script>radar_chart("gei2015overall.json")</script>  </svg>
-            <input type="button" id="discrimination-button" value="Overall" onclick='radar_chart("gei2015overall.json")'>
-            <input type="button" id="discrimination-button" value="Work" onclick='radar_chart("gei2015work.json")'>
-            <input type="button" id="discrimination-button" value="Money" onclick='radar_chart("gei2015money.json")'>
-            <input type="button" id="discrimination-button" value="Knowledge" onclick='radar_chart("gei2015knowledge.json")'>
-            <input type="button" id="discrimination-button" value="Time" onclick='radar_chart("gei2015time.json")'>
-            <input type="button" id="discrimination-button" value="Power" onclick='radar_chart("gei2015power.json")'>
-            <input type="button" id="discrimination-button" value="Health" onclick='radar_chart("gei2015health.json")'>
+            <input type="button" id="discrimination-button" value="Overall" title="Overall gender equality index values in EU"
+                   onclick='radar_chart("gei2015overall.json")'>
+            <input type="button" id="discrimination-button" value="Work" title="Participation, duration of working life, sectoral segregation, quality of work"
+                   onclick='radar_chart("gei2015work.json")'>
+            <input type="button" id="discrimination-button" value="Money" title="Earnings, income, economic situation" onclick='radar_chart("gei2015money.json")'>
+            <input type="button" id="discrimination-button" value="Knowledge" title="Terciary education, segregation, lifelong learning" onclick='radar_chart("gei2015knowledge.json")'>
+            <input type="button" id="discrimination-button" value="Time" title="Childcare, domestic activities, social activities" onclick='radar_chart("gei2015time.json")'>
+            <input type="button" id="discrimination-button" value="Power" title="Political, social, economic power" onclick='radar_chart("gei2015power.json")'>
+            <input type="button" id="discrimination-button" value="Health" title="Life expectancy, healthy life years, access to medical needs" onclick='radar_chart("gei2015health.json")'>
 
         </div>
         <div class="w3-half w3-section">
@@ -152,6 +154,7 @@
     <h3 class="w3-center">Contributors</h3>
     <p class="w3-center w3-large">The project was done by Antonio Ortega Jimenez and Migle Survilaite.</p>
     <p class="w3-center w3-large">The word map was taken from <a href="http://www.thekrine.com/blog/">here</a>.</p>
+    <p class="w3-center w3-large">The code for radar chart was adopted from <a href="https://bl.ocks.org/alandunning/4c36eb1abdb248de34c64f5672afd857">here</a>.</p>
     <p class="w3-center w3-large">[1] <a href="https://dictionary.cambridge.org/dictionary/english/discrimination?a=american-english">Definition of discrimination</a>
         Cambridge Dictionaries Online. Cambridge University.</p>
     <p class="w3-center w3-large">[2] <a href="http://www.equineteurope.org/IMG/pdf/ebs_437_en.pdf">
