@@ -192,3 +192,5 @@ function bar_plot(column_list, annotation_list, color_list, plotted_barplot) {
     });
 
 }
+
+
