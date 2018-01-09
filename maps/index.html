@@ -2,8 +2,8 @@
 <meta charset="utf-8">
 <style>
 
-    .subunit.SCT { fill: #ddc; }
-    .subunit.WLS { fill: #cdd; }
+    .subunit.ESP { fill: #ddc; }
+    .subunit.DEU { fill: #cdd; }
     .subunit.NIR { fill: #cdc; }
     .subunit.ENG { fill: #dcd; }
     .subunit.IRL { display: none; }
@@ -51,13 +51,13 @@
         console.log(custom)
 
         // svg.append("path")
-        //     .datum(topojson.feature(custom, custom.objects.subunits))
+        //     .datum(topojson.feature(custom, custom.objects.countries))
         //     .attr("d", d3.geo.path().projection(d3.geo.mercator()));
 
 
         // Base map
 
-        var subunits = topojson.feature(custom, custom.objects.subunits);
+        var countries = topojson.feature(custom, custom.objects.countries);
 
         // Select projection
         // var projection = d3.geo.mercator()
@@ -75,12 +75,12 @@
             .projection(projection);
 
         svg.append("path")
-            .datum(subunits)
+            .datum(countries)
             .attr("d", path);
 
 
         svg.selectAll(".subunit")
-            .data(topojson.feature(custom, custom.objects.subunits).features)
+            .data(topojson.feature(custom, custom.objects.countries).features)
             .enter().append("path")
             .attr("class", function(d) { console.log(d); return "subunit " + d.id; })
             .attr("d", path);
@@ -89,34 +89,34 @@
         // Display boundaries
 
         svg.append("path")
-            .datum(topojson.mesh(custom, custom.objects.subunits))
-            //.datum(topojson.mesh(custom, custom.objects.subunits, function(a, b) { return a !== b && a.id !== "IRL"; }))
+            .datum(topojson.mesh(custom, custom.objects.countries))
+            //.datum(topojson.mesh(custom, custom.objects.countries, function(a, b) { return a !== b && a.id !== "IRL"; }))
             .attr("d", path)
             .attr("class", "subunit-boundary");
 
 
 
         // Displaying places
-        svg.append("path")
-            .datum(topojson.feature(custom, custom.objects.places))
-            .attr("d", path)
-            .attr("class", "place");
-
-        svg.selectAll(".place-label")
-            .data(topojson.feature(custom, custom.objects.places).features)
-            .enter().append("text")
-            .attr("class", "place-label")
-            .attr("transform", function(d) { return "translate(" + projection(d.geometry.coordinates) + ")"; })
-            .attr("dy", ".35em")
-            .text(function(d) { return d.properties.name; });
-
-        svg.selectAll(".place-label")
-            .attr("x", function(d) { return d.geometry.coordinates[0] > -1 ? 6 : -6; })
-            .style("text-anchor", function(d) { return d.geometry.coordinates[0] > -1 ? "start" : "end"; });
+//        svg.append("path")
+//            .datum(topojson.feature(custom, custom.objects.places))
+//            .attr("d", path)
+//            .attr("class", "place");
+//
+//        svg.selectAll(".place-label")
+//            .data(topojson.feature(custom, custom.objects.places).features)
+//            .enter().append("text")
+//            .attr("class", "place-label")
+//            .attr("transform", function(d) { return "translate(" + projection(d.geometry.coordinates) + ")"; })
+//            .attr("dy", ".35em")
+//            .text(function(d) { return d.properties.name; });
+//
+//        svg.selectAll(".place-label")
+//            .attr("x", function(d) { return d.geometry.coordinates[0] > -1 ? 6 : -6; })
+//            .style("text-anchor", function(d) { return d.geometry.coordinates[0] > -1 ? "start" : "end"; });
 
 
         svg.selectAll(".subunit-label")
-            .data(topojson.feature(custom, custom.objects.subunits).features)
+            .data(topojson.feature(custom, custom.objects.countries).features)
             .enter().append("text")
             .attr("class", function(d) { return "subunit-label " + d.id; })
             .attr("transform", function(d) { return "translate(" + path.centroid(d) + ")"; })

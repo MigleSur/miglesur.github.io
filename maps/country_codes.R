@@ -14,7 +14,8 @@
 #   html_text %>%
 #   matrix(ncol = 6, byrow = T)
 # 
-# library("countrycode")
+library("countrycode")
+library("dplyr")
 countrycode_data <- countrycode_data
 countrycode_data[countrycode_data$region %>% grepl(pattern = "Europe"), c("country.name.en", "iso2c", "iso3c")]
 eu_alpha_3 <- countrycode_data[countrycode_data %>% .$region %>% grepl(pattern = "Europe"), "iso3c"]
@@ -25,11 +26,11 @@ eu_alpha_2 <- countrycode_data[countrycode_data %>% .$region %>% grepl(pattern =
 # eu_alpha_2 <- eu_alpha_2[eu_alpha_2 != "RU"]
 eu_alpha_2 <- paste(eu_alpha_2, collapse = "', '")
 
-cmd1 <- paste0('ogr2ogr -f GeoJSON -where \"ADM0_A3 IN (\'', eu_alpha_3, '\')\" subunits.json ne_10m_admin_0_map_subunits.shp')
+cmd1 <- paste0('ogr2ogr -f GeoJSON -where \"ADM0_A3 IN (\'', eu_alpha_3, '\')\" countries.json ne_10m_admin_0_countries.shp')
 cmd2 <- paste0('ogr2ogr -f GeoJSON -where \"ISO_A2 IN (\'', eu_alpha_2, '\') AND SCALERANK < 3\" places.json  ne_10m_populated_places.shp')
-cmd3 <- "topojson -o custom.json --id-property SU_A3 --properties name=NAME -- subunits.json places.json"
+cmd3 <- "topojson -o custom.json --id-property SU_A3 --properties name=NAME -- countries.json places.json"
 
-# setwd("data")
+setwd("data")
 system("rm *json")
 system(cmd1)
 system(cmd2)
