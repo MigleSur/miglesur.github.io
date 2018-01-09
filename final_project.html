@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Final Project</title>
+    <link rel="stylesheet" type="text/css" href="final_project.css">
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="final_project.js"></script>
+    <script src="RadarChart.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+<!-- Navbar (sit on top) -->
+<div class="w3-top">
+    <div class="w3-bar w3-white w3-card" id="myNavbar">
+        <a href="#home" class="w3-bar-item w3-button w3-wide"></a>
+        <!-- Right-sided navbar links -->
+        <div class="w3-right w3-hide-small">
+            <a href="#introduction" class="w3-bar-item w3-button">Introduction</a>
+            <a href="#visualization1" class="w3-bar-item w3-button"> Visualization 1</a>
+            <a href="#visualization2" class="w3-bar-item w3-button"> Visualization 2</a>
+            <a href="#visualization3" class="w3-bar-item w3-button"> Visualization 3</a>
+            <a href="#contributors" class="w3-bar-item w3-button"></i> Contributors</a>
+        </div>
+        <!-- Hide right-floated links on small screens and replace them with a menu icon -->
+
+        <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="w3_open()">
+        </a>
+    </div>
+</div>
+
+<!--&lt;!&ndash; Sidebar on small screens when clicking the menu icon &ndash;&gt;-->
+<!--<nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-medium w3-hide-large" style="display:none" id="mySidebar">-->
+    <!--<a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">Close ×</a>-->
+    <!--<a href="#introduction" onclick="w3_close()" class="w3-bar-item w3-button">Introduction</a>-->
+    <!--<a href="#visualization1" onclick="w3_close()" class="w3-bar-item w3-button">Visualization 1</a>-->
+    <!--<a href="#visualization2" onclick="w3_close()" class="w3-bar-item w3-button">Visualization 2</a>-->
+    <!--<a href="#visualization3" onclick="w3_close()" class="w3-bar-item w3-button">Visualization 3</a>-->
+    <!--<a href="#contributors" onclick="w3_close()" class="w3-bar-item w3-button">Contributors</a>-->
+<!--</nav>-->
+
+<!-- Header with full-height image -->
+<header class="bgimg-1 w3-display-container w3-grayscale-min" id="home">
+    <!--<div class="w3-center w3-large w3-text-black" style="padding:48px">The final project </div>-->
+</header>
+
+<!-- Introduction -->
+<div class="w3-container w3-light-grey" style="padding:128px 16px" id="introduction">
+    <h3 class="w3-center w3-xxlarge">Introduction</h3>
+    <div class="w3-row-padding w3-center w3-large" style="margin-top:64px">
+        <div>
+            Discrimination is the treatment of a person or particular group of people differently,
+            in a way that is worse than the way people are usually treated. [1] Unfortunately
+            discrimination is widespread all over the world.
+            In 2000 European Union started fighting discrimination by adopting the law which prohibits discrimination in
+            the workplace based on racial or ethnic origin, religion or belief, disability, age, or sexual
+            orientation. [2] Even after 18 years since then, there is still a need for improvement in order for
+            discrimination not to be an issue in EU anymore. <br> In this project we analyse
+            the changes in discrimination over time in the EU with a deeper look in gender inequality
+            problem. For this reason two data sets were used: The <a href="http://www.equineteurope.org/IMG/pdf/ebs_437_en.pdf">
+            first one</a> is the discrimination data from Eurobarometer survey in 2015 about different types of
+            discrimination and how widespread they are. The <a href="https://tinyurl.com/y77t267d">second one</a> is the
+            gender equality data set in which eight different aspects of life are taken in consideration for
+            estimation of gender equality index. As it was measured 4 times over 10 years period, also the changes
+            in gender equality are analysed.
+        </div>
+    </div>
+</div>
+
+
+<!-- Visualization 1 -->
+<div class="w3-container" style="padding:128px 16px" id="visualization1">
+    <h3 class="w3-center">Discrimination rates in EU</h3>
+    <div class="w3-row-padding w3-grayscale" style="margin-top:64px">
+        <div class="w3-col w3-margin-bottom">
+            <div class="w3-twothird w3-card">
+                <div class="w3-container">
+                    <svg  width="100%" height="500" id="barplot"><script>bar_plot(["widespread", "rare", "nonexistent", "dk"],
+                        ["Widespread", "Rare", "Non-existent", "Don't know"],
+                        ["#ffae4e","#ff682c","#c1000b","#9ba2c9"],
+                        false)</script>
+                    </svg>
+                    <div class="w3-center">
+                        <input type="button" id="discrimination-button" value="Widespread" onclick='bar_plot(["widespread"], ["Widespread"], ["#ffae4e"], true)'>
+                        <input type="button" id="discrimination-button" value="Rare" onclick='bar_plot(["rare"], ["Rare"], ["#ff682c"], true)'>
+                        <input type="button" id="discrimination-button" value="Non-existent" onclick='bar_plot(["nonexistent"], ["Non-existent"],["#c1000b"], true)'>
+                        <input type="button" id="discrimination-button" value="Don't know" onclick='bar_plot(["dk"], ["Don&#39;t know"],["#9ba2c9"], true)'>
+                        <input type="button" id="discrimination-button" value="All values" onclick='bar_plot(["widespread", "rare", "nonexistent", "dk"],
+                            ["Widespread", "Rare", "Non-existent", "Don&#39;t know"],
+                            ["#ffae4e","#ff682c","#c1000b","#9ba2c9"],
+                            true)'>
+
+                    </div>
+                </div>
+            </div>
+            <div class="w3-third w3-card">
+                <div class="w3-container">
+                    Some text
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+<!-- Visualization 2 Section -->
+<div class="w3-container w3-center w3-light-grey w3-padding-64" id="visualization2">
+    <h3>Visualization 2</h3>
+    <p class="w3-large">The main idea of the visualization</p>
+    <div class="w3-row-padding">
+        <div class="w3-half w3-section">
+            Some text
+        </div>
+        <div class="w3-half w3-section">
+            Visualization
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Visualization 3 Section -->
+<div class="w3-container w3-center" style="padding:128px 16px" id="visualization3">
+    <h3>Gender equality index and its domains in 2015</h3>
+    <p class="w3-large">The main idea of the visualization</p>
+    <div class="w3-row-padding" style="margin-top:64px">
+        <div class="w3-half w3-section">
+            <svg width="600" height="550" id="chart"> <script>radar_chart("gei2015overall.json")</script>  </svg>
+            <input type="button" id="discrimination-button" value="Overall" title="Overall gender equality index values in EU"
+                   onclick='radar_chart("gei2015overall.json")'>
+            <input type="button" id="discrimination-button" value="Work" title="Participation, duration of working life, sectoral segregation, quality of work"
+                   onclick='radar_chart("gei2015work.json")'>
+            <input type="button" id="discrimination-button" value="Money" title="Earnings, income, economic situation" onclick='radar_chart("gei2015money.json")'>
+            <input type="button" id="discrimination-button" value="Knowledge" title="Terciary education, segregation, lifelong learning" onclick='radar_chart("gei2015knowledge.json")'>
+            <input type="button" id="discrimination-button" value="Time" title="Childcare, domestic activities, social activities" onclick='radar_chart("gei2015time.json")'>
+            <input type="button" id="discrimination-button" value="Power" title="Political, social, economic power" onclick='radar_chart("gei2015power.json")'>
+            <input type="button" id="discrimination-button" value="Health" title="Life expectancy, healthy life years, access to medical needs" onclick='radar_chart("gei2015health.json")'>
+
+        </div>
+        <div class="w3-half w3-section">
+            Some more text
+        </div>
+    </div>
+</div>
+
+<!-- Contributors Section -->
+<div class="w3-container w3-light-grey" style="padding:128px 16px" id="contributors">
+    <h3 class="w3-center">Contributors</h3>
+    <p class="w3-center w3-large">The project was done by Antonio Ortega Jimenez and Migle Survilaite.</p>
+    <p class="w3-center w3-large">The word map was taken from <a href="http://www.thekrine.com/blog/">here</a>.</p>
+    <p class="w3-center w3-large">The code for radar chart was adopted from <a href="https://bl.ocks.org/alandunning/4c36eb1abdb248de34c64f5672afd857">here</a>.</p>
+    <p class="w3-center w3-large">[1] <a href="https://dictionary.cambridge.org/dictionary/english/discrimination?a=american-english">Definition of discrimination</a>
+        Cambridge Dictionaries Online. Cambridge University.</p>
+    <p class="w3-center w3-large">[2] <a href="http://www.equineteurope.org/IMG/pdf/ebs_437_en.pdf">
+        Discrimination in the EU in 2015</a> Eurobarometer Report.</p>
+    <div class="w3-row-padding" style="margin-top:64px">
+        <div class="w3-half">
+
+        <div class="w3-half">
+
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="w3-center w3-black w3-padding-64">
+    <a href="#home" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
+    <!--<div class="w3-xlarge w3-section">-->
+    <!--</div>-->
+    <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-text-green">w3.css</a></p>
+</footer>
+
+    <!--https://www.w3schools.com/w3css/tryit.asp?filename=tryw3css_templates_startup-->
+</body>
+</html>
