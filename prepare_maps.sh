@@ -11,7 +11,7 @@ Rscript country_codes.R
 
 topojson \
   -o maps/custom.json \
-  --id-property SU_A3 \
+  --id-property WB_A2  \
   --properties name=NAME \
   -- \
   maps/countries.json \

@@ -13,11 +13,23 @@
     }
 
 
-    .country-boundary {
+    .exterior-boundary {
         fill: none;
-        stroke: #777;
-        stroke-dasharray: 2, 2;
+        stroke: #000;
+        stroke-width: "100";
         stroke-linejoin: round;
+        /*stroke-dasharray: 2, 2;*/
+
+    }
+
+    .interior-boundary {
+        fill: none;
+        stroke: #000;
+        stroke-width: "10";
+        stroke-linejoin: round;
+        stroke-dasharray: 2, 2;
+    }
+
 
 
     .country-label {
@@ -28,7 +40,6 @@
         text-anchor: middle;
     }
 
-    }
 
 
 
@@ -48,17 +59,66 @@
         .attr("height", height);
 
 
+
+
+
+    function hexToRgb(hex) {
+        var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+        return result ? {
+            r: parseInt(result[1], 16),
+            g: parseInt(result[2], 16),
+            b: parseInt(result[3], 16)
+        } : null;
+    }
+
+    function componentToHex(c) {
+        var hex = c.toString(16);
+        return hex.length == 1 ? "0" + hex : hex;
+    }
+
+    function rgbToHex(r, g, b) {
+        return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
+    }
+
+
+
+    var light_colors = ["#EE4035", "#F3A530", "#56B949", "#30499B"];
+    var dark_colors = [];
+
+    for (i=0; i<light_colors.length; i++) {
+        var light_color = hexToRgb(light_colors[i]);
+        var dark_color = {'r': 0, 'g': 0, 'b': 0};
+        dark_color['r'] = Math.max(light_color['r'] - 50, 0);
+        dark_color['g'] = Math.max(light_color['g'] - 50, 0);
+        dark_color['b'] = Math.max(light_color['b'] - 50, 0);
+
+
+        dark_colors.push(rgbToHex(dark_color['r'], dark_color['g'], dark_color['b']));
+    }
+
+
     function assign_color(gei_value) {
-        colors = ["#EE4035", "#F3A530", "#56B949", "#30499B"];
-        gei_fraction = gei_value / 25;
-        color_index = Math.floor(gei_fraction);
-        return colors[color_index];
+        var gei_fraction = gei_value / 25;
+        var color_index = Math.floor(gei_fraction);
+        var result = light_colors[color_index];
+        return result;
+
     }
 
     var year = "2005";
 
     d3.csv("maps/active_countries.csv", function(error1, active_countries) {
         if (error1) throw error1;
+
+        var dummy = [];
+        for (i = 0; i < active_countries.length; i++) {
+            dummy.push(active_countries[i]["x"]);
+        }
+        var active_countries = dummy;
+        console.log("active_countries");
+        console.log(active_countries);
+
+
 
         d3.tsv("gei"+year+".tsv",
 
@@ -75,13 +135,16 @@
             function(error2, gei) {
             if (error2) throw error2;
 
-    console.log("active_countries");
-    console.log(active_countries);
-    console.log("gei");
-    console.log(gei);
+                console.log("gei");
+                console.log(gei);
 
+                var gei_ids = [];
+                for (i = 0; i < gei.length; i++) {
+                    gei_ids.push(gei[i]["Country"]);
+                }
 
-    d3.json("maps/custom.json", function(error, custom) {
+                // d3.json("https://cdn.rawgit.com/rveciana/5919944/raw//nuts0.json", function(error, custom) {
+                d3.json("maps/custom.json", function(error, custom) {
         if (error) return console.error(error);
 
 
@@ -100,10 +163,10 @@
         //     .translate([width / 2, height / 2]);
 
         var projection = d3.geo.albers()
-            .center([0, 55.4])
-            .rotate([4.4, 0])
+           // var projection = d3.geo.mercator()
+            .center([0, 48])
+            .rotate([-16, 0])
             .parallels([35, 80])
-            //.scale(6000)
             .translate([width / 2, height / 2]);
 
         var path = d3.geo.path()
@@ -118,32 +181,63 @@
             .data(topojson.feature(custom, custom.objects.countries).features)
             .enter().append("path")
             .attr("class", function(d) {
-                // console.log(d.id);
+
                 return "country " + d.id; })
             .style("fill", function(d) {
-                // console.log(d);
-                // console.log(d.id);
+
+                // color = "#c7ffff";
+                var color = "#ffffff";
+
+
                 for (i=0; i < gei.length; i++) {
-
                     if (gei[i]["Country"] === d.id) {
-                        console.log(gei[i]["Country"]);
-                        console.log(d.id);
-
-                        return assign_color(gei[i]["Overall"]);
+                        var color = assign_color(gei[i]["Overall"]);
                     }
                 }
-                return "#c7ffff";
+                return color;
+                //return "yellow";
+            })
+            .on("mouseover", function(d) {
+
+                if (active_countries.indexOf(d.id) >= 0) {
+
+                    d3.select(this)
+                        .transition()
+                        .style("fill", "#5800ff");
+
+                    // show_info(d);
+                }
+            })
+            .on("mouseout", function(d) {
+                if (active_countries.indexOf(d.id) >= 0) {
+
+                    d3.select(this)
+                        .transition()
+                        .style("fill", function(d) {
+                            var i = gei_ids.indexOf(d.id);
+                            var result = assign_color(gei[i]["Overall"]);
+                            return result;});
+
+                    // reset_info(d);
+                }
             })
             .attr("d", path);
 
 
         // Display boundaries
+        svg.append("path")
+        //.datum(topojson.mesh(custom, custom.objects.countries))
+            .datum(topojson.mesh(custom, custom.objects.countries, function(a, b) { return a !== b && (active_countries.indexOf(a.id) < 0 ^ active_countries.indexOf(b.id) < 0); }))
+            .attr("d", path)
+            .attr("class", "exterior-boundary");
 
         svg.append("path")
-            .datum(topojson.mesh(custom, custom.objects.countries))
+            //.datum(topojson.mesh(custom, custom.objects.countries))
             .datum(topojson.mesh(custom, custom.objects.countries, function(a, b) { return a !== b && active_countries.indexOf(a.id) >= 0; }))
             .attr("d", path)
-            .attr("class", "country-boundary");
+            .attr("class", "interior-boundary");
+
+
 
 
 
@@ -183,3 +277,4 @@
     });
 
 </script>
+</body>

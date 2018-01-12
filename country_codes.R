@@ -15,6 +15,8 @@
 #   matrix(ncol = 6, byrow = T)
 # 
 library("countrycode")
+library("ggplot2")
+library("hrbrthemes")
 suppressMessages(library("dplyr"))
 setwd("maps")
 countrycode_data <- countrycode_data
@@ -51,3 +53,14 @@ system("rm *json")
 system(cmd1)
 system(cmd2)
 # system(cmd3)
+
+setwd("..")
+# gei <- read.table(file = "gei2005.tsv", header = T)
+# ggplot(data = gei, mapping = aes(x = Overall)) +
+#   geom_histogram() +
+#   theme_ipsum()
+# 
+# quantile(gei$Overall)
+# ggplot(data = arrange(gei, Overall), mapping = aes(y = Overall)) + geom_text(mapping = aes(label = Country, x = 1:29))
+# plot(gei$Overall %>% sort, pch = ".")
+# text(x = 1:29, y = arrange(gei, Overall) %>% .$Overall, labels = arrange(gei, Overall) %>% .$Country)
