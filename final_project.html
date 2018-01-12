@@ -21,7 +21,8 @@
         <!-- Right-sided navbar links -->
         <div class="w3-right w3-hide-small">
             <a href="#introduction" class="w3-bar-item w3-button">Introduction</a>
-            <a href="#visualization1" class="w3-bar-item w3-button"> Visualization 1</a>
+            <a href="#visualization1" class="w3-bar-item w3-button"> Discrimination in EU</a>
+            <a href="#dataset" class="w3-bar-item w3-button"> Gender equality data set</a>
             <a href="#visualization2" class="w3-bar-item w3-button"> Visualization 2</a>
             <a href="#visualization3" class="w3-bar-item w3-button"> Visualization 3</a>
             <a href="#contributors" class="w3-bar-item w3-button"></i> Contributors</a>
@@ -77,7 +78,7 @@
     <h3 class="w3-center">Discrimination rates in EU</h3>
     <div class="w3-row-padding w3-grayscale" style="margin-top:64px">
         <div class="w3-col w3-margin-bottom">
-            <div class="w3-twothird w3-card">
+            <div class="w3-twothird">
                 <div class="w3-container">
                     <svg  width="100%" height="500" id="barplot"><script>bar_plot(["widespread", "rare", "nonexistent", "dk"],
                         ["Widespread", "Rare", "Non-existent", "Don't know"],
@@ -98,9 +99,16 @@
                     </div>
                 </div>
             </div>
-            <div class="w3-third w3-card">
+            <div class="w3-third ">
                 <div class="w3-container">
-                    Some text
+                    In the survey about discrimination EU citizens were asked about how widespread is the particular type of discrimination. Not surprisingly
+                    the best recognised types of discrimination was by ethnic origin, sexual orientation and gender identity. That may be a consequence of
+                    high attention levels these types of discrimination get in everyday life. Interestingly, most of the
+                    respondents think that the least widespread discrimination is by age or gender. The most worrying part is the respondents which immediately
+                    denied the existence of that kind of discrimination. For discrimination by gender 9% of people identified it as non-existent even if this
+                    issue is being addressed in public pretty often and the only other discrimination type which existence is denied often is discrimination of
+                    young people. The latter has way less proof of being common in EU. In the further analysis it was decided to concentrate on the gender equality
+                    issues in EU and the main problems which has to be overcame in order to achieve gender equality.
                 </div>
             </div>
         </div>
@@ -110,8 +118,22 @@
 
 
 
+<!-- Introduction to data set -->
+<div class="w3-container w3-center w3-light-grey w3-padding-64" id="dataset">
+    <h3>Gender equality data set</h3>
+    <!--<p class="w3-large">The main idea of the visualization</p>-->
+    <div class="w3-row-padding">
+        <div class="w3-section">
+            Some text
+        </div>
+
+        </div>
+    </div>
+</div>
+
+
 <!-- Visualization 2 Section -->
-<div class="w3-container w3-center w3-light-grey w3-padding-64" id="visualization2">
+<div class="w3-container w3-center w3-padding-64" id="visualization2">
     <h3>Visualization 2</h3>
     <p class="w3-large">The main idea of the visualization</p>
     <div class="w3-row-padding">
@@ -121,15 +143,15 @@
         <div class="w3-half w3-section">
             Visualization
 
-            </div>
         </div>
     </div>
 </div>
+</div>
 
 <!-- Visualization 3 Section -->
-<div class="w3-container w3-center" style="padding:128px 16px" id="visualization3">
+<div class="w3-container w3-center  w3-light-grey" style="padding:128px 16px" id="visualization3">
     <h3>Gender equality index and its domains in 2015</h3>
-    <p class="w3-large">The main idea of the visualization</p>
+    <!--<p class="w3-large">The main idea of the visualization</p>-->
     <div class="w3-row-padding" style="margin-top:64px">
         <div class="w3-half w3-section">
             <svg width="600" height="550" id="chart"> <script>radar_chart("gei2015overall.json")</script>  </svg>
@@ -151,7 +173,7 @@
 </div>
 
 <!-- Contributors Section -->
-<div class="w3-container w3-light-grey" style="padding:128px 16px" id="contributors">
+<div class="w3-container " style="padding:128px 16px" id="contributors">
     <h3 class="w3-center">Contributors</h3>
     <p class="w3-center w3-large">The project was done by Antonio Ortega Jimenez and Migle Survilaite.</p>
     <p class="w3-center w3-large">The word map was taken from <a href="http://www.thekrine.com/blog/">here</a>.</p>
