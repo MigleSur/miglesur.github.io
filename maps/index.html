@@ -2,28 +2,30 @@
 <meta charset="utf-8">
 <style>
 
-    .subunit.ESP { fill: #ddc; }
-    .subunit.DEU { fill: #cdd; }
-    .subunit.NIR { fill: #cdc; }
-    .subunit.ENG { fill: #dcd; }
-    .subunit.IRL { display: none; }
+    .country.ESP { fill: #ddc; }
+    .country.DEU { fill: #cdd; }
+    .country.GBR { fill: #dcd; }
+    .country.IRL { fill: white; }
+    //.country.IRL { display: none; }
+
+    .country-boundary.IRL {
+        stroke: #aaa;
+    }
 
 
-
-    .subunit-boundary {
+    .country-boundary {
         fill: none;
         stroke: #777;
         stroke-dasharray: 2, 2;
         stroke-linejoin: round;
 
 
-    .subunit-label {
-        fill: #777;
+    .country-label {
+        fill: #45771f;
         fill-opacity: .5;
         font-size: 20px;
         font-weight: 300;
         text-anchor: middle;
-        color: white;
     }
 
     }
@@ -33,6 +35,7 @@
 
 </style>
 <body>
+<!--<script src="scripts/require.js"></script>-->
 <script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
 <script src="//d3js.org/topojson.v1.min.js"></script>
 <script>
@@ -45,10 +48,42 @@
         .attr("height", height);
 
 
+    function assign_color(gei_value) {
+        colors = ["#EE4035", "#F3A530", "#56B949", "#30499B"];
+        gei_fraction = gei_value / 25;
+        color_index = Math.floor(gei_fraction);
+        return colors[color_index];
+    }
+
+    var year = "2005";
+
+    d3.csv("data/active_countries.csv", function(error1, active_countries) {
+        if (error1) throw error1;
+
+        d3.tsv("gei"+year+".tsv",
+
+            function(d) {
+
+            d["Overall"] = +d["Overall"];
+            d["Work"] = +d["Work"];
+            d["Money"] = +d["Money"];
+            d["Knowledge"] = +d["Knowledge"];
+            return d;
+
+            },
+
+            function(error2, gei) {
+            if (error2) throw error2;
+
+    console.log("active_countries");
+    console.log(active_countries);
+    console.log("gei");
+    console.log(gei);
+
+
     d3.json("data/custom.json", function(error, custom) {
         if (error) return console.error(error);
 
-        console.log(custom)
 
         // svg.append("path")
         //     .datum(topojson.feature(custom, custom.objects.countries))
@@ -79,10 +114,26 @@
             .attr("d", path);
 
 
-        svg.selectAll(".subunit")
+        svg.selectAll(".country")
             .data(topojson.feature(custom, custom.objects.countries).features)
             .enter().append("path")
-            .attr("class", function(d) { console.log(d); return "subunit " + d.id; })
+            .attr("class", function(d) {
+                // console.log(d.id);
+                return "country " + d.id; })
+            .style("fill", function(d) {
+                // console.log(d);
+                // console.log(d.id);
+                for (i=0; i < gei.length; i++) {
+
+                    if (gei[i]["Country"] === d.id) {
+                        console.log(gei[i]["Country"]);
+                        console.log(d.id);
+
+                        return assign_color(gei[i]["Overall"]);
+                    }
+                }
+                return "#c7ffff";
+            })
             .attr("d", path);
 
 
@@ -90,9 +141,9 @@
 
         svg.append("path")
             .datum(topojson.mesh(custom, custom.objects.countries))
-            //.datum(topojson.mesh(custom, custom.objects.countries, function(a, b) { return a !== b && a.id !== "IRL"; }))
+            .datum(topojson.mesh(custom, custom.objects.countries, function(a, b) { return a !== b && active_countries.indexOf(a.id) >= 0; }))
             .attr("d", path)
-            .attr("class", "subunit-boundary");
+            .attr("class", "country-boundary");
 
 
 
@@ -115,18 +166,19 @@
 //            .style("text-anchor", function(d) { return d.geometry.coordinates[0] > -1 ? "start" : "end"; });
 
 
-        svg.selectAll(".subunit-label")
-            .data(topojson.feature(custom, custom.objects.countries).features)
-            .enter().append("text")
-            .attr("class", function(d) { return "subunit-label " + d.id; })
-            .attr("transform", function(d) { return "translate(" + path.centroid(d) + ")"; })
-            .attr("dy", ".35em")
-            .attr("color", "#fff")
-            .text(function(d) { return d.properties.name; });
+        // svg.selectAll(".country-label")
+        //     .data(topojson.feature(custom, custom.objects.countries).features)
+        //     .enter().append("text")
+        //     .attr("class", function(d) { return "country-label " + d.id; })
+        //     .attr("transform", function(d) { return "translate(" + path.centroid(d) + ")"; })
+        //     .attr("dy", ".35em")
+        //     .text(function(d) { console.log(d); return d.id; });
 
 
 
 
+    });
+        });
 
     });
 
