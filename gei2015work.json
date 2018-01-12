@@ -4,73 +4,46 @@
       "Country": "EU28", "value": 71.5
     },
     {
-      "Country": "BE", "value": 73.8
-    },
-    {
-      "Country": "BG", "value": 68.6
-    },
-    {
-      "Country": "CZ", "value": 66.1
-    },
-    {
       "Country": "DK", "value": 79.2
     },
     {
-      "Country": "DE", "value": 71.4
+      "Country": "FI", "value": 74.7
     },
     {
-      "Country": "EE", "value": 72.1
+      "Country": "SE", "value": 82.6
     },
+
     {
-      "Country": "IE", "value": 73.9
-    },
-    {
-      "Country": "EL", "value": 64.2
-    },
-    {
-      "Country": "ES", "value": 72.4
+      "Country": "BE", "value": 73.8
     },
     {
       "Country": "FR", "value": 72.1
     },
     {
-      "Country": "HR", "value": 69.4
-    },
-    {
-      "Country": "IT", "value": 62.4
-    },
-    {
-      "Country": "CY", "value": 70.7
-    },
-    {
-      "Country": "LV", "value": 73.6
-    },
-    {
-      "Country": "LT", "value": 73.2
+      "Country": "NL", "value": 76.7
     },
     {
       "Country": "LU", "value": 74
     },
     {
-      "Country": "HU", "value": 67.2
+      "Country": "UK", "value": 76.6
     },
     {
-      "Country": "MT", "value": 71
+      "Country": "IE", "value": 73.9
     },
+
     {
-      "Country": "NL", "value": 76.7
-    },
-    {
-      "Country": "AT", "value": 76.1
-    },
-    {
-      "Country": "PL", "value": 66.8
+      "Country": "ES", "value": 72.4
     },
     {
       "Country": "PT", "value": 72
     },
+
     {
-      "Country": "RO", "value": 67.1
+      "Country": "DE", "value": 71.4
+    },
+    {
+      "Country": "AT", "value": 76.1
     },
     {
       "Country": "SI", "value": 71.8
@@ -79,13 +52,47 @@
       "Country": "SK", "value": 65.5
     },
     {
-      "Country": "FI", "value": 74.7
+      "Country": "HU", "value": 67.2
     },
     {
-      "Country": "SE", "value": 82.6
+      "Country": "CZ", "value": 66.1
     },
     {
-      "Country": "UK", "value": 76.6
+      "Country": "PL", "value": 66.8
+    },
+
+    {
+      "Country": "LV", "value": 73.6
+    },
+    {
+      "Country": "LT", "value": 73.2
+    },
+    {
+      "Country": "EE", "value": 72.1
+    },
+
+    {
+      "Country": "HR", "value": 69.4
+    },
+    {
+      "Country": "BG", "value": 68.6
+    },
+    {
+      "Country": "RO", "value": 67.1
+    },
+
+    {
+      "Country": "GR", "value": 64.2
+    },
+    {
+      "Country": "IT", "value": 62.4
+    },
+    {
+      "Country": "CY", "value": 70.7
+    },
+    {
+      "Country": "MT", "value": 71
     }
+
   ]
 ]

@@ -1,5 +1,3 @@
-
-// Initialiation function. Called after body has loaded
 function bar_plot(column_list, annotation_list, color_list, plotted_barplot) {
 
     if(plotted_barplot) {
@@ -11,6 +9,8 @@ function bar_plot(column_list, annotation_list, color_list, plotted_barplot) {
     var margin = {top: 100, right: 50, bottom: 100, left: 70};
     var width = +barpl.node().getBoundingClientRect().width - margin.left - margin.right;
     var height = +barpl.node().getBoundingClientRect().height - margin.top - margin.bottom;
+
+    // var tooltip = d3.select("#barplot").append("div").attr("id", "toolTip");
 
     var g = barpl.append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
@@ -117,8 +117,18 @@ function bar_plot(column_list, annotation_list, color_list, plotted_barplot) {
                 .append("title")
                 .text(function (da) {
                     return da[column_list[item]] + "%"
-                });
-        }
+                })
+
+                // .on('mousemove', function (da){
+                //     console.log(da)
+                //     tooltip
+                //         .style("left", d3.event.pageX - 40 + "px")
+                //         .style("top", d3.event.pageY - 80 + "px")
+                //         .style("display", "inline-block")
+                //         .html(da[column_list[item]]);
+                // })
+                // .on("mouseout", function(d){ tooltip.style("display", "none");});
+        };
 
         for (item in column_list) {
             g.append("text")

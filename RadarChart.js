@@ -31,7 +31,6 @@ var RadarChart = {
         var allAxis = (d[0].map(function(i, j){return i.Country}));
         var total = allAxis.length;
         var radius = cfg.factor*Math.min(cfg.w/2, cfg.h/2);
-        var Format = d3.format('%');
         d3.select(id).select("svg").remove();
 
         var g = d3.select(id)
@@ -40,8 +39,6 @@ var RadarChart = {
             .attr("height", cfg.h+cfg.ExtraWidthY)
             .append("g")
             .attr("transform", "translate(" + cfg.TranslateX + "," + cfg.TranslateY + ")");
-
-        var tooltip;
 
         //Circular segments
         for(var j=0; j<cfg.levels; j++){
@@ -102,12 +99,12 @@ var RadarChart = {
             .style("font-size", "11px")
             .attr("text-anchor", "middle")
             .attr("dy", "1.5em")
-            .attr("transform", function(d, i){return "translate(0, -10)"})
+            .attr("transform", function(){return "translate(0, -10)"})
             .attr("x", function(d, i){return cfg.w/2*(1-cfg.factorLegend*Math.sin(i*cfg.radians/total))-60*Math.sin(i*cfg.radians/total);})
             .attr("y", function(d, i){return cfg.h/2*(1-Math.cos(i*cfg.radians/total))-20*Math.cos(i*cfg.radians/total);});
 
 
-        d.forEach(function(y, x){
+        d.forEach(function(y){
             dataValues = [];
             g.selectAll(".nodes")
                 .data(y, function(j, i){
@@ -139,7 +136,7 @@ var RadarChart = {
 
 
         var tooltip = d3.select("body").append("div").attr("class", "toolTip");
-        d.forEach(function(y, x){
+        d.forEach(function(y){
             g.selectAll(".nodes")
                 .data(y).enter()
                 .append("svg:circle")

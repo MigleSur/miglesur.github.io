@@ -1,120 +1,98 @@
 [
   [
     {
-      "Country": "EU28",
-      "value": 63.4
+      "Country": "EU28", "value": 63.4
     },
     {
-      "Country": "BE",
-      "value": 71.1
+      "Country": "DK", "value": 73.6
     },
     {
-      "Country": "BG",
-      "value": 53.3
+      "Country": "FI", "value": 61.3
     },
     {
-      "Country": "CZ",
-      "value": 57.3
+      "Country": "SE", "value": 72.8
+    },
+
+    {
+      "Country": "BE", "value": 71.1
     },
     {
-      "Country": "DK",
-      "value": 73.6
+      "Country": "FR", "value": 66.1
     },
     {
-      "Country": "DE",
-      "value": 52.9
+      "Country": "NL", "value": 67.3
     },
     {
-      "Country": "EE",
-      "value": 53.2
+      "Country": "LU", "value": 69.4
     },
     {
-      "Country": "IE",
-      "value": 66.4
+      "Country": "UK", "value": 71.8
     },
     {
-      "Country": "EL",
-      "value": 55.6
+      "Country": "IE", "value": 66.4
+    },
+
+    {
+      "Country": "ES", "value": 65.3
     },
     {
-      "Country": "ES",
-      "value": 65.3
+      "Country": "PT", "value": 54.8
+    },
+
+    {
+      "Country": "DE", "value": 52.9
     },
     {
-      "Country": "FR",
-      "value": 66.1
+      "Country": "AT", "value": 63.2
     },
     {
-      "Country": "HR",
-      "value": 49.8
+      "Country": "SI", "value": 55
     },
     {
-      "Country": "IT",
-      "value": 61.4
+      "Country": "SK", "value": 60
     },
     {
-      "Country": "CY",
-      "value": 58.5
+      "Country": "HU", "value": 56.9
     },
     {
-      "Country": "LV",
-      "value": 48.9
+      "Country": "CZ", "value": 57.3
     },
     {
-      "Country": "LT",
-      "value": 55.8
+      "Country": "PL", "value": 56
+    },
+
+    {
+      "Country": "LV", "value": 48.9
     },
     {
-      "Country": "LU",
-      "value": 69.4
+      "Country": "LT", "value": 55.8
     },
     {
-      "Country": "HU",
-      "value": 56.9
+      "Country": "EE", "value": 53.2
+    },
+
+    {
+      "Country": "HR", "value": 49.8
     },
     {
-      "Country": "MT",
-      "value": 65.2
+      "Country": "BG", "value": 53.3
     },
     {
-      "Country": "NL",
-      "value": 67.3
+      "Country": "RO", "value": 51.8
+    },
+
+    {
+      "Country": "GR", "value": 55.6
     },
     {
-      "Country": "AT",
-      "value": 63.2
+      "Country": "IT", "value": 61.4
     },
     {
-      "Country": "PL",
-      "value": 56
+      "Country": "CY", "value": 58.5
     },
     {
-      "Country": "PT",
-      "value": 54.8
-    },
-    {
-      "Country": "RO",
-      "value": 51.8
-    },
-    {
-      "Country": "SI",
-      "value": 55
-    },
-    {
-      "Country": "SK",
-      "value": 60
-    },
-    {
-      "Country": "FI",
-      "value": 61.3
-    },
-    {
-      "Country": "SE",
-      "value": 72.8
-    },
-    {
-      "Country": "UK",
-      "value": 71.8
+      "Country": "MT", "value": 65.2
     }
+
   ]
 ]
