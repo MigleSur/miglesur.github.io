@@ -57,7 +57,7 @@
 
     var year = "2005";
 
-    d3.csv("data/active_countries.csv", function(error1, active_countries) {
+    d3.csv("maps/active_countries.csv", function(error1, active_countries) {
         if (error1) throw error1;
 
         d3.tsv("gei"+year+".tsv",
@@ -81,7 +81,7 @@
     console.log(gei);
 
 
-    d3.json("data/custom.json", function(error, custom) {
+    d3.json("maps/custom.json", function(error, custom) {
         if (error) return console.error(error);
 
 

@@ -16,7 +16,7 @@
 # 
 library("countrycode")
 suppressMessages(library("dplyr"))
-setwd("data")
+setwd("maps")
 countrycode_data <- countrycode_data
 #countrycode_data[countrycode_data$region %>% grepl(pattern = "Europe"), c("country.name.en", "iso2c", "iso3c")]
 
