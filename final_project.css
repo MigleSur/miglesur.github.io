@@ -3,7 +3,6 @@ body, html {
     height: 100%;
     line-height: 1.8;
 }
-
 #discrimination-button {
     background-color: white;
     color: black;
@@ -15,7 +14,19 @@ body, html {
     color: white;
 }
 
-#discrimination-button:focus{
+
+#radar-button {
+    background-color: white;
+    color: black;
+    border: 2px solid #49474b;
+}
+
+#radar-button:hover {
+    background-color: #49474b;
+    color: white;
+}
+
+#radar-button:focus{
     background-color: #49474b;
     color: white;
 }

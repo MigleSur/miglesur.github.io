@@ -1,3 +1,7 @@
+columnlist =[]
+colorlist=[]
+annlist=[]
+
 function bar_plot(column_list, annotation_list, color_list, plotted_barplot) {
 
     if(plotted_barplot) {
@@ -10,7 +14,6 @@ function bar_plot(column_list, annotation_list, color_list, plotted_barplot) {
     var width = +barpl.node().getBoundingClientRect().width - margin.left - margin.right;
     var height = +barpl.node().getBoundingClientRect().height - margin.top - margin.bottom;
 
-    // var tooltip = d3.select("#barplot").append("div").attr("id", "toolTip");
 
     var g = barpl.append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
@@ -88,7 +91,6 @@ function bar_plot(column_list, annotation_list, color_list, plotted_barplot) {
         //     .attr("height", function(da) { return height - y(da.nonexistent);})
         //     .append("title")
         //     .text(function(da){ return da.nonexistent + "%"});
-
         // g.selectAll(".bar")
         //     .data(data)
         //     .enter().append("rect")
@@ -114,20 +116,11 @@ function bar_plot(column_list, annotation_list, color_list, plotted_barplot) {
                 .attr("width", width / (8.5*column_list.length))
                 .attr("transform", "translate(" + width * item / (8.5*column_list.length) + ")")
                 .attr("height", function (da) {return height - y(da[column_list[item]]);})
-                .append("title")
+                .append("svg:title")
                 .text(function (da) {
                     return da[column_list[item]] + "%"
                 })
 
-                // .on('mousemove', function (da){
-                //     console.log(da)
-                //     tooltip
-                //         .style("left", d3.event.pageX - 40 + "px")
-                //         .style("top", d3.event.pageY - 80 + "px")
-                //         .style("display", "inline-block")
-                //         .html(da[column_list[item]]);
-                // })
-                // .on("mouseout", function(d){ tooltip.style("display", "none");});
         };
 
         for (item in column_list) {
@@ -195,13 +188,33 @@ function bar_plot(column_list, annotation_list, color_list, plotted_barplot) {
             //     .attr("height", 12)
             //     .attr("fill", "#1935f4");
         }
-
-
-
-
     });
 
+
 }
+
+
+function add_column_list(value){
+    columnlist.push(value)
+    return columnlist
+}
+
+function add_ann_list(value){
+    annlist.push(value)
+    return annlist
+}
+
+function add_color_list(value){
+    colorlist.push(value)
+    return colorlist
+}
+
+function remove_all(){
+    colorlist =[]
+    annlist = []
+    columnlist=[]
+}
+
 
 var json_file = [
     [
@@ -307,9 +320,6 @@ function drawRadarCharts() {
 };
 
 function drawRadarChart(divId, w, h) {
-    var textSizeLevels = "10px !important";
-    var textSizeTooltip = "13px !important";
-    var textSizeLegend = "11px !important";
     var circleSize = 5;
     var strokeWidthPolygon = "2px";
 
@@ -550,10 +560,9 @@ function drawRadarChart(divId, w, h) {
 
             //Tooltip
             tooltip = g.append('text')
-                .attr("class", "toolTip")
                 .style('opacity', 0)
                 .style('font-family', 'sans-serif')
-                .style('font-size', textSizeTooltip);
+                .style('font-size', "13px");
         }
     };
 
