@@ -6,7 +6,6 @@
     <link rel="stylesheet" type="text/css" href="final_project.css">
     <script src="https://d3js.org/d3.v4.min.js"></script>
     <script src="final_project.js"></script>
-    <script src="RadarChart.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
@@ -34,15 +33,6 @@
     </div>
 </div>
 
-<!--&lt;!&ndash; Sidebar on small screens when clicking the menu icon &ndash;&gt;-->
-<!--<nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-medium w3-hide-large" style="display:none" id="mySidebar">-->
-    <!--<a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">Close ×</a>-->
-    <!--<a href="#introduction" onclick="w3_close()" class="w3-bar-item w3-button">Introduction</a>-->
-    <!--<a href="#visualization1" onclick="w3_close()" class="w3-bar-item w3-button">Visualization 1</a>-->
-    <!--<a href="#visualization2" onclick="w3_close()" class="w3-bar-item w3-button">Visualization 2</a>-->
-    <!--<a href="#visualization3" onclick="w3_close()" class="w3-bar-item w3-button">Visualization 3</a>-->
-    <!--<a href="#contributors" onclick="w3_close()" class="w3-bar-item w3-button">Contributors</a>-->
-<!--</nav>-->
 
 <!-- Header with full-height image -->
 <header class="bgimg-1 w3-display-container w3-grayscale-min" id="home">
@@ -74,7 +64,7 @@
 
 
 <!-- Visualization 1 -->
-<div class="w3-container" style="padding:128px 16px" id="visualization1">
+<div class="w3-container" style="padding:64px 16px" id="visualization1">
     <h3 class="w3-center">Discrimination rates in EU</h3>
     <div class="w3-row-padding w3-grayscale" style="margin-top:64px">
         <div class="w3-col w3-margin-bottom">
@@ -149,28 +139,27 @@
 </div>
 
 <!-- Visualization 3 Section -->
-<div class="w3-container w3-center  w3-light-grey" style="padding:128px 16px" id="visualization3">
+<div class="w3-container w3-center  w3-light-grey" style="padding:64px 16px" id="visualization3">
     <h3>Gender equality index and its domains in 2015</h3>
     <!--<p class="w3-large">The main idea of the visualization</p>-->
-    <div class="w3-row-padding" style="margin-top:64px">
+    <div class="w3-row-padding" style="margin-top:30px">
         <div class="w3-half w3-section">
-            <svg width="600" height="550" id="chart"> <script>radar_chart("gei2015overall.json")</script>  </svg>
-            <input type="button" id="discrimination-button" value="Overall" title="Overall gender equality index values in EU"
-                   onclick='radar_chart("gei2015overall.json")'>
-            <input type="button" id="discrimination-button" value="Work" title="Participation, duration of working life, sectoral segregation, quality of work"
-                   onclick='radar_chart("gei2015work.json")'>
-            <input type="button" id="discrimination-button" value="Money" title="Earnings, income, economic situation" onclick='radar_chart("gei2015money.json")'>
-            <input type="button" id="discrimination-button" value="Knowledge" title="Terciary education, segregation, lifelong learning" onclick='radar_chart("gei2015knowledge.json")'>
-            <input type="button" id="discrimination-button" value="Time" title="Childcare, domestic activities, social activities" onclick='radar_chart("gei2015time.json")'>
-            <input type="button" id="discrimination-button" value="Power" title="Political, social, economic power" onclick='radar_chart("gei2015power.json")'>
-            <input type="button" id="discrimination-button" value="Health" title="Life expectancy, healthy life years, access to medical needs" onclick='radar_chart("gei2015health.json")'>
-
+            <!--<svg width="600" height="550" id="chart"> <script>radar_chart("gei2015overall.json")</script>  </svg>-->
+            <input type="button" id="discrimination-button" value="Overall" title="Overall gender equality index values in EU" onclick="updateOverall()">
+            <input type="button" id="discrimination-button" value="Money" title="Earnings, income, economic situation" onclick="updateMoney()">
+            <input type="button" id="discrimination-button" value="Work" title="Participation, duration of working life, sectoral segregation, quality of work" onclick="updateWork()">
+            <input type="button" id="discrimination-button" value="Knowledge" title="Terciary education, segregation, lifelong learning" onclick="updateKnowledge()">
+            <input type="button" id="discrimination-button" value="Time" title="Childcare, domestic activities, social activities" onclick="updateTime()">
+            <input type="button" id="discrimination-button" value="Power" title="Political, social, economic power" onclick="updatePower()">
+            <input type="button" id="discrimination-button" value="Health" title="Life expectancy, healthy life years, access to medical needs" onclick="updateHealth()">
+            <div class="w3-row-padding" style="margin-top:30px"> <svg width="600" height="500" id="radarchart"> <script>drawRadarCharts()</script> </svg> </div>
         </div>
         <div class="w3-half w3-section">
             Some more text
         </div>
     </div>
 </div>
+
 
 <!-- Contributors Section -->
 <div class="w3-container " style="padding:128px 16px" id="contributors">
