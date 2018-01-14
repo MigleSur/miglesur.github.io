@@ -1,10 +1,13 @@
-var blue_colors = [
-    //"#f2f0f7",
-    "#dadaeb",
-    "#bcbddc",
-    "#9e9ac8",
-    "#756bb1",
-    "#3d2f6e"];
+// var blue_colors = [
+//     //"#f2f0f7",
+//     "#dadaeb",
+//     "#bcbddc",
+//     "#9e9ac8",
+//     "#756bb1",
+//     "#3d2f6e"];
+
+var blue_colors = d3.schemeReds[5];
+
 
 var gei_domain = [50, 60, 70, 75];
 
