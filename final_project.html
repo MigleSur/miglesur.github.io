@@ -6,7 +6,6 @@
     <link rel="stylesheet" type="text/css" href="final_project.css">
     <script src="https://d3js.org/d3.v4.min.js"></script>
     <script src="final_project.js"></script>
-    <script src="RadarChart.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
@@ -21,9 +20,10 @@
         <!-- Right-sided navbar links -->
         <div class="w3-right w3-hide-small">
             <a href="#introduction" class="w3-bar-item w3-button">Introduction</a>
-            <a href="#visualization1" class="w3-bar-item w3-button"> Visualization 1</a>
+            <a href="#visualization1" class="w3-bar-item w3-button"> Discrimination in EU</a>
+            <a href="#dataset" class="w3-bar-item w3-button"> Gender equality data set</a>
             <a href="#visualization2" class="w3-bar-item w3-button"> Visualization 2</a>
-            <a href="#visualization3" class="w3-bar-item w3-button"> Visualization 3</a>
+            <a href="#visualization3" class="w3-bar-item w3-button"> Gender equality index and its domains</a>
             <a href="#contributors" class="w3-bar-item w3-button"></i> Contributors</a>
         </div>
         <!-- Hide right-floated links on small screens and replace them with a menu icon -->
@@ -33,15 +33,6 @@
     </div>
 </div>
 
-<!--&lt;!&ndash; Sidebar on small screens when clicking the menu icon &ndash;&gt;-->
-<!--<nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-medium w3-hide-large" style="display:none" id="mySidebar">-->
-    <!--<a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">Close ×</a>-->
-    <!--<a href="#introduction" onclick="w3_close()" class="w3-bar-item w3-button">Introduction</a>-->
-    <!--<a href="#visualization1" onclick="w3_close()" class="w3-bar-item w3-button">Visualization 1</a>-->
-    <!--<a href="#visualization2" onclick="w3_close()" class="w3-bar-item w3-button">Visualization 2</a>-->
-    <!--<a href="#visualization3" onclick="w3_close()" class="w3-bar-item w3-button">Visualization 3</a>-->
-    <!--<a href="#contributors" onclick="w3_close()" class="w3-bar-item w3-button">Contributors</a>-->
-<!--</nav>-->
 
 <!-- Header with full-height image -->
 <header class="bgimg-1 w3-display-container w3-grayscale-min" id="home">
@@ -73,11 +64,11 @@
 
 
 <!-- Visualization 1 -->
-<div class="w3-container" style="padding:128px 16px" id="visualization1">
+<div class="w3-container" style="padding:64px 16px" id="visualization1">
     <h3 class="w3-center">Discrimination rates in EU</h3>
     <div class="w3-row-padding w3-grayscale" style="margin-top:64px">
         <div class="w3-col w3-margin-bottom">
-            <div class="w3-twothird w3-card">
+            <div class="w3-half">
                 <div class="w3-container">
                     <svg  width="100%" height="500" id="barplot"><script>bar_plot(["widespread", "rare", "nonexistent", "dk"],
                         ["Widespread", "Rare", "Non-existent", "Don't know"],
@@ -85,21 +76,32 @@
                         false)</script>
                     </svg>
                     <div class="w3-center">
-                        <input type="button" id="discrimination-button" value="Widespread" onclick='bar_plot(["widespread"], ["Widespread"], ["#ffae4e"], true)'>
-                        <input type="button" id="discrimination-button" value="Rare" onclick='bar_plot(["rare"], ["Rare"], ["#ff682c"], true)'>
-                        <input type="button" id="discrimination-button" value="Non-existent" onclick='bar_plot(["nonexistent"], ["Non-existent"],["#c1000b"], true)'>
-                        <input type="button" id="discrimination-button" value="Don't know" onclick='bar_plot(["dk"], ["Don&#39;t know"],["#9ba2c9"], true)'>
-                        <input type="button" id="discrimination-button" value="All values" onclick='bar_plot(["widespread", "rare", "nonexistent", "dk"],
+                        <input type="button" id="discrimination-button" value="Widespread" onclick='bar_plot(add_column_list("widespread"), add_ann_list("Widespread"), add_color_list("#ffae4e"), true)'>
+                        <input type="button" id="discrimination-button" value="Rare" onclick='bar_plot(add_column_list("rare"), add_ann_list("Rare"), add_color_list("#ff682c"), true)'>
+                        <input type="button" id="discrimination-button" value="Non-existent" onclick='bar_plot(add_column_list("nonexistent"), add_ann_list("Non-existent"),add_color_list("#c1000b"), true)'>
+                        <input type="button" id="discrimination-button" value="Don't know" onclick='bar_plot(add_column_list("dk"), add_ann_list("Don&#39;t know"),add_color_list("#9ba2c9"), true)'>
+                        <input type="button" id="discrimination-button" value="Reset original" onclick='bar_plot(["widespread", "rare", "nonexistent", "dk"],
                             ["Widespread", "Rare", "Non-existent", "Don&#39;t know"],
                             ["#ffae4e","#ff682c","#c1000b","#9ba2c9"],
-                            true)'>
+                            true), remove_all()'>
 
                     </div>
                 </div>
             </div>
-            <div class="w3-third w3-card">
+            <div class="w3-half ">
+                <div class="w3-container" >
+                    In the survey about discrimination EU citizens were asked about how widespread is the particular type of discrimination. Not surprisingly
+                    the best recognised types of discrimination was by ethnic origin, sexual orientation and gender identity. That may be a consequence of
+                    high attention levels these types of discrimination get in everyday life. Interestingly, most of the
+                    respondents think that the least widespread discrimination is by age or gender. The most worrying part is the respondents which immediately
+                    denied the existence of that kind of discrimination. For discrimination by gender 9% of people identified it as non-existent even if this
+                    issue is being addressed in public pretty often and the only other discrimination type which existence is denied often is discrimination of
+                    young people. The latter has way less proof of being common in EU. In the further analysis it was decided to concentrate on the gender equality
+                    issues in EU and the main problems which has to be overcame in order to achieve gender equality.
+                </div>
                 <div class="w3-container">
-                    Some text
+                    In this visualization the reader is fully enabled to explore the data by analyzing one or a few survey answers without including the others.
+                    The plot can be reset by pressing the "Reset original" button.
                 </div>
             </div>
         </div>
@@ -109,8 +111,32 @@
 
 
 
+<!-- Introduction to data set -->
+<div class="w3-container w3-center w3-light-grey w3-padding-64" id="dataset">
+    <h3>Gender equality data set</h3>
+    <!--<p class="w3-large">The main idea of the visualization</p>-->
+    <div class="w3-row-padding">
+        <div class="w3-section">
+            The data set used in further analysis is the gender equality index in EU. It is being measured since 2005 and it was already
+            measured 4 times: 2005, 2010, 2012, 2015. As mentioned before, discrimination is hard to measure, in this study gender equality index was
+            calculated after measuring 6 different domains of life: money, work, time, knowledge, power and health. Each of these domains have sub-domains
+            which were measured in order to calculate the value of the specific domain.
+        </div>
+        <div class="w3-section">
+            The calculations are made in a way that score of 100 means that gender equality is achieved in the specific domain or in total, while 0 means complete
+            inequality. As mentioned before, each domain contains a few sub-domains. <strong>Money</strong> domain contains data about earnings, income and economic
+            situation. <strong>Work</strong> domain - employment, duration of working life, sectoral segregation, flexibility of working hours and work intensity.
+            <strong>Knowledge</strong> domain - tertiary education, segregation and lifelong learning. <strong>Time</strong> childcare activities, domestic
+            activities and social activities. <strong>Power</strong> domain - political power, social power and economical power. <strong>Health</strong> domain -
+            health status and access to health care.
+        </div>
+        </div>
+    </div>
+</div>
+
+
 <!-- Visualization 2 Section -->
-<div class="w3-container w3-center w3-light-grey w3-padding-64" id="visualization2">
+<div class="w3-container w3-center w3-padding-64" id="visualization2">
     <h3>Visualization 2</h3>
     <p class="w3-large">The main idea of the visualization</p>
     <div class="w3-row-padding">
@@ -120,37 +146,43 @@
         <div class="w3-half w3-section">
             Visualization
 
+        </div>
+    </div>
+</div>
+</div>
+
+<!-- Visualization 3 Section -->
+<div class="w3-container  w3-light-grey" style="padding:64px 16px" id="visualization3">
+    <h3 class="w3-center">Gender equality index and its domains in 2015</h3>
+    <!--<p class="w3-large">The main idea of the visualization</p>-->
+    <div class="w3-row-padding" style="margin-top:30px">
+        <div class="w3-half w3-section">
+            <!--<svg width="600" height="550" id="chart"> <script>radar_chart("gei2015overall.json")</script>  </svg>-->
+            <input type="button" id="radar-button" value="Overall" title="Overall gender equality index values in EU" onclick="updateOverall()">
+            <input type="button" id="radar-button" value="Money" title="Earnings, income, economic situation" onclick="updateMoney()">
+            <input type="button" id="radar-button" value="Work" title="Participation, duration of working life, sectoral segregation, quality of work" onclick="updateWork()">
+            <input type="button" id="radar-button" value="Knowledge" title="Tertiary education, segregation, lifelong learning" onclick="updateKnowledge()">
+            <input type="button" id="radar-button" value="Time" title="Childcare, domestic activities, social activities" onclick="updateTime()">
+            <input type="button" id="radar-button" value="Power" title="Political, social, economic power" onclick="updatePower()">
+            <input type="button" id="radar-button" value="Health" title="Life expectancy, healthy life years, access to medical needs" onclick="updateHealth()">
+            <div class="w3-row-padding" style="margin-top:30px"> <svg width="600" height="500" id="radarchart"> <script>drawRadarCharts()</script> </svg> </div>
+        </div>
+        <div class="w3-half ">
+            <div class="w3-container">
+            In this visualization the reader is enabled to explore different domains of gender equality index in EU countries. As the countries are shown by region, it
+            becomes easier to analyze the differences in different regions of Europe.
+            </div>
+            <div class="w3-container">
+            Health domain - the best, power - the worst situation. overall - difference between western, northern part of EU and central, eastern, southern part.
+                knowledge - very similar everywhere, time - no pattern. all the countries has space for improvement. 
             </div>
         </div>
     </div>
 </div>
 
-<!-- Visualization 3 Section -->
-<div class="w3-container w3-center" style="padding:128px 16px" id="visualization3">
-    <h3>Gender equality index and its domains in 2015</h3>
-    <p class="w3-large">The main idea of the visualization</p>
-    <div class="w3-row-padding" style="margin-top:64px">
-        <div class="w3-half w3-section">
-            <svg width="600" height="550" id="chart"> <script>radar_chart("gei2015overall.json")</script>  </svg>
-            <input type="button" id="discrimination-button" value="Overall" title="Overall gender equality index values in EU"
-                   onclick='radar_chart("gei2015overall.json")'>
-            <input type="button" id="discrimination-button" value="Work" title="Participation, duration of working life, sectoral segregation, quality of work"
-                   onclick='radar_chart("gei2015work.json")'>
-            <input type="button" id="discrimination-button" value="Money" title="Earnings, income, economic situation" onclick='radar_chart("gei2015money.json")'>
-            <input type="button" id="discrimination-button" value="Knowledge" title="Terciary education, segregation, lifelong learning" onclick='radar_chart("gei2015knowledge.json")'>
-            <input type="button" id="discrimination-button" value="Time" title="Childcare, domestic activities, social activities" onclick='radar_chart("gei2015time.json")'>
-            <input type="button" id="discrimination-button" value="Power" title="Political, social, economic power" onclick='radar_chart("gei2015power.json")'>
-            <input type="button" id="discrimination-button" value="Health" title="Life expectancy, healthy life years, access to medical needs" onclick='radar_chart("gei2015health.json")'>
-
-        </div>
-        <div class="w3-half w3-section">
-            Some more text
-        </div>
-    </div>
-</div>
 
 <!-- Contributors Section -->
-<div class="w3-container w3-light-grey" style="padding:128px 16px" id="contributors">
+<div class="w3-container " style="padding:128px 16px" id="contributors">
     <h3 class="w3-center">Contributors</h3>
     <p class="w3-center w3-large">The project was done by Antonio Ortega Jimenez and Migle Survilaite.</p>
     <p class="w3-center w3-large">The word map was taken from <a href="http://www.thekrine.com/blog/">here</a>.</p>
