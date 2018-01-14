@@ -29,9 +29,10 @@ european_union <- c("Spain", "France", "Portugal", "Ireland", "United Kingdom of
 
 length(european_union)
 eea <- c(european_union, "Switzerland", "Norway", "Iceland")
-europe <- c(eea, "Andorra", "San Marino", "Holy See (Vatican City State)", "Liechtenstein", "Serbia", "Albania",
-            "The former Yugoslav Republic of Macedonia", "Bosnia and Herzegovina", "Montenegro", "Belarus",
-            "Kosovo", "Russian Federation", "Ukraine", "Republic of Moldova", "Turkey")
+europe <- c(eea,
+            #"Russian Federation", "Ukraine", "Republic of Moldova","Turkey", "Belarus",
+            "Andorra", "San Marino", "Holy See (Vatican City State)", "Liechtenstein", "Serbia", "Albania",
+            "The former Yugoslav Republic of Macedonia", "Bosnia and Herzegovina", "Montenegro", "Kosovo")
 
 #which(!(eea %in% countrycode_data$country.name.en))
 
@@ -55,7 +56,15 @@ system(cmd2)
 # system(cmd3)
 
 setwd("..")
-# gei <- read.table(file = "gei2005.tsv", header = T)
+
+gei <- list(2005, 2010, 2012, 2015) %>% lapply(function(x) {read.table(file = paste0("gei", x, ".tsv"), header = T)}) %>%
+  do.call(rbind, .)
+max(gei$Overall)
+min(gei$Overall)
+
+
+gei <- read.table(file = "gei2005.tsv", header = T)
+
 # ggplot(data = gei, mapping = aes(x = Overall)) +
 #   geom_histogram() +
 #   theme_ipsum()
