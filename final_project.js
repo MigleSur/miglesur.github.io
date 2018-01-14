@@ -195,16 +195,26 @@ function bar_plot(column_list, annotation_list, color_list, plotted_barplot) {
 
 
 function add_column_list(value){
+    if (columnlist.length >3)
+    {
+        columnlist=columnlist.slice(1,4)
+    }
     columnlist.push(value)
     return columnlist
 }
 
 function add_ann_list(value){
+    if (annlist.length>3){
+        annlist=annlist.slice(1,4)
+    }
     annlist.push(value)
     return annlist
 }
 
 function add_color_list(value){
+    if (colorlist>3){
+        colorlist=colorlist.slice(1,4)
+    }
     colorlist.push(value)
     return colorlist
 }
