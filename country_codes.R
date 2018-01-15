@@ -31,8 +31,10 @@ length(european_union)
 eea <- c(european_union, "Switzerland", "Norway", "Iceland")
 europe <- c(eea,
             #"Russian Federation", "Ukraine", "Republic of Moldova","Turkey", "Belarus",
-            "Andorra", "San Marino", "Holy See (Vatican City State)", "Liechtenstein", "Serbia", "Albania",
-            "The former Yugoslav Republic of Macedonia", "Bosnia and Herzegovina", "Montenegro", "Kosovo")
+            "Andorra", "San Marino", "Holy See (Vatican City State)", "Liechtenstein", "Albania",
+            "Bosnia and Herzegovina", "Serbia",
+            "The former Yugoslav Republic of Macedonia", "Montenegro", "Kosovo"
+            )
 
 #which(!(eea %in% countrycode_data$country.name.en))
 
@@ -47,23 +49,15 @@ write.table(x = eu_alpha_2, file = "active_countries.csv", quote = F, row.names 
 europe_alpha_2 <- paste(europe_alpha_2, collapse = "', '")
 
 cmd1 <- paste0('ogr2ogr -f GeoJSON -where \"ADM0_A3 IN (\'', europe_alpha_3, '\')\" countries.json ne_10m_admin_0_countries.shp')
-cmd2 <- paste0('ogr2ogr -f GeoJSON -where \"ISO_A2 IN (\'', europe_alpha_2, '\') AND SCALERANK < 3\" places.json  ne_10m_populated_places.shp')
-cmd3 <- "topojson -o custom.json --id-property SU_A3 --properties name=NAME -- countries.json places.json"
+cmd12 <- paste0('ogr2ogr -f GeoJSON -where \"ADM0_A3 IN (\'', europe_alpha_3, '\')\" disputed.json ne_10m_admin_0_disputed_areas.shp')
+# cmd2 <- paste0('ogr2ogr -f GeoJSON -where \"ISO_A2 IN (\'', europe_alpha_2, '\') AND SCALERANK < 3\" places.json  ne_10m_populated_places.shp')
+# cmd3 <- "topojson -o custom.json --id-property SU_A3 --properties name=NAME -- countries.json"
 
 system("rm *json")
 system(cmd1)
-system(cmd2)
+system(cmd12)
+# system(cmd2)
 # system(cmd3)
-
-setwd("..")
-
-gei <- list(2005, 2010, 2012, 2015) %>% lapply(function(x) {read.table(file = paste0("gei", x, ".tsv"), header = T)}) %>%
-  do.call(rbind, .)
-max(gei$Overall)
-min(gei$Overall)
-
-
-gei <- read.table(file = "gei2005.tsv", header = T)
 
 # ggplot(data = gei, mapping = aes(x = Overall)) +
 #   geom_histogram() +

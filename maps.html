@@ -20,11 +20,12 @@
         stroke-dasharray: 2, 2;
     }
 
-    .non-eu {
-        stroke: transparent;
+    .coastline {
+        fill: none;
+        stroke-dasharray: 2,2;
+        stroke-linejoin: round;
+        stroke: #aaa;
     }
-
-
 
     .country-label {
         fill: #45771f;
@@ -71,6 +72,21 @@
     }
 
 
+    div.tooltip {
+        position: absolute;
+        display: none;
+        text-align: center;
+        width: 60px;
+        height: 28px;
+        padding: 2px;
+        font: 12px sans-serif;
+        background: lightsteelblue;
+        border: 0px;
+        border-radius: 8px;
+        pointer-events: none;
+
+    }
+
 
 
 
@@ -84,39 +100,11 @@
 <script src="https://d3js.org/d3-interpolate.v1.min.js"></script>
 <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
 <script src="custom_range.js"></script>
+<script src="preprocess_map_data.js"></script>
+<script src="draw_legend.js"></script>
 <script src="draw_map.js"></script>
-<script src="redraw_map.js"></script>
 
 <script>
-
-    // console.log(d3.version);
-
-
-
-    // function show_info(d) {
-    //     var jumbotron = d3.selectAll("div")
-    //         .filter(".information-box")
-    //         .append("div")
-    //         .class("jumbotron");
-    //     jumbotron
-    //         .selectAll("p")
-    //         .datum(d)
-    //         .enter()
-    //         .append("text");
-    // }
-    //
-    // function reset_info(d) {
-    //     var jumbotron = d3.selectAll("div")
-    //         .filter(".information-box")
-    //         .append("div")
-    //         .attr("class", "jumbotron");
-    //     jumbotron
-    //         .selectAll("p")
-    //         .data()
-    //         .update()
-    //         .append("text");
-    // }
-    //
 
     var width = 960,
         height = 960;
@@ -125,61 +113,116 @@
         .attr("width", width)
         .attr("height", height);
 
-    // console.log(svg);
-
-    //
-    // function hexToRgb(hex) {
-    //     var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-    //     return result ? {
-    //         r: parseInt(result[1], 16),
-    //         g: parseInt(result[2], 16),
-    //         b: parseInt(result[3], 16)
-    //     } : null;
-    // }
-    //
-    // function componentToHex(c) {
-    //     var hex = c.toString(16);
-    //     return hex.length == 1 ? "0" + hex : hex;
-    // }
-    //
-    // function rgbToHex(r, g, b) {
-    //     return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
-    // }
-
-
-
-    // var light_colors = ["#EE4035", "#F3A530", "#56B949", "#30499B"];
-
-
-
-    // var dark_colors = [];
-    //
-    // for (i=0; i < light_colors.length; i++) {
-    //     var light_color = hexToRgb(light_colors[i]);
-    //     var dark_color = {'r': 0, 'g': 0, 'b': 0};
-    //     dark_color['r'] = Math.max(light_color['r'] - 50, 0);
-    //     dark_color['g'] = Math.max(light_color['g'] - 50, 0);
-    //     dark_color['b'] = Math.max(light_color['b'] - 50, 0);
-    //
-    //
-    //     dark_colors.push(rgbToHex(dark_color['r'], dark_color['g'], dark_color['b']));
-    // }
-
-
-    // function assign_color(gei_value) {
-    //     var gei_fraction = gei_value / 25;
-    //     var color_index = Math.floor(gei_fraction);
-    //     var result = light_colors[color_index];
-    //     return result;
-    // }
 
 </script>
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <script src="slider.js"></script>
-<!--<script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>-->
 <script>
+    var tooltip = d3.select(".map").append("div")
+        .attr("class", "tooltip")
+        .style("opacity", 0);
+
     var year = "2005";
-    draw_map(year);
+
+    d3.csv("maps/active_countries.csv", function (error1, active_countries) {
+        if (error1) throw error1;
+
+        var dummy = [];
+        for (i = 0; i < active_countries.length; i++) {
+            dummy.push(active_countries[i]["x"]);
+        }
+
+        active_countries = dummy;
+
+        d3.json("maps/custom.json", function (error3, custom) {
+            if (error3) return console.error(error3);
+
+            var projection = d3.geo.albers()
+                .center([0, 48])
+                .rotate([-16, 0])
+                .parallels([35, 80])
+                .translate([width / 2, height / 1.5]);
+
+
+            // Add country path
+            var countries = topojson.feature(custom, custom.objects.countries);
+
+
+
+            var path = d3.geo.path()
+                .projection(projection);
+
+
+            // svg.append("path")
+            //     .datum(countries)
+            //     .attr("d", path);
+
+            // Add country name
+            svg.selectAll(".country")
+                .data(countries.features)
+                .enter().append("path")
+                .attr("class", function (d) {
+                    return "country " + d.id;
+                })
+                .attr("d", path);
+
+            // var selected = d3.set(["BA", "YF", "AL", "ME", "MK"]);
+            // svg.append("path")
+            //     .datum(topojson.merge(custom, custom.objects.countries.geometries.filter(function(d) { return selected.has(d.id); })))
+            //     .attr("class", "Former_Yugoslavia_Albania")
+            //     .attr("d", path);
+            //     // .style("fill", "#ffffff");
+
+
+            // Display boundaries
+            svg.append("path")
+                .datum(topojson.mesh(custom, custom.objects.countries, function (a, b) {
+                    return a !== b && (active_countries.indexOf(a.id) >= 0 ^ active_countries.indexOf(b.id) >= 0);
+                }))
+                .attr("d", path)
+                .attr("class", "exterior-boundary");
+
+            svg.append("path")
+            .datum(topojson.mesh(custom, custom.objects.countries, function (a, b) {
+                return a !== b && active_countries.indexOf(a.id) >= 0 && active_countries.indexOf(b.id) >= 0;
+            }))
+            .attr("d", path)
+            .attr("class", "interior-boundary");
+
+
+
+
+            svg.append("path")
+                .datum(topojson.mesh(custom, custom.objects.countries, function (a, b) {
+                    return a === b && active_countries.indexOf(a.id) < 0 && active_countries.indexOf(b.id) < 0; //&&
+                    // ["YF", "BA"].indexOf(a.id) < 0 && ["YF", "BA"].indexOf(b.id) < 0;
+                }))
+                .attr("d", path)
+                .attr("class", "coastline");
+
+
+            draw_legend();
+
+
+            draw_map(year, countries, active_countries);
+
+            slider.call(d3.drag()
+                .on("start.interrupt", function () {
+                    slider.interrupt();
+                })
+                .on("start drag", function () {
+                    var new_year = hue(xslider.invert(d3.event.x));
+                    if (year !== new_year) {
+                        year = new_year;
+                        draw_map(new_year, countries, active_countries);
+                    }
+                }));
+
+
+        });
+    });
+
+
 </script>
 
 <!--<div class="information-box">-->

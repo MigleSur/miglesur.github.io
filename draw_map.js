@@ -1,19 +1,6 @@
-function draw_map(year) {
 
-    console.log("Removing old map");
-    d3.select(".map").selectAll("svg").selectAll("*").remove();
-    console.log("Drawing map");
-    console.log(year);
+function draw_map(year, countries, active_countries) {
 
-    d3.csv("maps/active_countries.csv", function (error1, active_countries) {
-        if (error1) throw error1;
-
-        var dummy = [];
-        for (i = 0; i < active_countries.length; i++) {
-            dummy.push(active_countries[i]["x"]);
-        }
-
-        active_countries = dummy;
 
         d3.tsv("gei" + year + ".tsv",
 
@@ -30,54 +17,70 @@ function draw_map(year) {
             function (error2, gei) {
                 if (error2) throw error2;
 
-                d3.json("maps/custom.json", function (error, custom) {
-                    if (error) return console.error(error);
+                    var text = d3.select("text.year_text")
+                        .attr("x", 100)
+                        .attr("y", 100)
+                        .attr("font-family", "sans-serif")
+                        .attr("font-size", "20px")
+                        .attr("fill", "red");
 
-                    var countries = topojson.feature(custom, custom.objects.countries);
-
-                    var projection = d3.geo.albers()
-                        .center([0, 48])
-                        .rotate([-16, 0])
-                        .parallels([35, 80])
-                        .translate([width / 2, height / 1.5]);
-
-                    var path = d3.geo.path()
-                        .projection(projection);
+                    text
+                        .data(year)
+                        .enter()
+                        .text(function(d) {return d});
 
 
-
-                    svg.append("path")
-                        .datum(countries)
-                        .attr("d", path);
-
-                    var text = svg.append("text")
-                        .attr("class", "year_text");
-                    var legend = svg.append("g");
-                    _ = color_maps(year, gei);
-
-                    light_colors = _[0];
-                    rateById = _[1];
-
-                    draw_legend();
-
-                    svg.selectAll(".country")
-                        .data(topojson.feature(custom, custom.objects.countries).features)
-                        .enter().append("path")
-                        .attr("class", function (d) {
-                            return "country " + d.id;
-                        })
+                    var gei_index = "Overall";
+                    var rateById = preprocess_map_data(gei_index, gei);
 
 
-                        .on("mouseover", function (d) {
+                    d3.json("maps/custom.json", function (error, custom) {
+                        if (error) return console.error(error);
+
+                        // Color the countries according to data
+                        svg.selectAll(".country")
+                            // .data(topojson.feature(custom, custom.objects.countries).features)
+                            // .enter()
+                            // .transition()
+                            .style("fill", function (d) {
+                                var result = light_colors(rateById[d.id]);
+                                if (result == null) result = "#ffffff";
+                                return result
+                            });
+                    }); // end of json
+
+
+                console.log(countries);
+
+                svg.selectAll(".country")
+                    .data(countries.features)
+                    .on("mouseover", function (d) {
 
                             if (active_countries.indexOf(d.id) >= 0) {
+
 
                                 d3.select(this)
                                     .transition()
                                     .style("fill", "#fdff21");
-
-                                // show_info(d);
                             }
+                        })
+
+                        .on("mousemove", function(d) {
+                            if (active_countries.indexOf(d.id) >= 0) {
+
+                                tooltip
+                                    .transition()
+                                    .duration(20)
+                                    .style("opacity", .9);
+
+                                tooltip
+                                    .html(d.id + "<br>" + rateById[d.id])
+                                    .style("left", (d3.event.pageX) + "px")
+                                    .style("top", (d3.event.pageY - 28) + "px")
+                                    .style("display", "inline-block");
+
+                            }
+
                         })
                         .on("mouseout", function (d) {
                             if (active_countries.indexOf(d.id) >= 0) {
@@ -85,43 +88,16 @@ function draw_map(year) {
                                 d3.select(this)
                                     .transition()
                                     .style("fill", function (d) {
-                                            return light_colors(rateById[d.id]);
+                                        return light_colors(rateById[d.id]);
                                         }
                                     );
 
+
+                                tooltip.style("display", "none");
+
                                 // reset_info(d);
                             }
-                        })
-                        .attr("d", path);
+                        });
 
-
-                    // Display boundaries
-                    svg.append("path")
-                    //.datum(topojson.mesh(custom, custom.objects.countries))
-                        .datum(topojson.mesh(custom, custom.objects.countries, function (a, b) {
-                            return a !== b && (active_countries.indexOf(a.id) < 0 ^ active_countries.indexOf(b.id) < 0);
-                        }))
-                        .attr("d", path)
-                        .attr("class", "exterior-boundary");
-
-                    svg.append("path")
-                    //.datum(topojson.mesh(custom, custom.objects.countries))
-                        .datum(topojson.mesh(custom, custom.objects.countries, function (a, b) {
-                            return a !== b && active_countries.indexOf(a.id) >= 0 && active_countries.indexOf(b.id) >= 0;
-                        }))
-                        .attr("d", path)
-                        .attr("class", "interior-boundary");
-
-
-                    // svg.append("path")
-                    // //.datum(topojson.mesh(custom, custom.objects.countries))
-                    //     .datum(topojson.mesh(custom, custom.objects.countries, function (a, b) {
-                    //         return a !== b && active_countries.indexOf(a.id) < 0 && active_countries.indexOf(b.id) < 0;
-                    //     }))
-                    //     .attr("d", path)
-                    //     .attr("class", "non-eu");
-                });
-            });
-
-    });
+        }); // end of tsv
 }

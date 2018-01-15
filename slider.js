@@ -1,7 +1,5 @@
 
 
-    console.log(d3.version);
-
     var slider_svg = d3.select("body > svg"),
         margin = {right: 50, left: 50},
         width = +slider_svg.attr("width") - margin.left - margin.right;
@@ -20,7 +18,6 @@
 
     var slider = slider_svg.append("g")
         .attr("class", "slider");
-        // .attr("transform", "translate(" + margin_slider.left + "," + margin_slider.top + ")");
 
     slider.append("line")
         .attr("class", "track")
@@ -53,16 +50,3 @@ function hue(h) {
     var year = years[Math.floor(xslider(h) / width_slider * years.length)];
     return year
 };
-
-
-slider.call(d3.drag()
-    .on("start.interrupt", function () {
-        slider.interrupt();
-    })
-    .on("start drag", function () {
-        var new_year = hue(xslider.invert(d3.event.x));
-        if (year != new_year) {
-            year = new_year;
-            redraw_map(year);
-        }
-    }));

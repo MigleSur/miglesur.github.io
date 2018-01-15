@@ -15,4 +15,3 @@ topojson \
   --properties name=NAME \
   -- \
   maps/countries.json \
-  maps/places.json
