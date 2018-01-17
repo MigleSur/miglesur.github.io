@@ -7,9 +7,6 @@ function draw_map(year, countries, active_countries) {
             function (d) {
 
                 d["Overall"] = +d["Overall"];
-                d["Work"] = +d["Work"];
-                d["Money"] = +d["Money"];
-                d["Knowledge"] = +d["Knowledge"];
                 return d;
 
             },
@@ -17,18 +14,14 @@ function draw_map(year, countries, active_countries) {
             function (error2, gei) {
                 if (error2) throw error2;
 
-                    var text = d3.select("text.year_text")
+                    var text = svg
+                        .select("text.year_text")
+                        .text(year)
                         .attr("x", 100)
                         .attr("y", 100)
                         .attr("font-family", "sans-serif")
                         .attr("font-size", "20px")
                         .attr("fill", "red");
-
-                    text
-                        .data(year)
-                        .enter()
-                        .text(function(d) {return d});
-
 
                     var gei_index = "Overall";
                     var rateById = preprocess_map_data(gei_index, gei);
@@ -61,7 +54,7 @@ function draw_map(year, countries, active_countries) {
 
                                 d3.select(this)
                                     .transition()
-                                    .style("fill", "#fdff21");
+                                    .style("fill", "#ecee20");
                             }
                         })
 
