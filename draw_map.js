@@ -23,7 +23,7 @@ function draw_map(year, countries, active_countries) {
                     var rateById = preprocess_map_data(gei_index, gei);
 
 
-                    d3.json("maps/custom.json", function (error, custom) {
+                        d3.json("maps/custom.json", function (error, custom) {
                         if (error) return console.error(error);
 
                         // Color the countries according to data
@@ -38,8 +38,6 @@ function draw_map(year, countries, active_countries) {
                             });
                     }); // end of json
 
-
-                console.log(countries);
 
                 svg.selectAll(".country")
                     .data(countries.features)
@@ -63,7 +61,7 @@ function draw_map(year, countries, active_countries) {
                                     .style("opacity", .9);
 
                                 tooltip
-                                    .html(d.id + "<br>" + rateById[d.id])
+                                    .html(d.properties.name + "<br>" + rateById[d.id])
                                     .style("left", (d3.event.pageX) + "px")
                                     .style("top", (d3.event.pageY - 28) + "px")
                                     .style("display", "inline-block");

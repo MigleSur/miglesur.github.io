@@ -260,6 +260,8 @@
 
                         draw_map(year, countries, active_countries);
 
+                        var slider = svg.select("g.slider");
+
                         slider.call(d3.drag()
                             .on("start.interrupt", function () {
                                 slider.interrupt();
@@ -328,7 +330,7 @@
 <div class="w3-container " style="padding:128px 16px" id="contributors">
     <h3 class="w3-center">Contributors</h3>
     <p class="w3-center w3-large">The project was done by Antonio Ortega Jimenez and Migle Survilaite.</p>
-    <p class="w3-center w3-large">The word map was taken from <a href="http://www.thekrine.com/blog/">here</a>.</p>
+    <p class="w3-center w3-large">The word map was taken from <a href="https://www.thekrine.com/blog/">here</a>.</p>
     <p class="w3-center w3-large">The code for radar chart was adopted from <a href="https://bl.ocks.org/alandunning/4c36eb1abdb248de34c64f5672afd857">here</a>.</p>
     <p class="w3-center w3-large">[1] <a href="https://dictionary.cambridge.org/dictionary/english/discrimination?a=american-english">Definition of discrimination</a>
         Cambridge Dictionaries Online. Cambridge University.</p>
