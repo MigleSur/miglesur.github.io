@@ -2,9 +2,7 @@ function draw_legend() {
 
 
 
-    var legend = svg.selectAll("g");
-    if (legend.empty()) {legend = svg.append("g");}
-
+    var legend = svg.selectAll("g.legend");
     legend
         .attr("class","legend")
         .attr("transform","translate(600,400)")

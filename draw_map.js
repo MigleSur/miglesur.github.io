@@ -16,12 +16,8 @@ function draw_map(year, countries, active_countries) {
 
                     var text = svg
                         .select("text.year_text")
-                        .text(year)
-                        .attr("x", 100)
-                        .attr("y", 100)
-                        .attr("font-family", "sans-serif")
-                        .attr("font-size", "20px")
-                        .attr("fill", "red");
+                        .text("Year " + year)
+                        .attr("transform","translate(630,400)");
 
                     var gei_index = "Overall";
                     var rateById = preprocess_map_data(gei_index, gei);
