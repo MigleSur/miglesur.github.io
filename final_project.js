@@ -10,7 +10,7 @@ function bar_plot(column_list, annotation_list, color_list, plotted_barplot) {
     }
 
     var barpl = d3.select("#barplot")
-    var margin = {top: 100, right: 50, bottom: 100, left: 70};
+    var margin = {top: 120, right: 50, bottom: 100, left: 70};
     var width = +barpl.node().getBoundingClientRect().width - margin.left - margin.right;
     var height = +barpl.node().getBoundingClientRect().height - margin.top - margin.bottom;
 
@@ -55,6 +55,13 @@ function bar_plot(column_list, annotation_list, color_list, plotted_barplot) {
             .attr("x", 0)
             .attr("y", -4)
             .text("%");
+
+        g.append("text")
+            .attr("x", 47)
+            .attr("y", -105)
+            .attr("text-anchor", "start")
+            .style("font-size", "16px")
+            .text("How widespread is the particular type of discrimination?");
 
         // g.selectAll(".bar")
         //     .data(data)
@@ -188,6 +195,8 @@ function bar_plot(column_list, annotation_list, color_list, plotted_barplot) {
             //     .attr("height", 12)
             //     .attr("fill", "#1935f4");
         }
+
+
     });
 
 
