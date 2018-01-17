@@ -153,9 +153,6 @@
                 .projection(projection);
 
 
-            // svg.append("path")
-            //     .datum(countries)
-            //     .attr("d", path);
 
             // Add country name
             svg.selectAll(".country")
@@ -166,15 +163,7 @@
                 })
                 .attr("d", path);
 
-            // var selected = d3.set(["BA", "YF", "AL", "ME", "MK"]);
-            // svg.append("path")
-            //     .datum(topojson.merge(custom, custom.objects.countries.geometries.filter(function(d) { return selected.has(d.id); })))
-            //     .attr("class", "Former_Yugoslavia_Albania")
-            //     .attr("d", path);
-            //     // .style("fill", "#ffffff");
-
-
-            // Display boundaries
+            // Display borders
             svg.append("path")
                 .datum(topojson.mesh(custom, custom.objects.countries, function (a, b) {
                     return a !== b && (active_countries.indexOf(a.id) >= 0 ^ active_countries.indexOf(b.id) >= 0);
@@ -190,8 +179,6 @@
             .attr("class", "interior-boundary");
 
 
-
-
             svg.append("path")
                 .datum(topojson.mesh(custom, custom.objects.countries, function (a, b) {
                     return a === b && active_countries.indexOf(a.id) < 0 && active_countries.indexOf(b.id) < 0; //&&
@@ -202,6 +189,12 @@
 
 
             draw_legend();
+
+            var text = svg
+                .append("g")
+                .append("text")
+                .attr("class", "year_text");
+
 
 
             draw_map(year, countries, active_countries);
