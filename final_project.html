@@ -42,14 +42,14 @@
 <!-- Introduction -->
 <div class="w3-container w3-light-grey" style="padding:128px 16px" id="introduction">
     <h3 class="w3-center w3-xxlarge">Introduction</h3>
-    <div class="w3-row-padding w3-center w3-large" style="margin-top:64px">
+    <div class="w3-row-padding w3-justify w3-large" style="margin-top:64px">
         <div>
             Discrimination is the treatment of a person or particular group of people differently,
-            in a way that is worse than the way people are usually treated. [1] Unfortunately
+            in a way that is worse than the way people are usually treated. <a href="http://localhost:63342/miglesur.github.io/final_project.html?_ijt=969j3nqfv0lnq2ro89ju889okm#contributors">[1]</a> Unfortunately
             discrimination is widespread all over the world.
             In 2000 European Union started fighting discrimination by adopting the law which prohibits discrimination in
             the workplace based on racial or ethnic origin, religion or belief, disability, age, or sexual
-            orientation. [2] Even after 18 years since then, there is still a need for improvement in order for
+            orientation. <a href="http://localhost:63342/miglesur.github.io/final_project.html?_ijt=969j3nqfv0lnq2ro89ju889okm#contributors">[2]</a> Even after 18 years since then, there is still a need for improvement in order for
             discrimination not to be an issue in EU anymore. <br> In this project we analyse
             the changes in discrimination over time in the EU with a deeper look in gender inequality
             problem. For this reason two data sets were used: The <a href="http://www.equineteurope.org/IMG/pdf/ebs_437_en.pdf">
@@ -59,13 +59,14 @@
             estimation of gender equality index. As it was measured 4 times over 10 years period, also the changes
             in gender equality are analysed.
         </div>
+
     </div>
 </div>
 
 
 <!-- Visualization 1 -->
 <div class="w3-container" style="padding:64px 16px" id="visualization1">
-    <h3 class="w3-center">Discrimination rates in EU</h3>
+    <h3 class="w3-center w3-xxlarge">Discrimination rates in EU</h3>
     <div class="w3-row-padding w3-grayscale" style="margin-top:64px">
         <div class="w3-col w3-margin-bottom">
             <div class="w3-half">
@@ -88,7 +89,7 @@
                     </div>
                 </div>
             </div>
-            <div class="w3-half ">
+            <div class="w3-half w3-justify">
                 <div class="w3-container" >
                     In the survey about discrimination EU citizens were asked about how widespread is the particular type of discrimination. As can be seen from the
                     visualization
@@ -115,16 +116,16 @@
 
 <!-- Introduction to data set -->
 <div class="w3-container w3-center w3-light-grey w3-padding-64" id="dataset">
-    <h3>Gender equality data set</h3>
+    <h3 class="w3-center w3-xxlarge">Gender equality data set</h3>
     <!--<p class="w3-large">The main idea of the visualization</p>-->
     <div class="w3-row-padding">
-        <div class="w3-section">
+        <div class="w3-section w3-justify"">
             The data set used in further analysis is the gender equality index in EU. It is being measured since 2005 and it was already
             measured 4 times: 2005, 2010, 2012, 2015. As mentioned before, discrimination is hard to measure, in this study gender equality index was
             calculated after measuring 6 different domains of life: money, work, time, knowledge, power and health. Each of these domains have sub-domains
             which were measured in order to calculate the value of the specific domain.
         </div>
-        <div class="w3-section">
+        <div class="w3-section w3-justify"">
             The calculations are made in a way that score of 100 means that gender equality is achieved in the specific domain or in total, while 0 means complete
             inequality. More information about how gender equality index is calculated can be found <a href="https://www.google.dk/url?sa=t&rct=j&q=&esrc=s&source=web&cd=2&cad=rja&uact=8&ved=0ahUKEwilzt3Dnt_YAhWKJ5oKHcXIBcsQFggyMAE&url=http%3A%2F%2Feige.europa.eu%2Fsites%2Fdefault%2Ffiles%2Fdocuments%2Fmh0415169enn.pdf&usg=AOvVaw3q7wreJ5GrPf7QT91IZDZx">here</a>.
             As mentioned before, each domain contains a few sub-domains. <strong>Money</strong> domain contains data about earnings, income and economic
@@ -140,10 +141,10 @@
 
 <!-- Visualization 2 Section -->
 <div class="w3-container w3-center w3-padding-64" id="visualization2">
-    <h3>Visualization 2</h3>
+    <h3 class="w3-center w3-xxlarge">Visualization 2</h3>
     <p class="w3-large">The main idea of the visualization</p>
     <div class="w3-row-padding">
-        <div class="w3-half w3-section">
+        <div class="w3-half w3-justify"">
             Some text
         </div>
         <div class="w3-half w3-section">
@@ -156,7 +157,7 @@
 
 <!-- Visualization 3 Section -->
 <div class="w3-container  w3-light-grey" style="padding:64px 16px" id="visualization3">
-    <h3 class="w3-center">Gender equality index and its domains in 2015</h3>
+    <h3 class="w3-center w3-xxlarge">Gender equality index and its domains in 2015</h3>
     <!--<p class="w3-large">The main idea of the visualization</p>-->
     <div class="w3-row-padding" style="margin-top:30px">
         <div class="w3-half w3-section">
@@ -170,14 +171,22 @@
             <input type="button" id="radar-button" value="Health" title="Life expectancy, healthy life years, access to medical needs" onclick="updateHealth()">
             <div class="w3-row-padding" style="margin-top:30px"> <svg width="600" height="500" id="radarchart"> <script>drawRadarCharts()</script> </svg> </div>
         </div>
-        <div class="w3-half ">
+        <div class="w3-half w3-justify">
             <div class="w3-container">
-            In this visualization the reader is enabled to explore different domains of gender equality index in EU countries. As the countries are shown by region, it
-            becomes easier to analyze the differences in different regions of Europe.
+                The overall gender equality index shows big differences between different parts of Europe. For example, it is easy to notice that Scandinavia and
+                Western Europe countries are more advanced in gender equality than the rest of EU countries (South-West, Central, Eastern, South-East and South).
+                Similar tendency can be observed by looking at the <strong>Money</strong> domain or the <strong>Knowledge</strong> domain. While in <strong>Work</strong> domain the difference between
+                countries is pretty small and all the EU countries have a <strong>Work</strong> domain score pretty mediocre. <strong>Time</strong> domain doesn't
+                have a strong pattern but there is still a slight difference between the Western Europe with Scandinavia and the rest of the EU. <strong>Power</strong>
+                domain is in the worst situation and all of the countries have a really low score for this domain. While it is slightly higher in Scandinavia and Western
+                Europe countries, in some countries the situation is critical as the score for <strong>Power</strong> domain is close to 20. In <strong>Health</strong>
+                domain all the EU countries are the most advanced and perform very similarly. In conclusion, even if gender equality differs in EU countries, every
+                countrie still has room for improvement.
             </div>
             <div class="w3-container">
-            Health domain - the best, power - the worst situation. overall - difference between western, northern part of EU and central, eastern, southern part.
-                knowledge - very similar everywhere, time - no pattern. all the countries has space for improvement.
+                In this visualization the reader is enabled to explore different domains of gender equality index in EU countries. As the countries are clustered by regions, it
+                becomes easier to analyze the differences in different regions of Europe. In order to quickly find out what each domain represents it is enough to
+                hover over the button of the particular domain.
             </div>
         </div>
     </div>
