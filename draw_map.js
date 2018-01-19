@@ -2,35 +2,36 @@
 function draw_map(year, countries, active_countries) {
 
 
-        d3.tsv("gei" + year + ".tsv",
+            d3.tsv("gei" + year + ".tsv",
 
-            function (d) {
+                function (d) {
 
-                d["Overall"] = +d["Overall"];
-                return d;
+                    d["Overall"] = +d["Overall"];
+                    return d;
 
-            },
+                },
 
-            function (error2, gei) {
-                if (error2) throw error2;
+                function (error2, gei) {
+                    if (error2) throw error2;
 
                     var text = svg
                         .select("text.year_text")
                         .text("Year " + year)
-                        .attr("transform","translate(630,400)");
+                        .attr("transform", "translate(650,300)");
 
                     var gei_index = "Overall";
+
+
+                    var diff = preprocess_map_data("Diff", gei);
                     var rateById = preprocess_map_data(gei_index, gei);
 
 
-                        d3.json("maps/custom.json", function (error, custom) {
+                    d3.json("maps/custom.json", function (error, custom) {
                         if (error) return console.error(error);
 
                         // Color the countries according to data
                         svg.selectAll(".country")
-                            // .data(topojson.feature(custom, custom.objects.countries).features)
-                            // .enter()
-                            // .transition()
+                            .transition()
                             .style("fill", function (d) {
                                 var result = light_colors(rateById[d.id]);
                                 if (result == null) result = "#ffffff";
@@ -39,9 +40,9 @@ function draw_map(year, countries, active_countries) {
                     }); // end of json
 
 
-                svg.selectAll(".country")
-                    .data(countries.features)
-                    .on("mouseover", function (d) {
+                    svg.selectAll(".country")
+                        .data(countries.features)
+                        .on("mouseover", function (d) {
 
                             if (active_countries.indexOf(d.id) >= 0) {
 
@@ -52,7 +53,7 @@ function draw_map(year, countries, active_countries) {
                             }
                         })
 
-                        .on("mousemove", function(d) {
+                        .on("mousemove", function (d) {
                             if (active_countries.indexOf(d.id) >= 0) {
 
                                 tooltip
@@ -61,7 +62,7 @@ function draw_map(year, countries, active_countries) {
                                     .style("opacity", .9);
 
                                 tooltip
-                                    .html(d.properties.name + "<br>" + rateById[d.id])
+                                    .html(d.properties.name + "<br>" + rateById[d.id] + "<br>" + "Δ" + diff[d.id])
                                     .style("left", (d3.event.pageX) + "px")
                                     .style("top", (d3.event.pageY - 28) + "px")
                                     .style("display", "inline-block");
@@ -75,7 +76,7 @@ function draw_map(year, countries, active_countries) {
                                 d3.select(this)
                                     .transition()
                                     .style("fill", function (d) {
-                                        return light_colors(rateById[d.id]);
+                                            return light_colors(rateById[d.id]);
                                         }
                                     );
 
@@ -86,5 +87,5 @@ function draw_map(year, countries, active_countries) {
                             }
                         });
 
-        }); // end of tsv
+                }); // end of tsv
 }

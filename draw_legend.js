@@ -5,7 +5,7 @@ function draw_legend() {
     var legend = svg.selectAll("g.legend");
     legend
         .attr("class","legend")
-        .attr("transform","translate(600,400)")
+        .attr("transform","translate(620,280)")
         .style("font-size","12px");
 
     var legend_text = Object.create(gei_domain);

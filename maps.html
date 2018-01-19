@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+    .exterior-boundary {
+        fill: none;
+        stroke: #000;
+        stroke-width: "100";
+        stroke-linejoin: round;
+        /*stroke-dasharray: 2, 2;*/
+
+    }
+
+    .interior-boundary {
+        fill: none;
+        stroke: #000;
+        stroke-width: "10";
+        stroke-linejoin: round;
+        stroke-dasharray: 2, 2;
+    }
+
+    .coastline {
+        fill: none;
+        stroke-dasharray: 2,2;
+        stroke-linejoin: round;
+        stroke: #aaa;
+    }
+
+    .country-label {
+        fill: #45771f;
+        fill-opacity: .5;
+        font-size: 20px;
+        font-weight: 300;
+        text-anchor: middle;
+    }
+
+
+    .ticks {
+        font: 10px sans-serif;
+    }
+
+    .track,
+    .track-inset,
+    .track-overlay {
+        stroke-linecap: round;
+    }
+
+    .track {
+        stroke: #000;
+        stroke-opacity: 0.3;
+        stroke-width: 10px;
+    }
+
+    .track-inset {
+        stroke: #ddd;
+        stroke-width: 8px;
+    }
+
+    .track-overlay {
+        pointer-events: stroke;
+        stroke-width: 50px;
+        stroke: transparent;
+        cursor: crosshair;
+    }
+
+    .handle {
+        fill: #fff;
+        stroke: #000;
+        stroke-opacity: 0.5;
+        stroke-width: 1.25px;
+    }
+
+
+    div.tooltip {
+        position: absolute;
+        display: none;
+        text-align: center;
+        width: 60px;
+        height: 28px;
+        padding: 2px;
+        font: 12px sans-serif;
+        background: lightsteelblue;
+        border: 0px;
+        border-radius: 8px;
+        pointer-events: none;
+
+    }
+
+
+
+
+</style>
+<body>
+<div class="map"><svg></svg></div>
+<svg width="960" height="50"></svg>
+<script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<script src="//d3js.org/topojson.v1.min.js"></script>
+<script src="https://d3js.org/d3-color.v1.min.js"></script>
+<script src="https://d3js.org/d3-interpolate.v1.min.js"></script>
+<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+<script src="custom_range.js"></script>
+<script src="preprocess_map_data.js"></script>
+<script src="draw_legend.js"></script>
+<script src="draw_map.js"></script>
+
+<script>
+
+    var width = 960,
+        height = 960;
+
+    var svg = d3.select("div.map").select("svg")
+        .attr("width", width)
+        .attr("height", height);
+
+
+</script>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script src="slider.js"></script>
+<script>
+    var tooltip = d3.select(".map").append("div")
+        .attr("class", "tooltip")
+        .style("opacity", 0);
+
+    var year = "2005";
+
+    d3.csv("maps/active_countries.csv", function (error1, active_countries) {
+        if (error1) throw error1;
+
+        var dummy = [];
+        for (i = 0; i < active_countries.length; i++) {
+            dummy.push(active_countries[i]["x"]);
+        }
+
+        active_countries = dummy;
+
+        d3.json("maps/custom.json", function (error3, custom) {
+            if (error3) return console.error(error3);
+
+            var projection = d3.geo.albers()
+                .center([0, 48])
+                .rotate([-16, 0])
+                .parallels([35, 80])
+                .translate([width / 2, height / 1.5]);
+
+
+            // Add country path
+            var countries = topojson.feature(custom, custom.objects.countries);
+
+
+
+            var path = d3.geo.path()
+                .projection(projection);
+
+
+
+            // Add country name
+            svg.selectAll(".country")
+                .data(countries.features)
+                .enter().append("path")
+                .attr("class", function (d) {
+                    return "country " + d.id;
+                })
+                .attr("d", path);
+
+            // Display borders
+            svg.append("path")
+                .datum(topojson.mesh(custom, custom.objects.countries, function (a, b) {
+                    return a !== b && (active_countries.indexOf(a.id) >= 0 ^ active_countries.indexOf(b.id) >= 0);
+                }))
+                .attr("d", path)
+                .attr("class", "exterior-boundary");
+
+            svg.append("path")
+            .datum(topojson.mesh(custom, custom.objects.countries, function (a, b) {
+                return a !== b && active_countries.indexOf(a.id) >= 0 && active_countries.indexOf(b.id) >= 0;
+            }))
+            .attr("d", path)
+            .attr("class", "interior-boundary");
+
+
+            svg.append("path")
+                .datum(topojson.mesh(custom, custom.objects.countries, function (a, b) {
+                    return a === b && active_countries.indexOf(a.id) < 0 && active_countries.indexOf(b.id) < 0; //&&
+                    // ["YF", "BA"].indexOf(a.id) < 0 && ["YF", "BA"].indexOf(b.id) < 0;
+                }))
+                .attr("d", path)
+                .attr("class", "coastline");
+
+
+            draw_legend();
+
+            var text = svg
+                .append("g")
+                .append("text")
+                .attr("class", "year_text");
+
+
+
+            draw_map(year, countries, active_countries);
+
+            slider.call(d3.drag()
+                .on("start.interrupt", function () {
+                    slider.interrupt();
+                })
+                .on("start drag", function () {
+                    var new_year = hue(xslider.invert(d3.event.x));
+                    if (year !== new_year) {
+                        year = new_year;
+                        draw_map(new_year, countries, active_countries);
+                    }
+                }));
+
+
+        });
+    });
+
+
+</script>
+
+<!--<div class="information-box">-->
+<!--</div>-->
+
+
+</body>

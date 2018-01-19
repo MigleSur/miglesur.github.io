@@ -16,7 +16,7 @@
 
     var slider = slider_svg.append("g")
         .attr("class", "slider")
-        .attr("transform", "translate(0," + 900 + ")");
+        .attr("transform", "translate(0,750)");
 
     slider.append("line")
         .attr("class", "track")
