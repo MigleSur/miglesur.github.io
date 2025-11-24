@@ -23,10 +23,11 @@ repository               : "MigleSur/miglesur.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "profile.png"
+  avatar           : "1718349056318.jpeg"
   name             : "Migle Gabrielaite"
   pronouns         : "she/her"  
-  bio              : "Short biography for the left-hand sidebar"
+  bio              : "Associate professor and Marie Sklodowska-Curie postdoc at Vilnius University 🇱🇹. Microbial genomics and 
+  bioinformatics nerd 🧑‍💻. Passionate about Achromobacter spp. evolution and transmission 🦠. Previously worked at Rigshospitalet & University of Copenhagen 🇩🇰."
   location         : "Lithuania"
   employer         : "Vilnius University"
   uri              : # URL
