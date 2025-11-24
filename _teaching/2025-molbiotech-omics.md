@@ -1,7 +1,7 @@
 ---
-title: "Sequencing technologies for Molecular Biotechnology BSc students"
+title: "Sequencing technologies for BSc students"
 collection: teaching
-type: "BSc course"
+type: "Molecular biotechnology course"
 permalink: /teaching/2025-molbiotech-omics
 venue: "Vilnius University"
 date: 2025-11-24

@@ -1,7 +1,7 @@
 ---
-title: "Sequencing and RNAseq analysis for Biochemistry, Molecular Biology and Molecular Biotechnology BSc students"
+title: "Sequencing and RNAseq analysis for BSc students"
 collection: teaching
-type: "BSc course"
+type: "Molecular biology, molecular biotechnology, biochemistry course"
 permalink: /teaching/2025-bioinformatics
 venue: "Vilnius University"
 date: 2025-11-24
