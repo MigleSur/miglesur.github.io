@@ -25,9 +25,9 @@ author:
   # Biographic information
   avatar           : "1718349056318.jpeg"
   name             : "Migle Gabrielaite"
-  pronouns         : "she/her"  
-  bio              : "Associate professor and Marie Sklodowska-Curie postdoc at Vilnius University 🇱🇹. Microbial genomics and 
-  bioinformatics nerd 🧑‍💻. Passionate about Achromobacter spp. evolution and transmission 🦠. Previously worked at Rigshospitalet & University of Copenhagen 🇩🇰."
+  pronouns         : "She/Her"  
+  bio              : "Associate professor and Marie Sklodowska-Curie postdoc at Vilnius University 🇱🇹 Microbial genomics and 
+  bioinformatics nerd 🧑‍💻 Passionate about Achromobacter spp. evolution and transmission 🦠 Previously worked at Rigshospitalet & University of Copenhagen 🇩🇰"
   location         : "Lithuania"
   employer         : "Vilnius University"
   uri              : # URL
@@ -64,7 +64,7 @@ author:
   keybase          : # Username
   instagram        : # Username
   lastfm           : # Username
-  linkedin         : "https://www.linkedin.com/in/migle-gabrielaite/"
+  linkedin         : "migle-gabrielaite"
   mastodon         : # URL
   medium           : # URL
   pinterest        : # Username
