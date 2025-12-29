@@ -11,11 +11,15 @@ redirect_from:
 
 Education
 ======
-* Ph.D in Bioinformatics, University of Copenhagen, Copenhagen, Denmark, 2022
-* Research stay at Lund University, Lund, Sweden, 2020
-* M.Sc. in Bioinformatics, University of Copenhagen, Copenhagen, Denmark, 2018
-* B.S. in Biochemistry, Vilnius University, Vilnius, Lithuania, 2016
-* Erasmus+ internship at University of Gothenburg, Gothenburg, Sweden, 2015
+**Ph.D. in Bioinformatics**, University of Copenhagen, Copenhagen, Denmark, 2022
+
+**Research stay** at Lund University, Lund, Sweden, 2020
+
+**M.Sc. in Bioinformatics**, University of Copenhagen, Copenhagen, Denmark, 2018
+
+**B.Sc. in Biochemistry**, Vilnius University, Vilnius, Lithuania, 2016
+
+**Erasmus+ internship** at University of Gothenburg, Gothenburg, Sweden, 2015
 
 Work experience
 ======
@@ -36,7 +40,7 @@ Work experience
   
 Scholarships and Grants
 ======
-* Marie Sklodowska-Curie Actions (MSCA) Postdoctoral Fellowship
+* Marie Sklodowska-Curie Actions (MSCA) Postdoctoral Fellowship 2024-2026
 * CROI 2020 New Investigator Scholarship
 * FEMS 2019 Congress Attendance Grant
 * Danish Cystic Fibrosis Association research grant
@@ -62,27 +66,21 @@ Teaching
 Supervision
 ======
 
-* 2025-Present
+* Current students
   * Safina Abdul Razzak
-* 2025-Present
   * Lukas Pranckūnas
-* 2025-Present
   * Viktorija Ramonaitė
-* 2024–2026
   * B.Sc. student Lukas Beržinis
-  * Thesis topic: ”Development of a whole genome sequencing-based antibiotic susceptibility and resistance predictor for Achromobacter spp. clinical isolates”
-* 2024–2026
+    * Thesis topic: ”Development of a whole genome sequencing-based antibiotic susceptibility and resistance predictor for Achromobacter spp. clinical isolates”
   * B.Sc. student Idas Jasaitis
-  * Thesis topic: ”Achromobacter spp. genotype and phenotype association based on whole-genome sequencing”
-* 2023–2024 
+    * Thesis topic: ”Achromobacter spp. genotype and phenotype association based on whole-genome sequencing”
+* Past supervision
   * B.Sc. student Karolis Krinickis
-  * Thesis topic: ”Benchmark of tools for processing mass spectrometry data in metabolomics studies”
-* 2023 
+    * Thesis topic: ”Benchmark of tools for processing mass spectrometry data in metabolomics studies”
   * B.Sc. student Milda Milčiūtė
-  * Thesis topic: ”Mobile genetic element and piRNA significance in Parkinson’s disease”
-* 2019 
+    * Thesis topic: ”Mobile genetic element and piRNA significance in Parkinson’s disease”
   * M.Sc. student Andreas Ørslev Rasmussen
-  * Project topic: ”Bleeding disorder family analysis.”
+    * Project topic: ”Bleeding disorder family analysis.”
 
 Reviewer services
 ======
