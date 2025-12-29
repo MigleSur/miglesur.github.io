@@ -11,9 +11,11 @@ redirect_from:
 
 Education
 ======
-* Ph.D in Version Control Theory, GitHub University, 2018 (expected)
-* M.S. in Jekyll, GitHub University, 2014
-* B.S. in GitHub, GitHub University, 2012
+* Ph.D in Bioinformatics, University of Copenhagen, Copenhagen, Denmark, 2022
+* Research stay at Lund University, Lund, Sweden, 2020
+* M.Sc. in Bioinformatics, University of Copenhagen, Copenhagen, Denmark, 2018
+* B.S. in Biochemistry, Vilnius University, Vilnius, Lithuania, 2016
+* Erasmus+ internship at University of Gothenburg, Gothenburg, Sweden, 2015
 
 Work experience
 ======
@@ -32,14 +34,12 @@ Work experience
   * Duties included: Tagging issues
   * Supervisor: Professor Git
   
-Skills
+Scholarships and Grants
 ======
-* Skill 1
-* Skill 2
-  * Sub-skill 2.1
-  * Sub-skill 2.2
-  * Sub-skill 2.3
-* Skill 3
+* Marie Sklodowska-Curie Actions (MSCA) Postdoctoral Fellowship
+* CROI 2020 New Investigator Scholarship
+* FEMS 2019 Congress Attendance Grant
+* Danish Cystic Fibrosis Association research grant
 
 Publications
 ======
@@ -59,6 +59,39 @@ Teaching
     {% include archive-single-cv.html %}
   {% endfor %}</ul>
   
-Service and leadership
+Supervision
 ======
-* Currently signed in to 43 different slack teams
+
+* 2025-Present
+  * Safina Abdul Razzak
+* 2025-Present
+  * Lukas Pranckūnas
+* 2025-Present
+  * Viktorija Ramonaitė
+* 2024–2026
+  * B.Sc. student Lukas Beržinis
+  * Thesis topic: ”Development of a whole genome sequencing-based antibiotic susceptibility and resistance predictor for Achromobacter spp. clinical isolates”
+* 2024–2026
+  * B.Sc. student Idas Jasaitis
+  * Thesis topic: ”Achromobacter spp. genotype and phenotype association based on whole-genome sequencing”
+* 2023–2024 
+  * B.Sc. student Karolis Krinickis
+  * Thesis topic: ”Benchmark of tools for processing mass spectrometry data in metabolomics studies”
+* 2023 
+  * B.Sc. student Milda Milčiūtė
+  * Thesis topic: ”Mobile genetic element and piRNA significance in Parkinson’s disease”
+* 2019 
+  * M.Sc. student Andreas Ørslev Rasmussen
+  * Project topic: ”Bleeding disorder family analysis.”
+
+Reviewer services
+======
+* Genome Biology
+* BMC Genomics
+* Bioinformatics
+* Journal of Medical Genetics
+* Microbiological Research
+* Annals of Medicine
+* Microorganisms
+* Journal of Medical Virology
+* Journal of Translational Medicine
