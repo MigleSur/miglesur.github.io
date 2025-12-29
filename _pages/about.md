@@ -15,8 +15,14 @@ My research now centres on how bacteria evolve, adapt, and spread in both the en
 
 ## Projects
 
-To be added
+**GEM-SEE-Achro:** [Genomic Exploration—Mapping the Spread, Evolution, and Adaptation of an Emerging bacterial pathogen—Achromobacter](https://cordis.europa.eu/project/id/101151221) 
 
-## Collaborations
+Marie Skłodowska-Curie Actions (MSCA) postdoctoral fellow exploring *Achromobacter* spp. bacteria evolution, spread and adaptation using public and clinical genomic data.
 
-To be added
+**GE 21 NDICI HE 01 23:** [Enhance National Disease Surveillance System in Georgia through Improvement of the Epidemiological and Molecular (Genomic) Surveillance](https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/prospect-details/179906PROSPECTSEN)
+
+Served as an expert on two components: establishing genomic epidemiology surveillance and leading public outreach activities.
+
+**ESGEM AMRrules:** [Interpretive standards for AMR genotypes](https://github.com/AMRverse/AMRrules) 
+
+Contributed to rule curation for AMR genotype interpretive standards within the *Achromobacter xylosoxidans* working group.
