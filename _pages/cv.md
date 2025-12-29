@@ -23,27 +23,25 @@ Education
 
 Work experience
 ======
-* Spring 2024: Academic Pages Collaborator
-  * GitHub University
-  * Duties includes: Updates and improvements to template
-  * Supervisor: The Users
+2025--Present **Chair of the Bioinformatics Master’s Study Program Committee**
+  * Vilnius University, Lithuania
 
-* Fall 2015: Research Assistant
-  * GitHub University
-  * Duties included: Merging pull requests
-  * Supervisor: Professor Hub
+2024--Present **Associate Professor**
+  * Vilnius University, Lithuania
 
-* Summer 2015: Research Assistant
-  * GitHub University
-  * Duties included: Tagging issues
-  * Supervisor: Professor Git
-  
-Scholarships and Grants
-======
-* Marie Sklodowska-Curie Actions (MSCA) Postdoctoral Fellowship 2024-2026
-* CROI 2020 New Investigator Scholarship
-* FEMS 2019 Congress Attendance Grant
-* Danish Cystic Fibrosis Association research grant
+2024--Present **Marie Sklodowska Curie Actions postdoctoral fellowship, Senior scientist**
+  * Vilnius University, Lithuania
+
+2022--2024 **Chief Scientific Officer, Bioinformatician**
+  * VUGENE, USA & Lithuania
+
+2021-03--2021-06 **Data coordinator**
+  * SARS-CoV-2 genomic surveillance project, Lithuania
+
+2021-04--2022-05 **Career break (maternity leave)**
+
+2017--2018 **Bioinformatician**
+  * Department of Genomic Medicine, Rigshospitalet, Denmark
 
 Publications
 ======
@@ -82,6 +80,13 @@ Supervision
     * Thesis topic: ”Mobile genetic element and piRNA significance in Parkinson’s disease”
   * Bioinformatics M.Sc. student Andreas Ørslev Rasmussen
     * Project topic: ”Bleeding disorder family analysis.”
+
+Scholarships and Grants
+======
+* Marie Sklodowska-Curie Actions (MSCA) Postdoctoral Fellowship 2024-2026
+* CROI 2020 New Investigator Scholarship
+* FEMS 2019 Congress Attendance Grant
+* Danish Cystic Fibrosis Association research grant
 
 Reviewer services
 ======
