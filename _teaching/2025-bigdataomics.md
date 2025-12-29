@@ -1,5 +1,5 @@
 ---
-title: "Big data omics"
+title: "Big data omics for genetics MSc students 2025"
 collection: teaching
 type: "Genetics Master's course"
 permalink: /teaching/2025-genetics

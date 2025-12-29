@@ -1,5 +1,5 @@
 ---
-title: "Sequencing technologies for BSc students"
+title: "Sequencing technologies for Molecular Biotechnology BSc students 2025"
 collection: teaching
 type: "Molecular biotechnology course"
 permalink: /teaching/2025-molbiotech-omics

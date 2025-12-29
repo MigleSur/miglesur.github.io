@@ -66,20 +66,21 @@ Teaching
 Supervision
 ======
 
-* Current students
-  * Safina Abdul Razzak
-  * Lukas Pranckūnas
-  * Viktorija Ramonaitė
-  * B.Sc. student Lukas Beržinis
+* **Current students**
+  * Ph.D. student Safina Abdul Razzak
+    * Thesis topic: "Evolution, adaptation, and pathogenic potential of opportunistic bacteria"
+  * Molecular biology and bioinformatics B.Sc. student Lukas Pranckūnas
+  * Bioinformatics B.Sc. student Viktorija Ramonaitė
+  * Genetics and biotinformatics B.Sc. student Lukas Beržinis
     * Thesis topic: ”Development of a whole genome sequencing-based antibiotic susceptibility and resistance predictor for Achromobacter spp. clinical isolates”
-  * B.Sc. student Idas Jasaitis
+  * Microbiology B.Sc. student Idas Jasaitis
     * Thesis topic: ”Achromobacter spp. genotype and phenotype association based on whole-genome sequencing”
-* Past supervision
-  * B.Sc. student Karolis Krinickis
+* **Past supervision**
+  * Bioinformatics B.Sc. student Karolis Krinickis
     * Thesis topic: ”Benchmark of tools for processing mass spectrometry data in metabolomics studies”
-  * B.Sc. student Milda Milčiūtė
+  * Genetics B.Sc. student Milda Milčiūtė
     * Thesis topic: ”Mobile genetic element and piRNA significance in Parkinson’s disease”
-  * M.Sc. student Andreas Ørslev Rasmussen
+  * Bioinformatics M.Sc. student Andreas Ørslev Rasmussen
     * Project topic: ”Bleeding disorder family analysis.”
 
 Reviewer services

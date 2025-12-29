@@ -1,5 +1,5 @@
 ---
-title: "Transcriptomics"
+title: "Transcriptomics for Systems Biology MSc students 2026"
 collection: teaching
 type: "Systems Biology Master's course"
 permalink: /teaching/2026-sysbio
