@@ -1,21 +1,21 @@
 var addressPoints = [
   [
-    "Talk 2 on Relevant Topic in Your Field<br />London School of Testing; London, UK",
-    51.5074456,
-    -0.1277653
+    "Talk 2 on Relevant Topic in Your Field<br />Youtube; Vilnius, Lithuania",
+    54.6870458,
+    25.2829111
   ],
   [
-    "Talk on Achromobacter spp. at FEMS 2019<br />; Glasgow, UK",
+    "Genome evolution and adaptation of *Achromobacter xylosoxidans* within the airways of cystic fibrosis patients at FEMS 2019<br />FEMS 2019; Glasgow, UK",
     55.861155,
     -4.2501687
   ],
   [
-    "Tutorial 1 on Relevant Topic in Your Field<br />UC-Berkeley Institute for Testing Science; Berkeley, CA, USA",
-    37.8708393,
-    -122.272863
+    "30 years of adaptation: Genomic insights into the Danish epidemic strain of *A. ruhlandii* at IMMEM XIV<br />IMMEM XIV; Porto, Portugal",
+    41.1502195,
+    -8.6103497
   ],
   [
-    "Talk on P. aeruginosa at Pseudomonas 2019 conference<br />Pseudomonas biennial conference; Kuala Lumpur, Malaysia",
+    "Insights into *P. aeruginosa* population evolution during the course of infection in cystic fibrosis patients at Pseudomonas 2019 conference<br />Pseudomonas biennial conference; Kuala Lumpur, Malaysia",
     3.1526589,
     101.7022205
   ]
