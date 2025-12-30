@@ -1,7 +1,8 @@
 ---
-title: "Talk on P. aeruginosa at Pseudomonas 2019 conference"
+title: "Insights into *P. aeruginosa* population evolution during the course of
+infection in cystic fibrosis patients at Pseudomonas 2019 conference"
 collection: talks
-type: "Conference proceedings talk"
+type: "Oral presentation"
 permalink: /talks/2019-pseudomonas-conference
 venue: "Pseudomonas biennial conference"
 date: 2019-07-25
