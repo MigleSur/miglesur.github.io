@@ -3,7 +3,7 @@ title: "Top 5 science achievements in 2024"
 collection: interview
 type: "Interview on a podcast"
 permalink: /talks/2024-mokslo-sriuba
-venue: "Youtube"
+venue: "Mokslo sriuba"
 date: 2024-12-30
 location: "Vilnius, Lithuania"
 ---

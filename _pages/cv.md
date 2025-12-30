@@ -54,7 +54,7 @@ Publications
     {% include archive-single-cv.html %}
   {% endfor %}</ul>
   
-Talks
+Talks and presentations # todo add all the conferences here with abstracts
 ======
   <ul>{% for post in site.talks reversed %}
     {% include archive-single-talk-cv.html  %}
@@ -78,7 +78,7 @@ Supervision
     * Thesis topic: ”Development of a whole genome sequencing-based antibiotic susceptibility and resistance predictor for Achromobacter spp. clinical isolates”
   * Microbiology B.Sc. student Idas Jasaitis
     * Thesis topic: ”Achromobacter spp. genotype and phenotype association based on whole-genome sequencing”
-    
+
 **Past supervision**
   * Bioinformatics B.Sc. student Karolis Krinickis
     * Thesis topic: ”Benchmark of tools for processing mass spectrometry data in metabolomics studies”
@@ -92,7 +92,7 @@ Scholarships and Grants
 * Marie Sklodowska-Curie Actions (MSCA) Postdoctoral Fellowship 2024-2026
 * CROI 2020 New Investigator Scholarship
 * FEMS 2019 Congress Attendance Grant
-* Danish Cystic Fibrosis Association research grant
+* Danish Cystic Fibrosis Association research grant 2018
 
 Reviewer services
 ======
