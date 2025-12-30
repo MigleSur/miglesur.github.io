@@ -54,7 +54,7 @@ Publications
     {% include archive-single-cv.html %}
   {% endfor %}</ul>
   
-Talks and presentations # todo add all the conferences here with abstracts
+Talks and presentations 
 ======
   <ul>{% for post in site.talks reversed %}
     {% include archive-single-talk-cv.html  %}
