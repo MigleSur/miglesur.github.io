@@ -1,6 +1,6 @@
 var addressPoints = [
   [
-    "Talk 2 on Relevant Topic in Your Field<br />Youtube; Vilnius, Lithuania",
+    "Top 5 science achievements in 2024<br />Youtube; Vilnius, Lithuania",
     54.6870458,
     25.2829111
   ],
