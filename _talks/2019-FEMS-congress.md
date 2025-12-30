@@ -2,7 +2,7 @@
 title: "Genome evolution and adaptation of *Achromobacter xylosoxidans* within the airways of 
 cystic fibrosis patients at FEMS 2019"
 collection: talks
-type: "Talk"
+type: "Oral presentation"
 permalink: /talks/2019-fems-congress
 venue: "FEMS 2019"
 date: 2012-03-01
