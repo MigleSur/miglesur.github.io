@@ -15,8 +15,13 @@ var addressPoints = [
     -8.6103497
   ],
   [
+    "Top 3 science achievements in 2025<br />Mokslo sriuba; Vilnius, Lithuania",
+    54.6870458,
+    25.2829111
+  ],
+  [
     "Insights into *P. aeruginosa* population evolution during the course of infection in cystic fibrosis patients at Pseudomonas 2019 conference<br />Pseudomonas biennial conference; Kuala Lumpur, Malaysia",
-    3.1526589,
-    101.7022205
+    3.1516964,
+    101.6942371
   ]
 ];
