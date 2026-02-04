@@ -11,5 +11,5 @@ location: "Life Sciences Center, Vilnius University"
 
 A series of lectures for systems biology MSc students for transcriptomics data analysis and introduction to multi-omics integration. 
 
-<iframe src="https://docs.google.com/presentation/d/1bNXaqd4Y_GItDyYsTgZD9tHbSBJOTNW_Ff_RZN7D_Rc/edit?usp=sharing" frameborder="0" width="480" height="299" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+<iframe src="https://docs.google.com/presentation/d/1bNXaqd4Y_GItDyYsTgZD9tHbSBJOTNW_Ff_RZN7D_Rc/embed?start=false&loop=false&delayms=60000" frameborder="0" width="480" height="299" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 
