@@ -31,7 +31,10 @@ Work experience
 2025--Present **Chair of the Bioinformatics Master’s Study Program Committee**
   * Vilnius University, Vilnius, Lithuania
 
-2024--Present **Associate Professor**
+2026--Present **Professor**
+  * Vilnius University, Vilnius, Lithuania
+
+2024--2026 **Associate Professor**
   * Vilnius University, Vilnius, Lithuania
 
 2024--Present **Marie Sklodowska Curie Actions postdoctoral fellowship, Senior scientist**
@@ -74,10 +77,7 @@ Supervision
     * Thesis topic: "Evolution, adaptation, and pathogenic potential of opportunistic bacteria"
   * Molecular biology and bioinformatics B.Sc. student Lukas Pranckūnas
   * Bioinformatics B.Sc. student Viktorija Ramonaitė
-  * Genetics and biotinformatics B.Sc. student Lukas Beržinis
-    * Thesis topic: ”Development of a whole genome sequencing-based antibiotic susceptibility and resistance predictor for Achromobacter spp. clinical isolates”
-  * Microbiology B.Sc. student Idas Jasaitis
-    * Thesis topic: ”Achromobacter spp. genotype and phenotype association based on whole-genome sequencing”
+
 
 **Past supervision**
   * Bioinformatics B.Sc. student Karolis Krinickis
@@ -86,6 +86,10 @@ Supervision
     * Thesis topic: ”Mobile genetic element and piRNA significance in Parkinson’s disease”
   * Bioinformatics M.Sc. student Andreas Ørslev Rasmussen
     * Project topic: ”Bleeding disorder family analysis.”
+  * Genetics and bioinformatics B.Sc. student Lukas Beržinis
+    * Thesis topic: ”Development of a whole genome sequencing-based antibiotic susceptibility and resistance predictor for Achromobacter spp. clinical isolates”
+  * Microbiology B.Sc. student Idas Jasaitis
+    * Thesis topic: ”Achromobacter spp. genotype and phenotype association based on whole-genome sequencing”
 
 Scholarships and Grants
 ======
@@ -105,3 +109,4 @@ Reviewer services
 * Microorganisms
 * Journal of Medical Virology
 * Journal of Translational Medicine
+* Microbial Genomics
