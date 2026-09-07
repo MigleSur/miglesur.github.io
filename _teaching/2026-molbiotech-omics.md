@@ -1,10 +1,10 @@
 ---
-title: "Sequencing technologies for Molecular Biotechnology BSc students 2025"
+title: "Sequencing technologies for Molecular Biotechnology BSc students 2026"
 collection: teaching
 type: "Molecular biotechnology course"
-permalink: /teaching/2025-molbiotech-omics
+permalink: /teaching/2026-molbiotech-omics
 venue: "Vilnius University"
-date: 2025-11-24
+date: 2026-09-07
 location: "Life Sciences Center, Vilnius University"
 ---
 
