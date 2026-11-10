@@ -2,9 +2,9 @@
 title: "Sequencing and RNAseq analysis for BSc students 2025"
 collection: teaching
 type: "Molecular biology, molecular biotechnology, biochemistry course"
-permalink: /teaching/2025-bioinformatics
+permalink: /teaching/2026-bioinformatics
 venue: "Vilnius University"
-date: 2025-11-24
+date: 2026-11-23
 location: "Life Sciences Center, Vilnius University"
 ---
 
