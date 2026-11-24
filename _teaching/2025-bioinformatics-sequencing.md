@@ -1,5 +1,5 @@
 ---
-title: "Sequencing and RNAseq analysis for BSc students 2025"
+title: "Sequencing and RNAseq analysis for BSc students 2026"
 collection: teaching
 type: "Molecular biology, molecular biotechnology, biochemistry course"
 permalink: /teaching/2026-bioinformatics
